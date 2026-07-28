@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — PrivacyAI Gateway</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+  :root{
+    --paper:#f6f4ef;--panel:#ffffff;--ink:#1c1b18;--ink-soft:#57544b;--ink-faint:#8a8677;
+    --rule:#d8d4c8;--redact:#141414;--protected:#1f3d2f;--protected-soft:#e3ebe4;
+    --warn:#8a4a1f;--warn-bg:#f3e4d4;
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.55;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px;}
+  nav{padding:20px 0;border-bottom:1px solid var(--rule);}
+  nav .navwrap{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;display:flex;align-items:center;gap:9px;}
+  .logo .bar{width:16px;height:8px;background:var(--redact);display:inline-block;}
+  .navlinks{display:flex;gap:28px;font-size:14px;font-weight:500;color:var(--ink-soft);}
+  .navlinks a.active{color:var(--ink);}
+  .navlinks a:hover{color:var(--ink);}
+  .nav-cta{background:var(--redact);color:var(--paper);padding:11px 20px;border-radius:2px;font-weight:600;font-size:13.5px;}
+
+  .head{padding:60px 0 20px;text-align:center;}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--protected);margin-bottom:16px;}
+  h1{font-family:'Source Serif 4',serif;font-weight:700;font-size:clamp(30px,4.2vw,42px);line-height:1.15;margin:0 auto 14px;max-width:20ch;}
+  .head p{color:var(--ink-soft);font-size:15.5px;max-width:56ch;margin:0 auto;}
+
+  .faq-section{padding:44px 0 8px;}
+  .section-label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-faint);margin:36px 0 18px;}
+  .qa{border:1px solid var(--rule);background:var(--panel);margin-bottom:14px;}
+  .q{
+    padding:18px 22px;font-weight:600;font-size:15px;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+  }
+  .q .mark{font-family:'IBM Plex Mono',monospace;color:var(--protected);font-size:16px;flex-shrink:0;}
+  .a{
+    padding:0 22px 20px;font-size:14.2px;color:var(--ink-soft);line-height:1.65;
+  }
+  .a b{color:var(--ink);}
+  .a code{
+    font-family:'IBM Plex Mono',monospace;background:var(--protected-soft);color:var(--protected);
+    padding:1px 6px;border-radius:2px;font-size:13px;
+  }
+
+  footer{padding:40px 0;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--rule);text-align:center;margin-top:40px;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="navwrap">
+    <a href="index.html"><img src="logo.svg" alt="PrivacyAI Gateway" style="height:64px;display:block;"></a>
+    <div class="navlinks">
+      <a href="legal.html">For Attorneys</a>
+      <a href="tax.html">For Tax &amp; Accounting</a>
+      <a href="healthcare.html">For Healthcare</a>
+      <a href="pricing.html">Pricing</a>
+      <a class="active" href="faq.html">FAQ</a>
+    </div>
+    <a class="nav-cta" href="legal.html">Book a Call</a>
+  </div>
+</nav>
+
+<div class="head wrap">
+  <div class="kicker">FAQ</div>
+  <h1>The questions we get asked on almost every call.</h1>
+  <p>Direct answers — including the ones that make us look less magic than a shorter pitch might suggest.</p>
+</div>
+
+<div class="wrap faq-section">
+
+  <div class="section-label">What actually gets protected</div>
+
+  <div class="qa">
+    <div class="q"><span>Do you see the content of my messages?</span><span class="mark">—</span></div>
+    <div class="a">No — our own systems and staff don't see any of it, identifying details or otherwise. The relay that forwards your message runs inside a hardware-isolated environment (a confidential-computing enclave) specifically so our ordinary infrastructure and engineers can't read into it. <b>The AI provider is a separate case:</b> Claude or GPT still processes the substance of your question — the actual topic, the reasoning — because neither provider offers confidential inference publicly yet. What they never see is the identifying details: names, SSNs, emails, and similar identifiers, stripped out on your device before anything is sent. If you ask about "PERSON_1-C24's case," the AI sees that sentence — it doesn't see who PERSON_1-C24 actually is, and we don't see any of it at all.</div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span>Do you know who I am, as your customer?</span><span class="mark">—</span></div>
+    <div class="a">Yes, always. That's required — for billing, for the accountability agreement we sign with you, and so there's a real party who can respond if anything is ever asked about. What we don't know is who the <b>people you're talking about</b> are — your clients, patients, or filers. Those are two different things, and we don't blur them together. Knowing you as a customer is also handled separately from message content — our identity/billing systems never touch what you actually ask.</div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span>Isn't this just encryption?</span><span class="mark">—</span></div>
+    <div class="a">Not exactly, and two different techniques are actually doing two different jobs here. <b>Tokenization</b> replaces a sensitive value with an unrelated placeholder (like <code>PERSON_1-C24</code>) before it's ever sent — the real name never leaves your device in any form, encrypted or otherwise. Separately, our own relay runs inside a <b>confidential-computing enclave</b> — hardware-isolated processing, not encryption in the traditional sense — so even our staff can't read the message passing through it. Neither is "encryption" in the classic sense of scrambling data with a reversible key; both work by making sure the wrong party never has readable access in the first place, through different mechanisms.</div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span>Is this actually live and running today?</span><span class="mark">—</span></div>
+    <div class="a">This describes the architecture we're building toward and piloting with early firms and practices, not a large-scale general-availability product yet. We'd rather be precise about what's designed versus what's fully deployed than imply more is live than actually is.</div>
+  </div>
+
+  <div class="section-label">How the system actually works</div>
+
+  <div class="qa">
+    <div class="q"><span>Does my message go straight to Claude or GPT?</span><span class="mark">—</span></div>
+    <div class="a">No. Your device sends the redacted message to our backend, which authenticates to the AI provider under our own business account and forwards it. This is what lets the AI provider see only our account — never your individual identity or IP address.</div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span>Can your own staff read my messages?</span><span class="mark">—</span></div>
+    <div class="a">The relay runs inside a hardware-isolated environment (a confidential-computing enclave) specifically so ordinary staff and infrastructure can't read message content passing through it. This protects against our own systems — it doesn't extend to the AI provider's servers, which still process the tokenized text to generate your answer.</div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span>What happens to the redacted names after I get my answer?</span><span class="mark">—</span></div>
+    <div class="a">Your device swaps the tokens back to the real values using a map that only ever exists locally. That map is never sent to us or to the AI provider.</div>
+  </div>
+
+  <div class="section-label">Compliance &amp; accountability</div>
+
+  <div class="qa">
+    <div class="q"><span>Do you sign a BAA for healthcare use?</span><span class="mark">—</span></div>
+    <div class="a">Yes. Even though the architecture minimizes what we ever see, we sign a standard Business Associate Agreement — because being an accountable party is the point, not something we try to avoid.</div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span>Is this "anonymous" — untraceable, even by you?</span><span class="mark">—</span></div>
+    <div class="a">No, and we wouldn't want it to be. We verify who our customers are and can respond to lawful process if it's ever required. A tool that couldn't do that wouldn't be one a firm or practice could responsibly rely on.</div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span>Can I delete my data?</span><span class="mark">—</span></div>
+    <div class="a">Depends what you mean by "my data," since most of what you'd expect to delete was never collected in the first place. What's real and deletable: your <b>account and identity records</b> (billing, KYC — required for the accountability agreement), <b>usage/billing metadata</b> (timestamps, volume, held for abuse detection), and, if you opt into cross-device conversation sync, the <b>encrypted history blob</b> itself — we can't read it (zero-knowledge, only your device holds the key), but the stored blob is real and we can delete it on request. What's <b>not</b> part of this because it was never held: raw identifying content. Redaction happens on your device and discards the real values immediately — there's no pile of your clients' names sitting somewhere waiting to be purged.</div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span>What's the actual enclave technology, and whose infrastructure is it?</span><span class="mark">—</span></div>
+    <div class="a">AWS Nitro Enclaves — a hardware-isolated compute environment built into supported Amazon EC2 instances. AWS has independently affirmed there is no mechanism for its own operators to access what runs inside the Nitro System, and it's backed by AWS's published Service Terms, not just our own claim. Worth being upfront about the tradeoff: naming a specific vendor here means part of our reliability and security posture is tied to AWS's own — the same way it would be for any company built on major cloud infrastructure. If that ever changes, we'll disclose it.</div>
+  </div>
+
+  <div class="section-label">Fit &amp; limitations</div>
+
+  <div class="qa">
+    <div class="q"><span>Does this replace my scribe tool (Abridge, Dragon Copilot, etc.)?</span><span class="mark">—</span></div>
+    <div class="a">No — those handle visit transcription and note generation. This covers everything else you already do in ChatGPT or Claude: case summaries, patient education material, prior-auth letters, research. Different job, same underlying need to keep identifying details out of it.</div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span>Is entity detection perfect?</span><span class="mark">—</span></div>
+    <div class="a">Structured data — emails, phone numbers, SSNs, card numbers — is caught reliably. Names and addresses in messy, real-world text are best-effort, not guaranteed 100% of the time. We're upfront about this rather than promising perfection.</div>
+  </div>
+
+</div>
+
+<footer>© 2026 PrivacyAI Gateway. Currently piloting a small number of firms and practices.</footer>
+</body>
+</html>

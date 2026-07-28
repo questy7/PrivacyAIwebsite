@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrivacyAI Gateway for Healthcare — Patient identifiers should never touch an AI company's servers</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+  :root{
+    --paper:#f6f4ef;--panel:#ffffff;--ink:#1c1b18;--ink-soft:#57544b;--ink-faint:#8a8677;
+    --rule:#d8d4c8;--redact:#141414;--protected:#1f3d2f;--protected-soft:#e3ebe4;
+    --warn:#8a4a1f;--warn-bg:#f3e4d4;
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.55;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  nav{padding:20px 0;border-bottom:1px solid var(--rule);}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .navlinks{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--ink-soft);}
+  .navlinks a.active{color:var(--ink);border-bottom:2px solid var(--protected);padding-bottom:2px;}
+  .navlinks a:hover{color:var(--ink);}
+  .nav-cta{background:var(--redact);color:var(--paper);padding:11px 20px;border-radius:2px;font-weight:600;font-size:13.5px;}
+  .nav-cta:hover{background:#000;}
+
+  .hero{padding:64px 0 48px;border-bottom:1px solid var(--rule);}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--protected);background:var(--protected-soft);padding:8px 16px;border-radius:2px;margin-bottom:28px;}
+  h1{font-family:'Source Serif 4',serif;font-weight:700;font-size:clamp(28px,4.4vw,44px);line-height:1.14;margin:0 0 20px;letter-spacing:-0.01em;max-width:19ch;}
+  .hero-sub{font-size:16.5px;color:var(--ink-soft);max-width:58ch;margin-bottom:28px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px;}
+  .btn{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;padding:13px 24px;text-decoration:none;display:inline-block;border:none;cursor:pointer;}
+  .btn-dark{background:var(--redact);color:var(--paper);}
+  .btn-dark:hover{background:#000;}
+  .btn-outline{border:1px solid var(--ink);color:var(--ink);background:transparent;}
+  .microcopy{font-size:12px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
+
+  section{padding:56px 0;border-bottom:1px solid var(--rule);}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:24px;}
+  .risk-box{background:var(--warn-bg);border-left:3px solid var(--warn);padding:22px 24px;font-size:15px;line-height:1.6;max-width:72ch;}
+  .risk-box b{color:var(--warn);}
+
+  .distinct-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);}
+  @media(max-width:720px){.distinct-grid{grid-template-columns:1fr;}}
+  .d-col{padding:24px 24px;background:#fff;}
+  .d-col:first-child{border-right:1px solid var(--rule);}
+  @media(max-width:720px){.d-col:first-child{border-right:none;border-bottom:1px solid var(--rule);}}
+  .d-col .t{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px;}
+  .d-col .b{font-size:14px;line-height:1.55;}
+
+  table{width:100%;border-collapse:collapse;border:1px solid var(--rule);font-size:14px;}
+  th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--rule);}
+  th{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);background:#fff;}
+  td{background:#fff;}
+  .yes{color:var(--protected);font-weight:600;}
+  .no{color:var(--warn);}
+
+  .cta-block{padding:64px 0;text-align:center;}
+  .cta-block h2{font-family:'Source Serif 4',serif;font-weight:700;font-size:26px;max-width:32ch;margin:0 auto 18px;}
+  .cta-block p{color:var(--ink-soft);max-width:50ch;margin:0 auto 28px;font-size:14.5px;}
+
+  footer{padding:32px 0;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--rule);}
+  .f-links{display:flex;gap:22px;margin-top:12px;flex-wrap:wrap;}
+  .f-links a:hover{color:var(--ink);}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a href="index.html"><img src="logo.svg" alt="PrivacyAI Gateway" style="height:64px;display:block;"></a>
+    <div class="navlinks">
+      <a href="legal.html">For Attorneys</a>
+      <a href="tax.html">For Tax &amp; Accounting</a>
+      <a class="active" href="healthcare.html">For Healthcare</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <a class="nav-cta" href="#book">Book a Call</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">● For clinicians &amp; small practices</div>
+    <h1>Patient identifiers should never touch an AI company's servers.</h1>
+    <p class="hero-sub">Clinicians are already using ChatGPT and Claude for case summaries, patient education, and prior-auth letters. We strip out identifying details — patient names, record numbers — before anything reaches those servers, with a signed BAA behind it, not a promise.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-dark" href="#book">Book a 15-minute call</a>
+      <a class="btn btn-outline" href="index.html#how">See how it works</a>
+    </div>
+    <p class="microcopy">Currently piloting with a small number of practices — no cost to look.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">The part most practices haven't dealt with yet</div>
+    <div class="risk-box">
+      Most practices don't have a policy on what goes into ChatGPT or Claude — and clinicians are already using it informally to draft notes, patient handouts, or think through a case. That likely means patient details are reaching OpenAI's or Anthropic's servers <b>without a signed BAA covering it</b>.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Not a competitor to your scribe tool</div>
+    <div class="distinct-grid">
+      <div class="d-col">
+        <div class="t">If you use Abridge or Dragon Copilot</div>
+        <div class="b">Those handle the visit — recording the conversation and generating the structured note. That's a different job, and a good one already being done well.</div>
+      </div>
+      <div class="d-col">
+        <div class="t">This covers everything else</div>
+        <div class="b">Patient education materials, case summaries before a visit, prior-authorization letters, literature review — the general AI use that doesn't fit a scribe tool but still involves patient details.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">How this compares to what your practice is doing today</div>
+    <table>
+      <tr><th></th><th>Raw ChatGPT / Claude</th><th>PrivacyAI Gateway</th></tr>
+      <tr><td>Patient identifiers tokenized before sending</td><td class="no">No</td><td class="yes">Yes</td></tr>
+      <tr><td>Signed Business Associate Agreement</td><td class="no">No</td><td class="yes">Yes</td></tr>
+      <tr><td>Audit trail if it's ever asked about</td><td class="no">No</td><td class="yes">Yes</td></tr>
+      <tr><td>Same Claude / GPT quality your staff already uses</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta-block" id="book" style="border-bottom:none;">
+  <div class="wrap">
+    <h2>See it working before you commit to anything.</h2>
+    <p>15 minutes, no pressure — we'll show you what your staff's current AI use looks like from the outside, and what changes with this in place.</p>
+    <a class="btn btn-dark" href="mailto:hello@example.com?subject=Book%20a%20call%20-%20Healthcare">Book a 15-minute call</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>PrivacyAI Gateway — currently piloting with a small number of practices. Not yet a HIPAA Business Associate for your organization until a BAA is signed directly.</div>
+    <div class="f-links">
+      <a href="index.html">Home</a>
+      <a href="legal.html">For Attorneys</a>
+      <a href="tax.html">For Tax &amp; Accounting</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

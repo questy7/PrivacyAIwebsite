@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — PrivacyAI Gateway</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+  :root{
+    --paper:#f6f4ef;--panel:#ffffff;--ink:#1c1b18;--ink-soft:#57544b;--ink-faint:#8a8677;
+    --rule:#d8d4c8;--redact:#141414;--protected:#1f3d2f;--protected-soft:#e3ebe4;
+    --warn:#8a4a1f;--warn-bg:#f3e4d4;
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.55;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  nav{padding:20px 0;border-bottom:1px solid var(--rule);}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;display:flex;align-items:center;gap:9px;}
+  .logo .bar{width:16px;height:8px;background:var(--redact);display:inline-block;}
+  .navlinks{display:flex;gap:28px;font-size:14px;font-weight:500;color:var(--ink-soft);}
+  .navlinks a.active{color:var(--ink);}
+  .navlinks a:hover{color:var(--ink);}
+  .nav-cta{background:var(--redact);color:var(--paper);padding:11px 20px;border-radius:2px;font-weight:600;font-size:13.5px;}
+
+  .head{padding:64px 0 20px;text-align:center;}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--protected);margin-bottom:16px;}
+  h1{font-family:'Source Serif 4',serif;font-weight:700;font-size:clamp(32px,4.6vw,46px);line-height:1.15;margin:0 auto 16px;max-width:18ch;}
+  .head p{color:var(--ink-soft);font-size:16px;max-width:56ch;margin:0 auto;}
+
+  .toggle-row{display:flex;justify-content:center;gap:0;margin:36px 0 50px;}
+  .toggle{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;
+    padding:11px 22px;border:1px solid var(--rule);color:var(--ink-soft);cursor:pointer;background:var(--panel);
+  }
+  .toggle:first-child{border-radius:3px 0 0 3px;}
+  .toggle:last-child{border-radius:0 3px 3px 0;border-left:none;}
+  .toggle.active{background:var(--redact);color:var(--paper);border-color:var(--redact);}
+
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);}
+  @media(max-width:900px){.tier-grid{grid-template-columns:1fr;}}
+  .tier{background:var(--panel);border-right:1px solid var(--rule);padding:36px 30px;display:flex;flex-direction:column;}
+  .tier:last-child{border-right:none;}
+  @media(max-width:900px){.tier{border-right:none;border-bottom:1px solid var(--rule);}}
+  .tier.mid{background:var(--protected-soft);}
+  .tier-name{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--protected);margin-bottom:16px;}
+  .tier-price{font-family:'Source Serif 4',serif;font-weight:700;font-size:38px;margin-bottom:4px;}
+  .tier-price span{font-size:15px;font-weight:500;color:var(--ink-soft);font-family:'Inter',sans-serif;}
+  .tier-included{font-size:12.5px;color:var(--ink-faint);margin-bottom:24px;}
+  .tier-feat{font-size:13.8px;color:var(--ink-soft);margin-bottom:10px;padding-left:18px;position:relative;line-height:1.5;}
+  .tier-feat:before{content:'—';position:absolute;left:0;color:var(--protected);}
+  .tier-cta{margin-top:26px;}
+  .btn{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;padding:13px 22px;border-radius:2px;display:inline-block;border:none;cursor:pointer;width:100%;text-align:center;}
+  .btn-dark{background:var(--redact);color:var(--paper);}
+  .btn-outline{border:1.5px solid var(--ink);color:var(--ink);background:transparent;}
+
+  .overage{margin-top:36px;padding:22px 24px;background:var(--warn-bg);border-left:3px solid var(--warn);font-size:13.8px;line-height:1.6;max-width:74ch;}
+
+  section{padding:64px 0;border-top:1px solid var(--rule);}
+  .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media(max-width:720px){.note-grid{grid-template-columns:1fr;}}
+  .note{background:var(--panel);border:1px solid var(--rule);padding:24px;font-size:13.8px;color:var(--ink-soft);line-height:1.6;}
+  .note b{color:var(--ink);}
+
+  footer{padding:32px 0;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--rule);text-align:center;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a href="index.html"><img src="logo.svg" alt="PrivacyAI Gateway" style="height:64px;display:block;"></a>
+    <div class="navlinks">
+      <a href="legal.html">For Attorneys</a>
+      <a href="tax.html">For Tax &amp; Accounting</a>
+      <a href="healthcare.html">For Healthcare</a>
+      <a class="active" href="pricing.html">Pricing</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <a class="nav-cta" href="legal.html">Book a Call</a>
+  </div>
+</nav>
+
+<div class="head wrap">
+  <div class="kicker">Pricing</div>
+  <h1>Priced for a solo practice or a small team — not an enterprise contract.</h1>
+  <p>No usage surprises: a flat monthly rate with a real included allowance, plus straightforward overage if you go past it. Currently in pilot — book a call before choosing a tier.</p>
+</div>
+
+<div class="wrap">
+  <div class="tier-grid">
+    <div class="tier">
+      <div class="tier-name">Solo</div>
+      <div class="tier-price">$49<span>–$79/mo</span></div>
+      <div class="tier-included">~500K tokens/month included</div>
+      <div class="tier-feat">Full redaction pipeline — regex + on-device name/address detection</div>
+      <div class="tier-feat">Single-user account</div>
+      <div class="tier-feat">Precision Mode (accuracy-first, no paraphrasing)</div>
+      <div class="tier-feat">Standard accountability agreement</div>
+      <div class="tier-cta"><a class="btn btn-outline" href="legal.html">Book a call</a></div>
+    </div>
+    <div class="tier mid">
+      <div class="tier-name">Practice</div>
+      <div class="tier-price">$149<span>–$249/mo</span></div>
+      <div class="tier-included">~2–3M tokens/month included · 2–5 seats</div>
+      <div class="tier-feat">Everything in Solo</div>
+      <div class="tier-feat">Multiple seats for your team</div>
+      <div class="tier-feat">Signed BAA available (healthcare)</div>
+      <div class="tier-feat">§7216 consent-language templates (tax/accounting)</div>
+      <div class="tier-feat">Priority pilot support</div>
+      <div class="tier-cta"><a class="btn btn-dark" href="legal.html">Book a call</a></div>
+    </div>
+    <div class="tier">
+      <div class="tier-name">Firm / Multi-office</div>
+      <div class="tier-price">Custom</div>
+      <div class="tier-included">Volume-based allowance</div>
+      <div class="tier-feat">Everything in Practice</div>
+      <div class="tier-feat">Multiple offices / larger seat counts</div>
+      <div class="tier-feat">Custom accountability &amp; audit-trail terms</div>
+      <div class="tier-feat">Direct line to the team building this</div>
+      <div class="tier-cta"><a class="btn btn-outline" href="legal.html">Talk to us</a></div>
+    </div>
+  </div>
+
+  <div class="overage">
+    <b>Overage:</b> if you go past your included allowance in a given month, additional usage is billed per block at a modest markup over raw cost — no surprise cutoffs, no forced upgrade mid-month.
+  </div>
+
+  <div style="margin-top:56px;padding-top:44px;border-top:1px solid var(--rule);">
+    <div class="kicker">For firms with 6+ people</div>
+    <h2 style="font-family:'Source Serif 4',serif;font-weight:700;font-size:26px;margin:0 0 12px;">Volume pricing, by seat</h2>
+    <p style="color:var(--ink-soft);font-size:14.5px;max-width:60ch;margin-bottom:28px;">Tokens pool across your whole team — a light user and a heavy user balance out naturally, no per-person caps to manage. Support-staff seats (paralegals, admin) are priced lower than attorney/CPA seats.</p>
+    <table style="width:100%;border-collapse:collapse;border:1px solid var(--rule);font-size:14px;">
+      <tr>
+        <th style="padding:14px 16px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);background:var(--panel);border-bottom:1px solid var(--rule);">Seats</th>
+        <th style="padding:14px 16px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);background:var(--panel);border-bottom:1px solid var(--rule);">Full seat (attorney / CPA)</th>
+        <th style="padding:14px 16px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);background:var(--panel);border-bottom:1px solid var(--rule);">Light seat (paralegal / support)</th>
+        <th style="padding:14px 16px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);background:var(--panel);border-bottom:1px solid var(--rule);">Example</th>
+      </tr>
+      <tr>
+        <td style="padding:14px 16px;background:var(--panel);border-bottom:1px solid var(--rule);">6-25 seats</td>
+        <td style="padding:14px 16px;background:var(--panel);border-bottom:1px solid var(--rule);">$35/seat/mo</td>
+        <td style="padding:14px 16px;background:var(--panel);border-bottom:1px solid var(--rule);">$18/seat/mo</td>
+        <td style="padding:14px 16px;background:var(--panel);border-bottom:1px solid var(--rule);color:var(--ink-soft);">10-person tax practice → $350/mo</td>
+      </tr>
+      <tr>
+        <td style="padding:14px 16px;background:var(--panel);border-bottom:1px solid var(--rule);">26-75 seats</td>
+        <td style="padding:14px 16px;background:var(--panel);border-bottom:1px solid var(--rule);">$28/seat/mo</td>
+        <td style="padding:14px 16px;background:var(--panel);border-bottom:1px solid var(--rule);">$14/seat/mo</td>
+        <td style="padding:14px 16px;background:var(--panel);border-bottom:1px solid var(--rule);color:var(--ink-soft);">50 lawyers + 20 paralegals → $1,680/mo</td>
+      </tr>
+      <tr>
+        <td style="padding:14px 16px;background:var(--panel);">76+ seats</td>
+        <td colspan="2" style="padding:14px 16px;background:var(--panel);">Custom, negotiated</td>
+        <td style="padding:14px 16px;background:var(--panel);color:var(--ink-soft);">Talk to us</td>
+      </tr>
+    </table>
+    <p style="font-size:12.5px;color:var(--ink-soft);margin-top:16px;">For scale: ChatGPT Enterprise has a 150-seat minimum and starts around $45-75/seat. This pricing is built for the firms in between — too big for a solo tier, too small for an enterprise contract.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="note-grid">
+      <div class="note"><b>Why not usage-only pricing?</b> Metered-only billing creates unpredictable monthly bills, which is exactly what professionals evaluating a new tool don't want. A flat tier with a real included allowance is easier to budget against.</div>
+      <div class="note"><b>Why not unlimited?</b> Unlimited plans quietly rely on light users subsidizing heavy ones. We'd rather be upfront about what's included and let you add capacity if you need it, than build a plan that only works because most people don't use it fully.</div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 PrivacyAI Gateway. Currently piloting — pricing shown is illustrative during the pilot phase and subject to change before general availability.</footer>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrivacyAI Gateway — AI for professionals, without the exposure</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root{
+    --paper:#f6f4ef;
+    --panel:#ffffff;
+    --ink:#1c1b18;
+    --ink-soft:#57544b;
+    --ink-faint:#8a8677;
+    --rule:#d8d4c8;
+    --redact:#141414;
+    --protected:#1f3d2f;
+    --protected-soft:#e3ebe4;
+    --warn:#8a4a1f;
+    --warn-bg:#f3e4d4;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.55;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  nav{padding:20px 0;border-bottom:1px solid var(--rule);}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;letter-spacing:0.02em;display:flex;align-items:center;gap:9px;}
+  .logo .bar{width:16px;height:8px;background:var(--redact);display:inline-block;}
+  .navlinks{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--ink-soft);}
+  .navlinks a:hover{color:var(--ink);}
+  .nav-cta{background:var(--redact);color:var(--paper);padding:11px 20px;border-radius:2px;font-weight:600;font-size:13.5px;}
+  .nav-cta:hover{background:#000;}
+
+  .hero{padding:80px 0 66px;}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  @media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:44px;}}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--protected);background:var(--protected-soft);
+    padding:8px 16px;border-radius:2px;margin-bottom:26px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--protected);}
+  h1{
+    font-family:'Source Serif 4',serif;font-weight:700;
+    font-size:clamp(32px,4.6vw,50px);line-height:1.1;
+    letter-spacing:-0.015em;margin:0 0 20px;max-width:15ch;
+  }
+  h1 em{font-style:italic;color:var(--protected);}
+  .hero-sub{font-size:16.5px;color:var(--ink-soft);max-width:52ch;margin:0 0 32px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;padding:13px 24px;border-radius:2px;display:inline-block;border:none;cursor:pointer;}
+  .btn-dark{background:var(--redact);color:var(--paper);}
+  .btn-dark:hover{background:#000;}
+  .btn-outline{border:1.5px solid var(--ink);color:var(--ink);background:transparent;}
+  .btn-outline:hover{background:var(--ink);color:var(--paper);}
+
+  /* Chat mockup */
+  .frame{
+    background:var(--panel);border:1px solid var(--rule);border-radius:10px;
+    box-shadow:0 30px 60px -24px rgba(28,27,24,0.16), 0 4px 12px rgba(28,27,24,0.05);
+    overflow:visible;
+  }
+  .titlebar{
+    display:flex;align-items:center;gap:8px;padding:13px 18px;
+    border-bottom:1px solid #ece9e0;background:#fbfaf7;border-radius:10px 10px 0 0;
+  }
+  .tb-dot{width:9px;height:9px;border-radius:50%;background:#e3e0d6;}
+  .tb-label{margin-left:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-faint);}
+  .chat{padding:22px 22px 20px;}
+  .row{display:flex;margin-bottom:18px;}
+  .row.user{justify-content:flex-end;}
+  .bubble{max-width:88%;padding:13px 15px;border-radius:12px;font-size:13.8px;line-height:1.6;position:relative;}
+  .bubble.user{background:var(--protected-soft);border-bottom-right-radius:3px;}
+  .bubble.ai{background:var(--paper);border:1px solid #e6e2d6;border-bottom-left-radius:3px;}
+  .tok{
+    display:inline-block;background:var(--redact);color:var(--paper);
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;
+    padding:1px 6px;border-radius:2px;margin:0 1px;
+  }
+  .suggest-wrap{position:relative;display:inline-block;}
+  .suggest{background:linear-gradient(transparent 60%, #f0dcb8 60%);border-bottom:2px dotted #b8873f;padding:0 1px;cursor:pointer;}
+  .popover{
+    position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(calc(-50% + 26px));
+    background:var(--redact);color:var(--paper);font-size:9px;font-weight:600;
+    padding:4px 5px;border-radius:5px;white-space:nowrap;
+    display:flex;flex-direction:column;gap:3px;align-items:stretch;
+    box-shadow:0 4px 10px rgba(0,0,0,0.14);z-index:5;
+  }
+  .popover:before{content:'';position:absolute;bottom:100%;left:26px;border:4px solid transparent;border-bottom-color:var(--redact);}
+  .popover-label{
+    font-family:'IBM Plex Mono',monospace;font-size:7.5px;letter-spacing:0.04em;text-transform:uppercase;
+    color:#a19d90;padding:0 2px;text-align:left;
+  }
+  .popover-buttons{display:flex;gap:2px;}
+  .popover span:not(.popover-label){padding:3px 6px;border-radius:3px;}
+  .popover span.on{background:#2e5c46;}
+  .label-row{margin:0 0 6px;}
+  .tag{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);}
+  .input-bar{
+    margin:8px 22px 22px;padding:12px 15px;border:1px solid var(--rule);border-radius:9px;
+    display:flex;justify-content:space-between;align-items:center;background:#fbfaf7;
+  }
+  .input-bar .ph{color:#a29e90;font-size:12.5px;}
+  .send{width:27px;height:27px;border-radius:7px;background:var(--redact);display:flex;align-items:center;justify-content:center;color:var(--paper);font-size:12px;flex-shrink:0;}
+
+  section{padding:72px 0;}
+  section.bordered{border-top:1px solid var(--rule);}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px;}
+  h2{font-family:'Source Serif 4',serif;font-weight:700;font-size:clamp(26px,3.4vw,36px);line-height:1.18;margin:0 0 14px;max-width:20ch;}
+  .section-sub{color:var(--ink-soft);font-size:15.5px;max-width:58ch;margin-bottom:44px;}
+
+  .v-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);}
+  @media(max-width:860px){.v-grid{grid-template-columns:1fr;}}
+  .v-card{background:var(--panel);border-right:1px solid var(--rule);padding:32px 26px;display:flex;flex-direction:column;min-height:230px;transition:background .15s;}
+  .v-card:last-child{border-right:none;}
+  @media(max-width:860px){.v-card{border-right:none;border-bottom:1px solid var(--rule);}}
+  .v-card:hover{background:var(--protected-soft);}
+  .v-tag{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--protected);margin-bottom:16px;}
+  .v-title{font-family:'Source Serif 4',serif;font-weight:700;font-size:19px;margin-bottom:10px;line-height:1.3;}
+  .v-desc{font-size:13.8px;color:var(--ink-soft);flex:1;line-height:1.6;}
+  .v-arrow{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--protected);margin-top:18px;}
+
+  .process{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--rule);}
+  @media(max-width:1000px){.process{grid-template-columns:1fr 1fr 1fr;}}
+  @media(max-width:640px){.process{grid-template-columns:1fr 1fr;}}
+  @media(max-width:420px){.process{grid-template-columns:1fr;}}
+  .p-step{padding:28px 22px;border-right:1px solid var(--rule);background:var(--panel);}
+  .p-step:last-child{border-right:none;}
+  @media(max-width:860px){.p-step{border-right:none;border-bottom:1px solid var(--rule);}}
+  .p-step .num{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;color:var(--ink-faint);margin-bottom:14px;}
+  .p-step .t{font-weight:700;font-size:15px;margin-bottom:8px;}
+  .p-step .d{font-size:13.5px;color:var(--ink-soft);line-height:1.6;}
+
+  .stats{background:var(--redact);color:var(--paper);border-radius:2px;padding:48px 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;}
+  @media(max-width:720px){.stats{grid-template-columns:1fr 1fr;}}
+  .stat .n{font-family:'Source Serif 4',serif;font-weight:700;font-size:clamp(28px,3.6vw,38px);color:#fff;}
+  .stat .l{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#a19d90;margin-top:8px;}
+
+  .final-cta{text-align:center;padding:88px 0;}
+  .final-cta h2{margin:0 auto 16px;max-width:20ch;}
+  .final-cta p{color:var(--ink-soft);max-width:52ch;margin:0 auto 32px;font-size:15.5px;}
+  .final-cta .hero-ctas{justify-content:center;}
+
+  footer{border-top:1px solid var(--rule);padding:48px 0 32px;font-size:12.5px;color:var(--ink-soft);}
+  .f-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;margin-bottom:32px;}
+  @media(max-width:640px){.f-grid{grid-template-columns:1fr;}}
+  .f-col h4{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink);margin-bottom:14px;}
+  .f-col a{display:block;margin-bottom:9px;}
+  .f-col a:hover{color:var(--protected);}
+  .f-bottom{border-top:1px solid var(--rule);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a href="index.html"><img src="logo.svg" alt="PrivacyAI Gateway" style="height:64px;display:block;"></a>
+    <div class="navlinks">
+      <a href="legal.html">For Attorneys</a>
+      <a href="tax.html">For Tax &amp; Accounting</a>
+      <a href="healthcare.html">For Healthcare</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <a class="nav-cta" href="legal.html">Book a Call</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Redaction · Accountability · No Retention</div>
+        <h1>AI your firm can use. <em>Without the exposure.</em></h1>
+        <p class="hero-sub">Your team is already using ChatGPT and Claude. We strip out the identifying details before anything leaves your organization — client names, patient identifiers, filer SSNs — while the substance of your work still gets a real answer.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-dark" href="legal.html">See it for your field →</a>
+          <a class="btn btn-outline" href="#how">How it works</a>
+        </div>
+      </div>
+
+      <div class="frame">
+        <div class="titlebar">
+          <div class="tb-dot"></div><div class="tb-dot"></div><div class="tb-dot"></div>
+          <div class="tb-label">PrivacyAI Gateway — new conversation</div>
+        </div>
+        <div class="chat">
+          <div class="label-row"><span class="tag">You — redacted before sending</span></div>
+          <div class="row user">
+            <div class="bubble user">
+              Can you help me draft a demand letter for my client
+              <span class="tok">PERSON_1-C24</span> regarding
+              <span class="suggest-wrap">
+                <span class="suggest">the incident described in the intake notes</span>
+                <span class="popover"><span class="popover-label">Stylometric rephrase:</span><span class="popover-buttons"><span class="on">Accept</span><span>Keep Original</span><span>Redraft</span></span></span>
+              </span>?
+            </div>
+          </div>
+          <div class="label-row"><span class="tag">Claude — real, unaffected answer</span></div>
+          <div class="row ai">
+            <div class="bubble ai">
+              Of course — here's a draft demand letter. I've left space for the specific incident date, damages, and policy number once you have them handy...
+            </div>
+          </div>
+        </div>
+        <div class="input-bar">
+          <span class="ph">Type a message…</span>
+          <div class="send">↑</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bordered">
+  <div class="wrap">
+    <div class="kicker">Built for three fields</div>
+    <h2>Where this already matters</h2>
+    <p class="section-sub">Professionals in these fields are already using AI informally, with real, named liability if the identifying details in that data ever get exposed.</p>
+    <div class="v-grid">
+      <a class="v-card" href="legal.html">
+        <div class="v-tag">Legal</div>
+        <div class="v-title">Client identities should never touch an AI company's servers.</div>
+        <div class="v-desc">For solo and small-firm attorneys already using AI informally — malpractice and confidentiality risk, addressed without changing how your team works.</div>
+        <div class="v-arrow">See the legal case →</div>
+      </a>
+      <a class="v-card" href="tax.html">
+        <div class="v-tag">Tax &amp; Accounting</div>
+        <div class="v-title">Copy-pasting a client SSN into ChatGPT could be a federal crime.</div>
+        <div class="v-desc">IRC §7216 makes unauthorized disclosure of tax return identifiers a criminal offense. Most violations happen by accident — this closes the gap.</div>
+        <div class="v-arrow">See the §7216 case →</div>
+      </a>
+      <a class="v-card" href="healthcare.html">
+        <div class="v-tag">Healthcare</div>
+        <div class="v-title">Patient identifiers should never touch an AI company's servers.</div>
+        <div class="v-desc">For clinicians using AI for everything a scribe tool doesn't cover — with a signed BAA behind it, not a promise.</div>
+        <div class="v-arrow">See the healthcare case →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="bordered" id="how">
+  <div class="wrap">
+    <div class="kicker">The process</div>
+    <h2>From raw message to safe answer</h2>
+    <p class="section-sub">Five steps, every time — the only two that ever see identifying details are yours, and our own relay is sealed off from reading any of it.</p>
+    <div class="process">
+      <div class="p-step"><div class="num">01</div><div class="t">You write normally</div><div class="d">Redaction runs on your own device as you type, before anything is sent anywhere.</div></div>
+      <div class="p-step"><div class="num">02</div><div class="t">Identifying details get tokenized</div><div class="d">Names, SSNs, emails, and other identifiers are swapped for placeholders, locally. The substance of your question is unaffected and still travels through.</div></div>
+      <div class="p-step"><div class="num">03</div><div class="t">Sent through our sealed relay</div><div class="d">Our own systems forward it inside a hardware-isolated environment — even our staff and ordinary infrastructure can't read what's passing through.</div></div>
+      <div class="p-step"><div class="num">04</div><div class="t">Claude or GPT answers</div><div class="d">The AI reasons over your real question — just without the real names or numbers attached to it.</div></div>
+      <div class="p-step"><div class="num">05</div><div class="t">Your device restores the details</div><div class="d">The response comes back tokenized; only your device holds the map back to the real names.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="bordered">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="n">0</div><div class="l">Client identifiers stored on our servers</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">Network hops before Claude ever sees a request</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">Of runs backed by a signed accountability agreement</div></div>
+      <div class="stat"><div class="n">15 min</div><div class="l">To see it working, no commitment</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta bordered">
+  <div class="wrap">
+    <h2>"We didn't know" isn't a defense anymore.</h2>
+    <p>This is a pilot program, currently open to a small number of firms and practices. Book a 15-minute call to see it working.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-dark" href="legal.html">Book a 15-minute call</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-col">
+        <h4>PrivacyAI Gateway</h4>
+        <p style="max-width:36ch;">AI for professionals who handle other people's data — redacted before it leaves, accountable once it does.</p>
+      </div>
+      <div class="f-col">
+        <h4>Fields</h4>
+        <a href="legal.html">Legal</a>
+        <a href="tax.html">Tax &amp; Accounting</a>
+        <a href="healthcare.html">Healthcare</a>
+      </div>
+      <div class="f-col">
+        <h4>Company</h4>
+        <a href="pricing.html">Pricing</a>
+        <a href="faq.html">FAQ</a>
+        <a href="legal.html">Book a call</a>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <div>© 2026 PrivacyAI Gateway. Currently piloting — not yet a HIPAA Business Associate for your organization until a BAA is signed directly.</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

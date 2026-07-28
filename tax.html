@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrivacyAI Gateway for Tax Preparers — IRC §7216 and your firm's AI use</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+  :root{
+    --paper:#f6f4ef;--panel:#ffffff;--ink:#1c1b18;--ink-soft:#57544b;--ink-faint:#8a8677;
+    --rule:#d8d4c8;--redact:#141414;--protected:#1f3d2f;--protected-soft:#e3ebe4;
+    --warn:#8a4a1f;--warn-bg:#f3e4d4;
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.55;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  nav{padding:20px 0;border-bottom:1px solid var(--rule);}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .navlinks{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--ink-soft);}
+  .navlinks a.active{color:var(--ink);border-bottom:2px solid var(--protected);padding-bottom:2px;}
+  .navlinks a:hover{color:var(--ink);}
+  .nav-cta{background:var(--redact);color:var(--paper);padding:11px 20px;border-radius:2px;font-weight:600;font-size:13.5px;}
+  .nav-cta:hover{background:#000;}
+
+  .hero{padding:64px 0 48px;border-bottom:1px solid var(--rule);}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--warn);background:var(--warn-bg);padding:8px 16px;border-radius:2px;margin-bottom:28px;}
+  h1{font-family:'Source Serif 4',serif;font-weight:700;font-size:clamp(28px,4.4vw,44px);line-height:1.14;margin:0 0 20px;letter-spacing:-0.01em;max-width:19ch;}
+  .hero-sub{font-size:16.5px;color:var(--ink-soft);max-width:58ch;margin-bottom:28px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px;}
+  .btn{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;padding:13px 24px;text-decoration:none;display:inline-block;border:none;cursor:pointer;}
+  .btn-dark{background:var(--redact);color:var(--paper);}
+  .btn-dark:hover{background:#000;}
+  .btn-outline{border:1px solid var(--ink);color:var(--ink);background:transparent;}
+  .microcopy{font-size:12px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
+
+  section{padding:56px 0;border-bottom:1px solid var(--rule);}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:24px;}
+  .statute-box{background:var(--warn-bg);border-left:3px solid var(--warn);padding:24px 26px;font-size:15px;line-height:1.65;max-width:74ch;}
+  .statute-box b{color:var(--warn);}
+  .statute-cite{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);margin-top:14px;}
+
+  .paste-quote{font-family:'Source Serif 4',serif;font-style:italic;font-size:19px;max-width:52ch;line-height:1.5;color:var(--ink);}
+  .paste-attr{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);margin-top:12px;}
+
+  table{width:100%;border-collapse:collapse;border:1px solid var(--rule);font-size:14px;}
+  th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--rule);}
+  th{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);background:#fff;}
+  td{background:#fff;}
+  .yes{color:var(--protected);font-weight:600;}
+  .no{color:var(--warn);}
+
+  .cta-block{padding:64px 0;text-align:center;}
+  .cta-block h2{font-family:'Source Serif 4',serif;font-weight:700;font-size:26px;max-width:34ch;margin:0 auto 18px;}
+  .cta-block p{color:var(--ink-soft);max-width:50ch;margin:0 auto 28px;font-size:14.5px;}
+
+  footer{padding:32px 0;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--rule);}
+  .f-links{display:flex;gap:22px;margin-top:12px;flex-wrap:wrap;}
+  .f-links a:hover{color:var(--ink);}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a href="index.html"><img src="logo.svg" alt="PrivacyAI Gateway" style="height:64px;display:block;"></a>
+    <div class="navlinks">
+      <a href="legal.html">For Attorneys</a>
+      <a class="active" href="tax.html">For Tax &amp; Accounting</a>
+      <a href="healthcare.html">For Healthcare</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <a class="nav-cta" href="#book">Book a Call</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">● For tax preparers &amp; accounting firms</div>
+    <h1>Copy-pasting a K-1 into ChatGPT could be a federal crime.</h1>
+    <p class="hero-sub">Under IRC §7216, using a client's tax return information in a public AI tool without their signed consent is a criminal offense. We strip out identifying details — names, SSNs, account numbers — before anything reaches Claude or ChatGPT, and provide the consent language and audit trail your firm needs.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-dark" href="#book">Book a 15-minute call</a>
+      <a class="btn btn-outline" href="index.html#how">See how it works</a>
+    </div>
+    <p class="microcopy">Currently piloting with a small number of firms — no cost to look.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">The statute most firms haven't looked at closely</div>
+    <div class="statute-box">
+      A tax return preparer who knowingly or recklessly discloses or uses a client's tax return information without consent is guilty of a <b>federal misdemeanor</b> — up to $1,000 and one year in prison, up to $100,000 if tied to identity theft, plus a separate civil penalty up to $250 per violation. Pasting client data into a general-purpose AI tool does not fall under the exception that covers ordinary tax-prep software. The IRS's own Office of Professional Responsibility has stated plainly: <b>"we didn't know our staff was using ChatGPT" is not a valid defense.</b>
+      <div class="statute-cite">IRC §7216 · 26 U.S.C. §6713 · IRS Office of Professional Responsibility guidance, 2026</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">How most violations actually happen</div>
+    <p class="paste-quote">"Most §7216 violations are not a result of bad acts. They are a result of paste. A preparer takes the text from a client email — rental expenses, a messy K-1 — and drops it into ChatGPT to rewrite it professionally."</p>
+    <p class="paste-attr">— tax practitioner commentary on IRC §7216 and AI use</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">How this compares to what your firm is doing today</div>
+    <table>
+      <tr><th></th><th>Raw ChatGPT / Claude</th><th>PrivacyAI Gateway</th></tr>
+      <tr><td>Client tax identifiers tokenized before sending</td><td class="no">No</td><td class="yes">Yes</td></tr>
+      <tr><td>§7216-compliant consent language provided</td><td class="no">No</td><td class="yes">Yes</td></tr>
+      <tr><td>Audit trail if the IRS or a client ever asks</td><td class="no">No</td><td class="yes">Yes</td></tr>
+      <tr><td>Same Claude / GPT quality your team already uses</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta-block" id="book" style="border-bottom:none;">
+  <div class="wrap">
+    <h2>See exactly where the exposure is — before it's a problem.</h2>
+    <p>15 minutes, no pressure. We'll walk through how tax data actually moves when your team uses AI today, and what changes with this in place.</p>
+    <a class="btn btn-dark" href="mailto:hello@example.com?subject=Book%20a%20call%20-%20Tax">Book a 15-minute call</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>PrivacyAI Gateway — currently piloting with a small number of firms. Not tax or legal advice; consult your own counsel on §7216 compliance.</div>
+    <div class="f-links">
+      <a href="index.html">Home</a>
+      <a href="legal.html">For Attorneys</a>
+      <a href="healthcare.html">For Healthcare</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
