@@ -80,10 +80,12 @@
   h1{
     font-family:'Source Serif 4',serif;font-weight:700;
     font-size:clamp(32px,4.6vw,50px);line-height:1.1;
-    letter-spacing:-0.015em;margin:0 0 20px;max-width:15ch;
+    letter-spacing:-0.015em;margin:0 0 20px;max-width:18ch;
   }
-  h1 em{font-style:italic;color:var(--protected);}
-  .rotating-niche{display:inline;color:var(--protected);transition:opacity .18s ease;}
+  h1 em{display:block;margin-top:14px;font-style:italic;color:var(--protected);font-size:.68em;line-height:1.12;}
+  h1 em span{display:inline;white-space:nowrap;}
+  h1 em span:first-child:after{content:' ';}
+  .rotating-niche{display:block;min-height:1.1em;white-space:nowrap;color:var(--protected);font-size:1em;transition:opacity .18s ease;}
   .rotating-niche.is-changing{opacity:0;}
   .hero-sub{font-size:16.5px;color:var(--ink-soft);max-width:52ch;margin:0 0 32px;}
   .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
@@ -206,6 +208,10 @@
     .hero-grid{gap:28px;}
     .eyebrow{padding:7px 12px;margin-bottom:20px;line-height:1.45;}
     h1{margin-bottom:16px;}
+    .rotating-niche{font-size:1em;}
+    h1 em{margin-top:10px;font-size:.78em;}
+    h1 em span{display:block;}
+    h1 em span:first-child:after{content:'';}
     .hero-sub{margin-bottom:24px;}
     .hero-ctas{gap:10px;}
     .btn{padding:12px 20px;}
@@ -231,8 +237,8 @@
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <h1>AI your whole <span class="rotating-niche" data-rotating-niche>law firm</span> can use. <em>Without exposing sensitive data.</em></h1>
-        <p class="hero-sub">Your team may already be using AI tools like ChatGPT and Claude—carefully, informally, or with manual redaction. PrivacyAI removes identifying details about your clients and your firm before each request is securely sent, while maintaining a defensible local audit log—without compromising the answer.</p>
+        <h1>AI your whole <span class="rotating-niche" data-rotating-niche>law firm</span> can use. <em><span>Without exposing</span><span>sensitive data.</span></em></h1>
+        <p class="hero-sub">Your team may already be using AI tools like ChatGPT and Claude—carefully, informally, or with manual redaction. PrivacyAI removes identifying details about your clients and your firm before each request is securely sent, while maintaining a defensible local audit log. All without compromising the answer.</p>
         <div class="hero-ctas">
           <a class="btn btn-dark" href="pricing.html#get-started">Get Started</a>
           <a class="btn btn-outline" href="https://link.sellflows.com/widget/booking/PBpJVegRgUST8xPAbuOj">Book a Call</a>
@@ -357,6 +363,8 @@
         <h4>Company</h4>
         <a href="pricing.html">Pricing</a>
         <a href="faq.html">FAQ</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
         <a href="https://link.sellflows.com/widget/booking/PBpJVegRgUST8xPAbuOj">Book a call</a>
       </div>
     </div>
