@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="booking-modal.css">
+<script src="booking-modal.js" defer></script>
 <title>Secure AI Pricing for Small Firms | PrivacyAI</title>
 <meta name="description" content="PrivacyAI pricing for solo practices and small professional teams using secure AI, PII redaction, and local audit logs.">
 <link rel="canonical" href="https://privacyai.pro/pricing">
@@ -74,6 +76,10 @@
   .btn-outline{border:1.5px solid var(--ink);color:var(--ink);background:transparent;}
 
   .overage{margin-top:36px;padding:22px 24px;background:var(--warn-bg);border-left:3px solid var(--warn);font-size:13.8px;line-height:1.6;max-width:74ch;}
+  .early-access{margin-top:36px;padding:30px;background:var(--protected-soft);border:1px solid var(--rule);display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;}
+  .early-access h2{font-family:'Source Serif 4',serif;font-size:26px;line-height:1.2;margin:0 0 8px;}
+  .early-access p{max-width:66ch;margin:0;color:var(--ink-soft);font-size:14px;line-height:1.65;}
+  .btn-pending{min-width:220px;cursor:default;opacity:.72;}
 
   section{padding:64px 0;border-top:1px solid var(--rule);}
   .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
@@ -92,13 +98,15 @@
     .head{padding:36px 0 20px;}
     section{padding:44px 0;}
     table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .early-access{grid-template-columns:1fr;padding:24px 20px;gap:20px;}
+    .btn-pending{width:100%;min-width:0;}
   }
 </style>
 </head>
 <body>
 <nav>
   <div class="wrap">
-    <a href="index.html"><img src="logo.svg" alt="PrivacyAI" style="height:64px;display:block;"></a>
+    <a href="index.html"><img src="logo.svg" alt="PrivacyAI" style="height:80px;display:block;"></a>
     <div class="navlinks">
       <a href="legal.html">For Attorneys</a>
       <a href="tax.html">For Tax &amp; Accounting</a>
@@ -106,7 +114,7 @@
       <a class="active" href="pricing.html">Pricing</a>
       <a href="faq.html">FAQ</a>
     </div>
-    <a class="nav-cta" href="legal.html">Book a Call</a>
+    <a class="nav-cta" href="https://link.sellflows.com/widget/booking/PBpJVegRgUST8xPAbuOj">Book a Call</a>
   </div>
 </nav>
 
@@ -126,7 +134,7 @@
       <div class="tier-feat">Single-user account</div>
       <div class="tier-feat">Precision Mode (accuracy-first, no paraphrasing)</div>
       <div class="tier-feat">Standard accountability agreement</div>
-      <div class="tier-cta"><a class="btn btn-outline" href="legal.html">Book a call</a></div>
+      <div class="tier-cta"><a class="btn btn-outline" href="#get-started">Get Started</a></div>
     </div>
     <div class="tier mid">
       <div class="tier-name">Practice</div>
@@ -137,7 +145,7 @@
       <div class="tier-feat">Signed BAA available (healthcare)</div>
       <div class="tier-feat">§7216 consent-language templates (tax/accounting)</div>
       <div class="tier-feat">Priority pilot support</div>
-      <div class="tier-cta"><a class="btn btn-dark" href="legal.html">Book a call</a></div>
+      <div class="tier-cta"><a class="btn btn-dark" href="#get-started">Get Started</a></div>
     </div>
     <div class="tier">
       <div class="tier-name">Firm / Multi-office</div>
@@ -147,12 +155,21 @@
       <div class="tier-feat">Multiple offices / larger seat counts</div>
       <div class="tier-feat">Custom accountability &amp; audit-trail terms</div>
       <div class="tier-feat">Direct line to the team building this</div>
-      <div class="tier-cta"><a class="btn btn-outline" href="legal.html">Talk to us</a></div>
+      <div class="tier-cta"><a class="btn btn-outline" href="#get-started">Get Started</a></div>
     </div>
   </div>
 
   <div class="overage">
     <b>Overage:</b> if you go past your included allowance in a given month, additional usage is billed per block at a modest markup over raw cost — no surprise cutoffs, no forced upgrade mid-month.
+  </div>
+
+  <div class="early-access" id="get-started">
+    <div>
+      <div class="kicker">Early access</div>
+      <h2>Get started when PrivacyAI is ready to launch.</h2>
+      <p>PrivacyAI is currently in development. Joining early access will place you on the waiting list and let us keep you informed as launch approaches. We will not collect or process a credit card now, and you will not be charged unless you later choose to activate service after it is available.</p>
+    </div>
+    <span class="btn btn-dark btn-pending" aria-disabled="true">Enrollment opening soon</span>
   </div>
 
   <div style="margin-top:56px;padding-top:44px;border-top:1px solid var(--rule);">

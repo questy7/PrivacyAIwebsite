@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="140" viewBox="0 0 720 140">
+  <g transform="translate(40,34)">
+    <rect x="0" y="0" width="58" height="22" rx="2" fill="#141414"/>
+    <rect x="0" y="31" width="37" height="16" rx="2" fill="#1f3d2f"/>
+    <rect x="0" y="56" width="37" height="16" rx="2" fill="#141414"/>
+  </g>
+  <text x="118" y="70" font-family="'Courier New', Courier, monospace" font-weight="700" font-size="40" fill="#1c1b18">PrivacyAI</text>
+  <text x="330" y="70" font-family="'Courier New', Courier, monospace" font-weight="700" font-size="40" fill="#1f3d2f">.pro</text>
+  <text x="118" y="100" font-family="'Courier New', Courier, monospace" font-weight="600" font-size="17" letter-spacing="1.8" fill="#57544b">AI ANONYMIZED. PROVABLY ACCOUNTABLE.</text>
+</svg>
