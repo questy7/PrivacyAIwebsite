@@ -3,7 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ — PrivacyAI Gateway</title>
+<title>Secure AI &amp; PII Redaction FAQ | PrivacyAI</title>
+<meta name="description" content="Answers about PrivacyAI, PII redaction, secure AI transmission, local audit logs, data retention, compliance, and product limitations.">
+<link rel="canonical" href="https://privacyai.pro/faq">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PrivacyAI">
+<meta property="og:title" content="Secure AI &amp; PII Redaction FAQ | PrivacyAI">
+<meta property="og:description" content="Answers about PII redaction, secure AI transmission, local audit logs, retention, and compliance.">
+<meta property="og:url" content="https://privacyai.pro/faq">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "PrivacyAI", "item": "https://privacyai.pro/"},
+    {"@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://privacyai.pro/faq"}
+  ]
+}
+</script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
   :root{
@@ -47,12 +65,23 @@
   }
 
   footer{padding:40px 0;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--rule);text-align:center;margin-top:40px;}
+
+  @media(max-width:640px){
+    .wrap,.navwrap{padding-left:20px;padding-right:20px;}
+    nav{padding:10px 0;}
+    nav .navwrap{justify-content:flex-start;}
+    nav img{width:min(100%,320px);height:auto !important;}
+    .navlinks,.nav-cta{display:none;}
+    .head{padding:36px 0 16px;}
+    .faq-section{padding-top:32px;}
+    footer{margin-top:28px;}
+  }
 </style>
 </head>
 <body>
 <nav>
   <div class="navwrap">
-    <a href="index.html"><img src="logo.svg" alt="PrivacyAI Gateway" style="height:64px;display:block;"></a>
+    <a href="index.html"><img src="logo.svg" alt="PrivacyAI" style="height:64px;display:block;"></a>
     <div class="navlinks">
       <a href="legal.html">For Attorneys</a>
       <a href="tax.html">For Tax &amp; Accounting</a>
@@ -66,13 +95,13 @@
 
 <div class="head wrap">
   <div class="kicker">FAQ</div>
-  <h1>The questions we get asked on almost every call.</h1>
+  <h1>Secure AI, data privacy, and PII redaction FAQs.</h1>
   <p>Direct answers — including the ones that make us look less magic than a shorter pitch might suggest.</p>
 </div>
 
 <div class="wrap faq-section">
 
-  <div class="section-label">What actually gets protected</div>
+  <h2 class="section-label">What actually gets protected</h2>
 
   <div class="qa">
     <div class="q"><span>Do you see the content of my messages?</span><span class="mark">—</span></div>
@@ -81,7 +110,7 @@
 
   <div class="qa">
     <div class="q"><span>Do you know who I am, as your customer?</span><span class="mark">—</span></div>
-    <div class="a">Yes, always. That's required — for billing, for the accountability agreement we sign with you, and so there's a real party who can respond if anything is ever asked about. What we don't know is who the <b>people you're talking about</b> are — your clients, patients, or filers. Those are two different things, and we don't blur them together. Knowing you as a customer is also handled separately from message content — our identity/billing systems never touch what you actually ask.</div>
+    <div class="a">Yes. PrivacyAI maintains your account identity for billing, agreements, and support, but keeps that information separate from message content. Requests reach the AI provider through PrivacyAI — not through your firm's individual AI account — and direct identifiers relating to your firm, clients, patients, or filers are removed before transmission. The AI provider does not receive those identities from us.</div>
   </div>
 
   <div class="qa">
@@ -89,12 +118,7 @@
     <div class="a">Not exactly, and two different techniques are actually doing two different jobs here. <b>Tokenization</b> replaces a sensitive value with an unrelated placeholder (like <code>PERSON_1-C24</code>) before it's ever sent — the real name never leaves your device in any form, encrypted or otherwise. Separately, our own relay runs inside a <b>confidential-computing enclave</b> — hardware-isolated processing, not encryption in the traditional sense — so even our staff can't read the message passing through it. Neither is "encryption" in the classic sense of scrambling data with a reversible key; both work by making sure the wrong party never has readable access in the first place, through different mechanisms.</div>
   </div>
 
-  <div class="qa">
-    <div class="q"><span>Is this actually live and running today?</span><span class="mark">—</span></div>
-    <div class="a">This describes the architecture we're building toward and piloting with early firms and practices, not a large-scale general-availability product yet. We'd rather be precise about what's designed versus what's fully deployed than imply more is live than actually is.</div>
-  </div>
-
-  <div class="section-label">How the system actually works</div>
+  <h2 class="section-label">How the system actually works</h2>
 
   <div class="qa">
     <div class="q"><span>Does my message go straight to Claude or GPT?</span><span class="mark">—</span></div>
@@ -111,16 +135,16 @@
     <div class="a">Your device swaps the tokens back to the real values using a map that only ever exists locally. That map is never sent to us or to the AI provider.</div>
   </div>
 
-  <div class="section-label">Compliance &amp; accountability</div>
+  <h2 class="section-label">Compliance &amp; accountability</h2>
 
   <div class="qa">
     <div class="q"><span>Do you sign a BAA for healthcare use?</span><span class="mark">—</span></div>
-    <div class="a">Yes. Even though the architecture minimizes what we ever see, we sign a standard Business Associate Agreement — because being an accountable party is the point, not something we try to avoid.</div>
+    <div class="a">For healthcare customers, a Business Associate Agreement is signed before PrivacyAI is used with protected health information. The BAA does not transfer your organization's compliance responsibilities to us; it defines our own obligations and safeguards. PrivacyAI helps your organization use AI responsibly and document the controls supporting its compliance obligations.</div>
   </div>
 
   <div class="qa">
     <div class="q"><span>Is this "anonymous" — untraceable, even by you?</span><span class="mark">—</span></div>
-    <div class="a">No, and we wouldn't want it to be. We verify who our customers are and can respond to lawful process if it's ever required. A tool that couldn't do that wouldn't be one a firm or practice could responsibly rely on.</div>
+    <div class="a">Not in the absolute sense. PrivacyAI knows which organization and users belong to an account, while the AI provider receives requests through PrivacyAI without those customer identifiers. We retain the account and usage metadata needed to operate the service, but we do not keep logs of message content or the local map connecting redaction tokens to real identities.<br><br>If legally compelled, we could identify the customer account that used PrivacyAI, but we generally could not produce content we never retained. The AI provider may retain the redacted request according to its own API terms and retention settings, but that request is designed not to contain the direct identities removed by PrivacyAI.</div>
   </div>
 
   <div class="qa">
@@ -133,7 +157,7 @@
     <div class="a">AWS Nitro Enclaves — a hardware-isolated compute environment built into supported Amazon EC2 instances. AWS has independently affirmed there is no mechanism for its own operators to access what runs inside the Nitro System, and it's backed by AWS's published Service Terms, not just our own claim. Worth being upfront about the tradeoff: naming a specific vendor here means part of our reliability and security posture is tied to AWS's own — the same way it would be for any company built on major cloud infrastructure. If that ever changes, we'll disclose it.</div>
   </div>
 
-  <div class="section-label">Fit &amp; limitations</div>
+  <h2 class="section-label">Fit &amp; limitations</h2>
 
   <div class="qa">
     <div class="q"><span>Does this replace my scribe tool (Abridge, Dragon Copilot, etc.)?</span><span class="mark">—</span></div>
@@ -147,6 +171,6 @@
 
 </div>
 
-<footer>© 2026 PrivacyAI Gateway. Currently piloting a small number of firms and practices.</footer>
+<footer>© 2026 PrivacyAI. Currently piloting a small number of firms and practices.</footer>
 </body>
 </html>

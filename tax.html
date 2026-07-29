@@ -3,7 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PrivacyAI Gateway for Tax Preparers — IRC §7216 and your firm's AI use</title>
+<title>Secure AI for Tax Professionals | PrivacyAI</title>
+<meta name="description" content="Secure AI for tax professionals that redacts taxpayer names, SSNs, and account data before requests reach ChatGPT or Claude.">
+<link rel="canonical" href="https://privacyai.pro/tax">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PrivacyAI">
+<meta property="og:title" content="Secure AI for Tax Professionals | PrivacyAI">
+<meta property="og:description" content="Protect taxpayer identities before tax work reaches ChatGPT or Claude.">
+<meta property="og:url" content="https://privacyai.pro/tax">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "PrivacyAI", "item": "https://privacyai.pro/"},
+    {"@type": "ListItem", "position": 2, "name": "Secure AI for Tax Professionals", "item": "https://privacyai.pro/tax"}
+  ]
+}
+</script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
   :root{
@@ -57,12 +75,24 @@
   footer{padding:32px 0;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--rule);}
   .f-links{display:flex;gap:22px;margin-top:12px;flex-wrap:wrap;}
   .f-links a:hover{color:var(--ink);}
+
+  @media(max-width:640px){
+    .wrap{padding-left:20px;padding-right:20px;}
+    nav{padding:10px 0;}
+    nav .wrap{justify-content:flex-start;}
+    nav img{width:min(100%,320px);height:auto !important;}
+    .navlinks,.nav-cta{display:none;}
+    .hero{padding:36px 0 32px;}
+    section{padding:44px 0;}
+    .cta-block{padding:48px 0;}
+    table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  }
 </style>
 </head>
 <body>
 <nav>
   <div class="wrap">
-    <a href="index.html"><img src="logo.svg" alt="PrivacyAI Gateway" style="height:64px;display:block;"></a>
+    <a href="index.html"><img src="logo.svg" alt="PrivacyAI" style="height:64px;display:block;"></a>
     <div class="navlinks">
       <a href="legal.html">For Attorneys</a>
       <a class="active" href="tax.html">For Tax &amp; Accounting</a>
@@ -77,7 +107,7 @@
 <section class="hero">
   <div class="wrap">
     <div class="eyebrow">● For tax preparers &amp; accounting firms</div>
-    <h1>Copy-pasting a K-1 into ChatGPT could be a federal crime.</h1>
+    <h1>Secure AI for tax professionals—without exposing taxpayer data.</h1>
     <p class="hero-sub">Under IRC §7216, using a client's tax return information in a public AI tool without their signed consent is a criminal offense. We strip out identifying details — names, SSNs, account numbers — before anything reaches Claude or ChatGPT, and provide the consent language and audit trail your firm needs.</p>
     <div class="hero-ctas">
       <a class="btn btn-dark" href="#book">Book a 15-minute call</a>
@@ -109,7 +139,7 @@
   <div class="wrap">
     <div class="kicker">How this compares to what your firm is doing today</div>
     <table>
-      <tr><th></th><th>Raw ChatGPT / Claude</th><th>PrivacyAI Gateway</th></tr>
+      <tr><th></th><th>Raw ChatGPT / Claude</th><th>PrivacyAI</th></tr>
       <tr><td>Client tax identifiers tokenized before sending</td><td class="no">No</td><td class="yes">Yes</td></tr>
       <tr><td>§7216-compliant consent language provided</td><td class="no">No</td><td class="yes">Yes</td></tr>
       <tr><td>Audit trail if the IRS or a client ever asks</td><td class="no">No</td><td class="yes">Yes</td></tr>
@@ -120,7 +150,7 @@
 
 <section class="cta-block" id="book" style="border-bottom:none;">
   <div class="wrap">
-    <h2>See exactly where the exposure is — before it's a problem.</h2>
+    <h2>See secure AI for tax work in action.</h2>
     <p>15 minutes, no pressure. We'll walk through how tax data actually moves when your team uses AI today, and what changes with this in place.</p>
     <a class="btn btn-dark" href="mailto:hello@example.com?subject=Book%20a%20call%20-%20Tax">Book a 15-minute call</a>
   </div>
@@ -128,7 +158,7 @@
 
 <footer>
   <div class="wrap">
-    <div>PrivacyAI Gateway — currently piloting with a small number of firms. Not tax or legal advice; consult your own counsel on §7216 compliance.</div>
+    <div>PrivacyAI — currently piloting with a small number of firms. Not tax or legal advice; consult your own counsel on §7216 compliance.</div>
     <div class="f-links">
       <a href="index.html">Home</a>
       <a href="legal.html">For Attorneys</a>

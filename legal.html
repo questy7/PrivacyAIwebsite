@@ -3,7 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PrivacyAI Gateway for Law Firms — Client identities should never touch an AI company's servers</title>
+<title>Secure AI for Law Firms | PrivacyAI</title>
+<meta name="description" content="Secure AI for law firms that removes client names, case numbers, and other identifiers before requests reach ChatGPT or Claude.">
+<link rel="canonical" href="https://privacyai.pro/legal">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PrivacyAI">
+<meta property="og:title" content="Secure AI for Law Firms | PrivacyAI">
+<meta property="og:description" content="Protect client identities before legal work reaches ChatGPT or Claude.">
+<meta property="og:url" content="https://privacyai.pro/legal">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "PrivacyAI", "item": "https://privacyai.pro/"},
+    {"@type": "ListItem", "position": 2, "name": "Secure AI for Law Firms", "item": "https://privacyai.pro/legal"}
+  ]
+}
+</script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
   :root{
@@ -53,12 +71,24 @@
   footer{padding:32px 0;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--rule);}
   .f-links{display:flex;gap:22px;margin-top:12px;flex-wrap:wrap;}
   .f-links a:hover{color:var(--ink);}
+
+  @media(max-width:640px){
+    .wrap{padding-left:20px;padding-right:20px;}
+    nav{padding:10px 0;}
+    nav .wrap{justify-content:flex-start;}
+    nav img{width:min(100%,320px);height:auto !important;}
+    .navlinks,.nav-cta{display:none;}
+    .hero{padding:36px 0 32px;}
+    section{padding:44px 0;}
+    .cta-block{padding:48px 0;}
+    table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  }
 </style>
 </head>
 <body>
 <nav>
   <div class="wrap">
-    <a href="index.html"><img src="logo.svg" alt="PrivacyAI Gateway" style="height:64px;display:block;"></a>
+    <a href="index.html"><img src="logo.svg" alt="PrivacyAI" style="height:64px;display:block;"></a>
     <div class="navlinks">
       <a class="active" href="legal.html">For Attorneys</a>
       <a href="tax.html">For Tax &amp; Accounting</a>
@@ -73,7 +103,7 @@
 <section class="hero">
   <div class="wrap">
     <div class="eyebrow">● For solo &amp; small-firm attorneys</div>
-    <h1>Client identities should never touch an AI company's servers.</h1>
+    <h1>Secure AI for law firms—without exposing client identities.</h1>
     <p class="hero-sub">Your associates are already using ChatGPT and Claude for drafting and research. We strip out the identifying details — client names, case numbers, SSNs — before anything leaves your device, while the substance of your work still gets a real answer. Backed by a signed accountability agreement, not a privacy policy nobody reads.</p>
     <div class="hero-ctas">
       <a class="btn btn-dark" href="#book">Book a 15-minute call</a>
@@ -96,7 +126,7 @@
   <div class="wrap">
     <div class="kicker">How this compares to what your team is doing today</div>
     <table>
-      <tr><th></th><th>Raw ChatGPT / Claude</th><th>PrivacyAI Gateway</th></tr>
+      <tr><th></th><th>Raw ChatGPT / Claude</th><th>PrivacyAI</th></tr>
       <tr><td>Client names &amp; identifying details tokenized before sending</td><td class="no">No</td><td class="yes">Yes</td></tr>
       <tr><td>Signed accountability agreement</td><td class="no">No</td><td class="yes">Yes</td></tr>
       <tr><td>Audit trail if a client or the bar ever asks</td><td class="no">No</td><td class="yes">Yes</td></tr>
@@ -108,7 +138,7 @@
 
 <section class="cta-block" id="book" style="border-bottom:none;">
   <div class="wrap">
-    <h2>See it working before you commit to anything.</h2>
+    <h2>See secure AI for law firms in action.</h2>
     <p>15 minutes, no pressure — we'll show you exactly what your associates' current AI use looks like from the outside, and what changes with this in place.</p>
     <a class="btn btn-dark" href="mailto:hello@example.com?subject=Book%20a%20call%20-%20Legal">Book a 15-minute call</a>
   </div>
@@ -116,7 +146,7 @@
 
 <footer>
   <div class="wrap">
-    <div>PrivacyAI Gateway — currently piloting with a small number of firms.</div>
+    <div>PrivacyAI — currently piloting with a small number of firms.</div>
     <div class="f-links">
       <a href="index.html">Home</a>
       <a href="tax.html">For Tax &amp; Accounting</a>
