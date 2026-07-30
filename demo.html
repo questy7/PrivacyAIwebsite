@@ -14,23 +14,24 @@
       --red:#8d2e2e;--red-soft:#f8e1df;--shadow:0 18px 50px rgba(36,31,22,.08)
     }
     *{box-sizing:border-box}
+    [hidden]{display:none!important}
     html{color-scheme:light}
     body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif}
     button,textarea,select{font:inherit}
     a{color:inherit}
     .wrap{width:min(1180px,calc(100% - 40px));margin:auto}
     header{border-bottom:1px solid var(--rule);background:rgba(247,245,240,.94)}
-    .nav{min-height:104px;display:flex;align-items:center;justify-content:space-between;gap:28px}
-    .logo{height:68px;width:auto;display:block}
+    .nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .logo{height:54px;width:auto;display:block}
     .back{font-weight:600;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:3px}
-    main{padding:64px 0 80px}
-    .intro{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:56px;align-items:end;margin-bottom:36px}
-    .eyebrow{font:600 11px/1.4 "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
-    h1{font:600 clamp(38px,5.4vw,72px)/.98 "Source Serif 4",serif;letter-spacing:-.035em;margin:0;max-width:13ch}
+    main{padding:34px 0 54px}
+    .intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:44px;align-items:center;margin-bottom:18px}
+    .eyebrow{font:600 9px/1.4 "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--green);margin-bottom:9px}
+    h1{font:600 clamp(25px,2.6vw,34px)/1.08 "Source Serif 4",serif;letter-spacing:-.02em;margin:0;max-width:22ch}
     h1 em{color:var(--green)}
-    .intro-copy{color:var(--soft);font-size:16px;line-height:1.65;margin:0}
-    .privacy-note{display:flex;gap:12px;margin-top:18px;padding:14px 16px;background:var(--green-soft);border-radius:4px;font:500 12px/1.5 "IBM Plex Mono",monospace;color:var(--green)}
-    .privacy-note::before{content:"";width:11px;height:11px;background:var(--green);margin-top:3px;flex:0 0 auto}
+    .intro-copy{color:var(--soft);font-size:13px;line-height:1.55;margin:0}
+    .privacy-note{display:flex;gap:9px;margin-top:10px;padding:9px 11px;background:#efeee9;border-radius:4px;font:500 9px/1.45 "IBM Plex Mono",monospace;color:#666158}
+    .privacy-note::before{content:"";width:7px;height:7px;background:var(--green);margin-top:3px;flex:0 0 auto}
     .demo-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
     .panel{background:var(--panel);border:1px solid var(--rule);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
     .panel-head{min-height:62px;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 20px;border-bottom:1px solid var(--rule)}
@@ -38,7 +39,13 @@
     .step{font:500 10px/1 "IBM Plex Mono",monospace;background:var(--ink);color:white;padding:7px 8px;border-radius:2px}
     textarea{display:block;width:100%;min-height:270px;padding:22px;border:0;resize:vertical;background:transparent;color:var(--ink);font:400 15px/1.7 "IBM Plex Mono",monospace;outline:none}
     textarea:focus{box-shadow:inset 0 0 0 2px var(--green)}
-    .sample-row{padding:0 20px 18px}
+    .sample-row{display:flex;align-items:center;gap:10px;padding:0 20px 13px}.sample-row label{color:var(--green);font-weight:700;font-size:12px}.sample-select{min-height:38px;max-width:260px;border:1px solid var(--rule);border-radius:3px;background:#fff;padding:0 30px 0 10px;color:var(--ink);font-size:12px}
+    .enhanced-protection{margin:0 0 10px;border:1px solid #bdd0c6;border-radius:8px;background:#f3f8f5;padding:8px 10px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center}
+    .enhanced-copy{min-width:0}.enhanced-copy strong{display:inline;color:var(--green);font-size:11.5px}.enhanced-copy>span{display:none}.enhanced-copy .enhanced-meta{display:inline-flex;gap:7px;align-items:center;margin:0 0 0 10px;font:600 8px/1.3 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.05em;color:var(--green)}
+    .enhanced-dot{width:8px;height:8px;border-radius:50%;background:#aaa}.enhanced-dot.loading{background:#c89242;box-shadow:0 0 0 4px rgba(200,146,66,.12)}.enhanced-dot.ready{background:var(--green);box-shadow:0 0 0 4px rgba(32,69,53,.12)}.enhanced-dot.error{background:#a64242}
+    .enhanced-button{border:1px solid var(--green);border-radius:999px;background:#fff;color:var(--green);padding:7px 10px;font-size:9.5px;font-weight:750;cursor:pointer;white-space:nowrap}.enhanced-button:hover,.enhanced-button:focus{background:var(--green);color:#fff}.enhanced-button:disabled{cursor:wait;opacity:.65}
+    .model-debug{grid-column:1/-1;border-top:1px solid #d3e0d8;padding-top:6px}.model-debug summary{cursor:pointer;color:var(--green);font:650 8.5px/1.4 "IBM Plex Mono",monospace}.model-debug pre{max-height:190px;margin:7px 0 0;padding:10px;border-radius:4px;background:#171715;color:#f4f1e8;overflow:auto;white-space:pre-wrap;font:400 9.5px/1.55 "IBM Plex Mono",monospace}
+    .source-badge{display:inline-block;margin-left:6px;color:#547263;font:700 8px/1 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.05em}
     .text-button{border:0;background:transparent;color:var(--green);font-weight:700;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
     .manual-tools{display:none;margin:0 20px 18px;padding:14px;border:1px solid #b9cbbf;border-radius:6px;background:var(--green-soft)}
     .manual-tools.visible{display:block}
@@ -50,6 +57,10 @@
     .manual-options input{accent-color:var(--green)}
     .manual-actions{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .protect-button{border:0;border-radius:3px;background:var(--green);color:white;font-weight:700;padding:10px 13px;cursor:pointer}
+    .rule-launch-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 13px;border-top:1px solid #d4e0d7;color:var(--soft);font-size:10.5px}.rule-launch-row .text-button{white-space:nowrap}
+    .rule-dialog{width:min(620px,calc(100vw - 28px));max-height:calc(100vh - 34px);padding:0;border:0;border-radius:12px;background:#fbfaf7;color:var(--ink);box-shadow:0 26px 90px rgba(20,20,18,.3);overflow:auto}.rule-dialog::backdrop{background:rgba(18,18,16,.48);backdrop-filter:blur(3px)}.rule-dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:20px 22px;border-bottom:1px solid var(--rule);background:linear-gradient(90deg,#fbfaf7,#edf3ef)}.rule-dialog-head h2{margin:0 0 4px;font:650 24px/1.1 "Source Serif 4",serif;color:var(--green)}.rule-dialog-head p{margin:0;color:var(--soft);font-size:11px}.rule-dialog-close{border:0;background:transparent;color:var(--soft);font-size:24px;line-height:1;cursor:pointer}.rule-form{display:grid;gap:14px;padding:20px 22px}.rule-field{display:grid;gap:6px}.rule-field>span{font-size:11px;font-weight:700;color:var(--green)}.rule-field small{color:var(--soft);font-size:10px}.rule-field input,.rule-field textarea,.rule-field select{width:100%;border:1px solid #c8c3b8;border-radius:6px;background:#fff;color:var(--ink);padding:10px 11px;font:400 12px/1.5 "IBM Plex Mono",monospace}.rule-field textarea{min-height:74px;resize:vertical}.rule-preview{display:none;padding:13px;border:1px solid #b9cbbf;border-radius:7px;background:var(--green-soft);font-size:11px;line-height:1.55}.rule-preview.visible{display:block}.rule-preview strong{display:block;margin-bottom:5px;color:var(--green)}.rule-preview .rule-test-match{display:inline-block;margin:2px 4px 2px 0;padding:3px 6px;border-radius:3px;background:#171715;color:#fff;font:500 10px/1.3 "IBM Plex Mono",monospace}.rule-preview.error{border-color:#d8ad75;background:var(--amber-soft);color:var(--amber)}.rule-dialog-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;padding:0 22px 20px}.rule-secondary{border:1px solid #b8b3a7;border-radius:4px;background:#fff;color:var(--ink);padding:10px 13px;font-weight:700;cursor:pointer}.rule-save:disabled{opacity:.45;cursor:not-allowed}
+    .saved-rules-panel{padding:13px;border:1px solid var(--rule);border-radius:7px;background:#fff}.saved-rules-panel>strong{display:block;margin-bottom:8px;color:var(--green);font-size:11px}.saved-rules-list{display:grid;gap:6px}.saved-rule-item{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;padding:8px 9px;border-radius:5px;background:#f3f1eb}.saved-rule-item span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:500 10px/1.4 "IBM Plex Mono",monospace}.saved-rule-actions{display:flex;gap:6px}.saved-rule-actions button{border:0;background:transparent;color:var(--green);font-size:10px;font-weight:700;cursor:pointer}.saved-rule-actions button:last-child{color:var(--red)}.saved-rules-empty{color:var(--soft);font-size:10px}
+    .inline-choice{position:fixed;z-index:1100;display:none;width:min(300px,calc(100vw - 20px));padding:11px;border-radius:7px;background:#171715;color:#fff;box-shadow:0 14px 38px rgba(0,0,0,.34)}.inline-choice.visible{display:block}.inline-choice strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:600 11px/1.4 "IBM Plex Mono",monospace}.inline-choice span{display:block;margin:3px 0 9px;color:#c9c6bd;font-size:9px}.inline-choice-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.inline-choice button{min-height:32px;border:1px solid #77736b;border-radius:4px;background:#fff;color:#171715;font-size:10px;font-weight:750;cursor:pointer}.inline-choice .inline-keep{border-color:#7aa08a;background:var(--green);color:#fff}
     .selection-hint{color:var(--soft);font-size:11px;line-height:1.4}
     .rule-remove{border:0;background:transparent;color:var(--red);font:600 10px/1 "IBM Plex Mono",monospace;cursor:pointer;padding:3px}
     .review{border-top:1px solid var(--rule)}
@@ -63,9 +74,10 @@
     .detection.suggested{border-color:#d8ad75;background:var(--amber-soft)}
     .detection.suggested .type{background:#f0d5b2;color:var(--amber)}
     .empty{color:var(--soft);font-size:13px;padding:2px 0 6px}
-    .send-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 20px;border-top:1px solid var(--rule);background:#f2f0e9}
+    .send-row{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 20px;border-top:1px solid var(--rule);background:#f2f0e9}
     .send-row small{color:var(--soft);line-height:1.4}
-    .send-controls{display:flex;align-items:center;gap:10px}
+    .send-action-column{position:relative;display:grid;justify-items:end;gap:9px;min-width:min(100%,390px)}
+    .send-controls{display:flex;align-items:center;justify-content:flex-end;gap:10px}
     .model-select{min-height:44px;border:1px solid var(--rule);border-radius:3px;background:#fff;padding:0 34px 0 12px;color:var(--ink);font:600 11px/1 "IBM Plex Mono",monospace}
     .primary{border:0;border-radius:3px;background:var(--black);color:white;font-weight:700;padding:14px 19px;cursor:pointer;white-space:nowrap}
     .primary:hover{background:var(--green)}
@@ -95,20 +107,59 @@
     .dot.active{background:var(--green);box-shadow:0 0 0 4px var(--green-soft)}
     .dot.error{background:var(--red);box-shadow:0 0 0 4px var(--red-soft)}
     .disclaimer{margin:24px 0 0;color:var(--soft);font-size:12px;line-height:1.6}
-    .restored-value{background:#d8eadf;color:#173d2c;border-bottom:2px solid #4e8469;border-radius:3px;padding:1px 3px;font-weight:600}
-    .workspace-invite{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px;margin-top:34px;padding:26px 28px;border:1px solid #b9cbbf;border-radius:10px;background:linear-gradient(120deg,#fffefa,#e8f0eb);box-shadow:var(--shadow)}
-    .workspace-invite h2{margin:0 0 7px;font:600 27px/1.1 "Source Serif 4",serif}
-    .workspace-invite p{margin:0;color:var(--soft);font-size:14px;line-height:1.55}
+    .restored-value,.history-protected{border-radius:3px;padding:0;font-weight:inherit;transition:background .12s ease,color .12s ease,border-color .12s ease}
+    .restored-value{background:transparent;color:inherit;border-bottom:2px solid transparent}
+    .history-protected{background:transparent;color:inherit}
+    .conversation.privacy-details-visible .restored-value{background:#d8eadf;color:#173d2c;border-bottom-color:#4e8469;padding:1px 3px;font-weight:600}
+    .conversation.privacy-details-visible .history-protected{background:rgba(20,20,20,.88);color:#fff;padding:1px 3px;font-weight:600}
+    .demo-workbench{display:grid;grid-template-columns:230px minmax(0,1fr);max-width:1180px;min-height:0;margin:0 auto;border:1px solid var(--rule);border-radius:14px;background:var(--panel);box-shadow:0 18px 48px rgba(36,31,22,.1);overflow:hidden}
+    .thread-sidebar{display:flex;flex-direction:column;min-width:0;padding:18px 14px;background:#eeece5;border-right:1px solid var(--rule)}
+    .new-chat{display:flex;align-items:center;justify-content:center;gap:8px;min-height:43px;padding:0 12px;border:1px solid #b8b3a7;border-radius:6px;background:#fff;color:var(--ink);font-weight:700;text-decoration:none}
+    .new-chat:hover{border-color:var(--green);color:var(--green)}
+    .sidebar-label{margin:24px 8px 9px;color:#7c776d;font:600 9px/1.3 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+    .thread-list{display:grid;gap:4px}.thread-item{display:block;padding:10px 11px;border-radius:5px;color:#514d45;text-decoration:none;font-size:12px;line-height:1.35}.thread-item:hover{background:#e3e0d7}.thread-item.active{background:#dce7df;color:var(--green);font-weight:700}.thread-meta{display:block;margin-top:3px;color:#8b867b;font:400 9px/1.3 "IBM Plex Mono",monospace}
+    .sidebar-brand{display:flex;align-items:center;gap:9px;padding:3px 7px 15px;font:600 13px/1.2 "IBM Plex Mono",monospace}.sidebar-brand::before{content:"";width:21px;height:21px;border-radius:5px;background:var(--green)}
+    .sidebar-search{width:100%;height:38px;margin:10px 0 4px;padding:0 10px;border:1px solid #cbc6ba;border-radius:6px;background:#f8f7f3;font-size:11px;outline:none}.sidebar-search:focus{border-color:var(--green)}
+    .product-nav{display:grid;gap:3px}.product-link{display:flex;align-items:center;justify-content:space-between;min-height:36px;padding:8px 10px;border-radius:5px;color:#514d45;text-decoration:none;font-size:11px}.product-link:hover{background:#e3e0d7}.product-link.current{background:#dce7df;color:var(--green);font-weight:700}.product-count{color:#8b867b;font:500 8px/1 "IBM Plex Mono",monospace}.client-links{margin-left:7px;padding-left:8px;border-left:1px solid #d1cdc2}.client-links .product-link{display:block}.client-links small{display:block;margin-top:3px;color:#8b867b;font-size:8px}
+    .sidebar-profile{padding:13px 9px 2px;border-top:1px solid #d2cec3}.sidebar-profile strong{display:block;font-size:11px}.sidebar-profile span{color:var(--soft);font-size:9px;line-height:1.35}
+    .sidebar-spacer{flex:1}
+    .workspace-invite{display:block;margin-top:18px;padding:15px;border:1px solid #aec2b4;border-radius:7px;background:linear-gradient(145deg,#fffefa,#dfeae3)}
+    .workspace-invite h2{margin:0 0 7px;font:600 18px/1.12 "Source Serif 4",serif;color:var(--green)}
+    .workspace-invite p{margin:0 0 12px;color:var(--soft);font-size:11px;line-height:1.5}
     .workspace-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;background:var(--green);color:#fff;border-radius:3px;text-decoration:none;font-weight:700;white-space:nowrap}
     .workspace-link:hover{background:var(--black)}
+    .thread-sidebar .workspace-link{width:100%;min-height:39px;padding:0 10px;font-size:11px}
+    .chat-shell{display:flex;flex-direction:column;min-width:0;min-height:0;background:var(--panel);overflow:hidden}
+    .chat-topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:17px 20px;border-bottom:1px solid var(--rule);background:linear-gradient(90deg,#fbfaf7,#edf3ef)}
+    .chat-title{font:600 12px/1.4 "IBM Plex Mono",monospace;letter-spacing:.06em}.chat-subtitle{display:block;margin-top:3px;color:var(--soft);font-size:10px;letter-spacing:0}
+    .topbar-actions{display:flex;align-items:center;gap:12px}.privacy-toggle{display:flex;align-items:center;gap:6px;color:#5d594f;font-size:9px;white-space:nowrap;cursor:pointer}.privacy-toggle input{width:14px;height:14px;margin:0;accent-color:var(--green)}.mobile-workspace-link{display:inline;color:var(--green);font-size:10px;font-weight:700;text-decoration:none;border-bottom:1px solid var(--green)}
+    .chat-topbar .enhanced-protection{margin:0;padding:0;border:0;background:transparent;display:flex;align-items:center;gap:5px}.chat-topbar .enhanced-copy>strong,.chat-topbar .enhanced-copy>span:not(.enhanced-meta),.chat-topbar .model-debug,.chat-topbar #enhancedStatus{display:none}.chat-topbar .enhanced-copy .enhanced-meta{display:inline-flex;margin:0}.chat-topbar .enhanced-button{padding:5px 8px;background:transparent;font-size:9px}
+    .conversation{flex:0 0 82px;min-height:82px;max-height:none;overflow:auto;padding:12px clamp(20px,4vw,48px);background:#f1f0ec;scroll-behavior:smooth;transition:min-height .18s ease,flex-basis .18s ease}.conversation.has-messages{flex:1 1 auto;min-height:240px;padding-top:24px;padding-bottom:24px;background:#fbfaf7}
+    .empty-thread{display:grid;place-items:center;min-height:58px;text-align:center;color:#8b867d;font-size:9px;line-height:1.45}.empty-thread strong{display:block;margin-bottom:2px;color:#68645c;font:600 10px/1.3 Inter,system-ui,sans-serif}.empty-thread-inner{max-width:360px}.empty-response-dot{display:inline-block;width:5px;height:5px;margin-right:6px;border-radius:50%;background:#b7b1a4;vertical-align:1px}
+    .message{max-width:82%;margin-bottom:20px}.message-user{margin-left:auto}.message-ai{margin-right:auto}.message-head{display:flex;align-items:center;gap:8px;margin-bottom:7px;font:600 9px/1.3 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--green)}.message-user .message-head{justify-content:flex-end}
+    .message-body{padding:14px 16px;border:1px solid var(--rule);border-radius:10px;background:#fff;font-size:14px;line-height:1.65;white-space:pre-wrap}.message-user .message-body{background:var(--green-soft);border-color:#bfd0c4}.message-waiting{color:#8c867b}
+    .sent-preview{margin-top:8px;font-size:11px;color:var(--soft)}.sent-preview summary{cursor:pointer;font-weight:650;color:var(--green)}.sent-preview pre{margin:8px 0 0;padding:11px;border-radius:5px;background:#171715;color:#fff;white-space:pre-wrap;overflow-wrap:anywhere;font:400 10px/1.55 "IBM Plex Mono",monospace}
+    .composer{border-top:1px solid var(--rule);padding:16px 18px 0;background:#f3f1eb}.editor-shell{position:relative;min-height:116px;border:1px solid #c8c3b8;border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(36,31,22,.06);overflow:visible}.composer textarea,.input-highlights{width:100%;min-height:116px;max-height:240px;padding:17px 18px;font:400 14px/1.65 "IBM Plex Mono",monospace;letter-spacing:normal;white-space:pre-wrap;overflow-wrap:break-word}.composer textarea{position:relative;z-index:2;display:block;resize:vertical;border-radius:12px;background:transparent;color:transparent;-webkit-text-fill-color:transparent;caret-color:var(--green)}.composer textarea::placeholder{color:#777;-webkit-text-fill-color:#777}.composer textarea::selection{background:rgba(32,69,53,.22)}.input-highlights{position:absolute;z-index:3;inset:0;height:100%;overflow:hidden;color:var(--ink);pointer-events:none}.input-protected{position:relative;border-radius:3px;background:rgba(20,20,20,.88);color:#fff;padding:1px 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone;pointer-events:auto}.input-protected::after{content:attr(data-placeholder);position:absolute;left:50%;bottom:calc(100% + 7px);z-index:20;opacity:0;transform:translateX(-50%) translateY(2px);padding:6px 8px;border-radius:4px;background:#111;color:#fff;white-space:nowrap;font:500 9px/1.3 "IBM Plex Mono",monospace;box-shadow:0 7px 18px rgba(0,0,0,.22);transition:opacity .06s,transform .06s}.input-protected:hover::after{opacity:1;transform:translateX(-50%) translateY(0)}.input-possible{border-radius:2px;background:var(--amber-soft);color:var(--amber);border-bottom:2px dotted var(--amber);padding:1px 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}.composer .sample-row{padding:10px 4px}
+    .input-protected::after{display:none}.input-token-tooltip{position:fixed;z-index:1000;display:none;max-width:min(280px,calc(100vw - 20px));padding:6px 8px;border-radius:4px;background:#111;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none;font:500 9px/1.3 "IBM Plex Mono",monospace;box-shadow:0 7px 18px rgba(0,0,0,.24)}
+    .protection-stack{margin:0 0 10px;border:1px solid #bfd0c4;border-radius:7px;overflow:hidden;background:#f5f8f6}.protected-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px;border-bottom:1px solid #d4e0d7}.protected-head strong{font:600 10px/1.3 "IBM Plex Mono",monospace;color:var(--green);text-transform:uppercase;letter-spacing:.06em}
+    .transmission-details>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px;cursor:pointer;list-style:none}.transmission-details>summary::-webkit-details-marker{display:none}.transmission-details>summary strong{font:600 10px/1.3 "IBM Plex Mono",monospace;color:var(--green);text-transform:uppercase;letter-spacing:.06em}.transmission-details[open]>summary{border-bottom:1px solid #d4e0d7}
+    .composer .token-view{min-height:72px;max-height:150px;overflow:auto;padding:13px;font-size:11px;line-height:1.6;background:#fff}
+    .composer .token-view mark[data-original]::after{bottom:auto;top:calc(100% + 8px)}
+    .composer .token-view mark[data-original]::before{bottom:auto;top:calc(100% + 3px);border-top-color:transparent;border-bottom-color:#111}
+    .composer .review{border-top:1px solid var(--rule)}.composer .review>summary{display:flex;justify-content:space-between;gap:12px;padding:10px 13px;cursor:pointer;list-style:none;font-size:10.5px;font-weight:700;color:var(--green)}.composer .review>summary::-webkit-details-marker{display:none}.review-peek{margin-left:5px;color:var(--soft);font-weight:500}.review-action{white-space:nowrap}
+    .composer .detections{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:0 13px 11px;max-height:190px}.composer .detection{grid-template-columns:auto minmax(0,1fr) auto;padding:7px 8px;gap:7px}.composer .detection .rule-remove{grid-column:2/-1;justify-self:end}.composer .manual-tools{margin:0 13px 11px;padding:11px}.composer .send-row{margin:0 -18px;padding:13px 18px}.composer .send-row small{max-width:300px}
+    .review-policy{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 13px 9px;padding:8px 10px;border-radius:4px;background:var(--amber-soft);color:var(--amber);font-size:10.5px}.review-policy label{display:flex;align-items:center;gap:7px;font-weight:650;cursor:pointer}.review-policy input{accent-color:var(--green)}
+    .quick-review{position:absolute;right:0;bottom:calc(100% + 10px);z-index:25;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;width:390px;max-width:calc(100vw - 40px);margin:0;padding:11px 12px;border:1px solid #d8ad75;border-radius:8px;background:var(--amber-soft);box-shadow:0 10px 28px rgba(87,55,25,.16)}.quick-review-copy{min-width:0}.quick-review-top{display:flex;align-items:center;gap:9px;margin-bottom:4px}.quick-review-progress{color:var(--amber);font:700 8px/1.2 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.06em}.quick-review-value{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:600 12px/1.4 "IBM Plex Mono",monospace}.quick-review-meta{display:block;margin-top:3px;color:var(--amber);font-size:9.5px}.quick-review-actions{display:grid;grid-template-columns:74px 74px;gap:7px}.quick-review-actions .decision-button{width:74px;min-height:34px}
+    .detection.decision-required{grid-template-columns:minmax(0,1fr) auto;background:var(--amber-soft);border-color:#d8ad75}.decision-copy{min-width:0}.decision-copy .detected-value{display:block}.decision-copy .type{display:inline-block;margin-top:5px}.decision-actions{display:flex;gap:5px;align-items:center}.decision-button{border:1px solid #a88354;border-radius:3px;background:#fff;color:var(--amber);padding:7px 8px;font-size:9.5px;font-weight:750;cursor:pointer}.decision-button.protect{border-color:var(--green);background:var(--green);color:#fff}.decision-button:hover,.decision-button:focus{outline:2px solid rgba(32,69,53,.2);outline-offset:1px}.decision-required.resolved{background:#fff;border-color:var(--rule)}.decision-required.resolved .decision-button:not(.selected){opacity:.45}.decision-required.resolved .decision-button.selected{box-shadow:0 0 0 2px rgba(32,69,53,.16)}
     @media(max-width:800px){
       .wrap{width:min(100% - 28px,680px)}
       .nav{min-height:86px}.logo{height:58px}
       main{padding:42px 0 60px}
       .intro,.demo-grid{grid-template-columns:1fr}
       .intro{gap:24px;margin-bottom:28px}
-      h1{font-size:clamp(39px,12vw,56px)}
-      .workspace-invite{grid-template-columns:1fr}
+      h1{font-size:clamp(31px,9vw,43px)}
+      .demo-workbench{grid-template-columns:1fr;min-height:0}.thread-sidebar{display:none}.chat-shell{min-height:690px}.mobile-workspace-link{display:inline}
+      .conversation{padding:17px}.message{max-width:92%}
     }
     @media(max-width:480px){
       .back{font-size:13px}.logo{height:50px}
@@ -116,8 +167,9 @@
       textarea,.token-view,.answer{padding:18px 15px}
       .manual-tools{margin-left:15px;margin-right:15px}
       .detections{padding-left:15px;padding-right:15px}
-      .send-row{align-items:flex-start;flex-direction:column}.send-controls{width:100%;flex-direction:column}.model-select,.primary{width:100%}
-      .workspace-invite{padding:22px 18px}
+      .send-row{align-items:flex-start;flex-direction:column}.send-action-column,.send-controls{width:100%}.send-action-column{justify-items:stretch}.send-controls{flex-direction:column}.model-select,.primary{width:100%}
+      .chat-topbar{align-items:flex-start;flex-direction:column}.chat-shell{min-height:640px}.conversation{min-height:112px;flex-basis:112px;padding:10px 14px}.conversation.has-messages{min-height:240px;padding:16px 14px}.empty-thread{min-height:92px}.message{max-width:100%}.composer{padding-left:12px;padding-right:12px}.enhanced-protection{grid-template-columns:minmax(0,1fr) auto}.enhanced-copy .enhanced-meta{display:flex;margin:4px 0 0}.composer .detections{grid-template-columns:1fr}.composer .send-row{margin-left:-12px;margin-right:-12px;padding-left:12px;padding-right:12px}.sample-row{align-items:flex-start;flex-direction:column}.sample-select{width:100%;max-width:none}
+      .quick-review{position:static;width:100%;max-width:none;grid-template-columns:1fr}.quick-review-actions{grid-template-columns:1fr 1fr}.quick-review-actions .decision-button{width:100%}
     }
   </style>
 </head>
@@ -133,7 +185,7 @@
     <section class="intro">
       <div>
         <div class="eyebrow">Interactive privacy demo</div>
-        <h1>Your details stay local. <em>The AI still helps.</em></h1>
+        <h1>Use AI without sending <em>identifying information.</em></h1>
       </div>
       <div>
         <p class="intro-copy">Type or paste a sample request. PrivacyAI identifies sensitive details, lets you review every replacement, and sends only the tokenized version to the AI.</p>
@@ -141,78 +193,148 @@
       </div>
     </section>
 
-    <div class="demo-grid">
-      <section class="panel" aria-labelledby="compose-title">
-        <div class="panel-head">
-          <span class="panel-title" id="compose-title">Your request</span>
-          <span class="step">01 / REDACT</span>
+    <section class="demo-workbench" aria-label="PrivacyAI protected AI interface">
+      <aside class="thread-sidebar" aria-label="Demo conversations">
+        <div class="sidebar-brand">PrivacyAI</div>
+        <a class="new-chat" href="demo.html"><span aria-hidden="true">＋</span> New protected chat</a>
+        <input class="sidebar-search" type="search" placeholder="Search clients, work, or threads" aria-label="Search workspace">
+        <div class="sidebar-label">My work</div>
+        <nav class="product-nav" aria-label="My work">
+          <a class="product-link" href="workspace.html">Recent <span class="product-count">4</span></a>
+          <a class="product-link current" href="#composer">Current conversation</a>
+          <a class="product-link" href="workspace.html?view=threads">Threads <span class="product-count">8</span></a>
+          <a class="product-link" href="workspace.html?view=documents">Documents <span class="product-count">3</span></a>
+        </nav>
+        <div class="sidebar-label">Clients</div>
+        <nav class="product-nav client-links" aria-label="Clients">
+          <a class="product-link" href="workspace.html?view=griffin">Griffin v. Harbor<small>Matter #2026-104</small></a>
+          <a class="product-link" href="workspace.html?view=ellis">Ellis Estate Planning<small>Matter #2026-097</small></a>
+        </nav>
+        <div class="sidebar-label">Firm</div>
+        <nav class="product-nav" aria-label="Firm">
+          <a class="product-link" href="workspace.html?view=admin">Administration</a>
+          <a class="product-link" href="workspace.html?view=audit">Audit records</a>
+        </nav>
+        <div class="sidebar-spacer"></div>
+        <div class="sidebar-profile"><strong>Sarah Chen</strong><span>Attorney · Firm administrator</span></div>
+      </aside>
+      <section class="chat-shell" aria-labelledby="compose-title">
+      <div class="chat-topbar">
+        <div class="chat-title" id="compose-title">PrivacyAI protected conversation<span class="chat-subtitle">Fictional examples only · original values stay in this browser</span></div>
+        <div class="topbar-actions">
+          <div class="enhanced-protection" id="enhancedProtection">
+            <div class="enhanced-copy"><span class="enhanced-meta"><span class="enhanced-dot" id="enhancedDot"></span><span id="enhancedStatus">Starting local protection</span></span></div>
+            <button class="enhanced-button" id="enhancedButton" type="button">Enhanced protection</button>
+            <details class="model-debug"><summary>Diagnostics</summary><pre id="modelDiagnostics">Loading local detector.</pre></details>
+          </div>
+          <label class="privacy-toggle"><input type="checkbox" id="showPrivacyDetails">Show privacy details</label><a class="mobile-workspace-link" href="workspace.html">Workspace</a><span class="status"><span class="dot" id="dot"></span><span id="status">Ready</span></span>
         </div>
-        <textarea id="input" maxlength="6000" aria-label="Request containing sample sensitive details" placeholder="Paste a sample request here. Please do not use real sensitive information in this early demo."></textarea>
-        <div class="sample-row"><button class="text-button" id="sample" type="button">Load a fictional example</button> <span class="selection-hint">or highlight missed text to protect it</span></div>
-        <div class="manual-tools" id="manualTools" aria-live="polite">
-          <div class="manual-heading">
-            <span class="manual-selection" id="manualSelection"></span>
-            <button class="manual-close" id="manualClose" type="button" aria-label="Cancel manual replacement">&times;</button>
-          </div>
-          <div class="manual-options">
-            <label><input id="allMatches" type="checkbox" checked> Protect every occurrence in this request</label>
-            <label><input id="rememberRule" type="checkbox"> Also protect this phrase in future requests on this device</label>
-          </div>
-          <div class="manual-actions">
-            <span class="selection-hint">The selected text never leaves this browser.</span>
-            <button class="protect-button" id="protectSelection" type="button">Protect selection</button>
+      </div>
+      <div class="conversation" id="conversation" aria-live="polite">
+        <div class="empty-thread" id="emptyThread">
+          <div class="empty-thread-inner">
+            <strong><span class="empty-response-dot" aria-hidden="true"></span>AI responses appear here</strong>
           </div>
         </div>
-        <div class="review">
-          <div class="review-summary">
-            <span class="panel-title">Review replacements</span>
-            <span class="count" id="count">0 items detected</span>
-          </div>
-          <div class="detections" id="detections"><div class="empty">Detected details will appear here for your approval.</div></div>
+      </div>
+      <section class="composer" id="composer">
+        <div class="editor-shell">
+          <div class="input-highlights" id="inputHighlights" aria-hidden="true"></div>
+          <textarea id="input" maxlength="6000" aria-label="Request containing sample sensitive details" placeholder="Paste a sample request here. Please do not use real sensitive information in this early demo."></textarea>
         </div>
+        <div class="sample-row"><label for="sample">Try a fictional example</label><select class="sample-select" id="sample"><option value="">Choose an industry…</option><option value="legal">Legal</option><option value="tax">Tax &amp; Accounting</option><option value="healthcare">Healthcare</option><option value="financial">Financial Advisory</option><option value="technology">Passwords, Keys &amp; Credentials</option><option value="general">General business</option></select><span class="selection-hint">or type your own and highlight anything missed</span></div>
+        <div class="protection-stack" id="protectionStack" hidden>
+          <details class="transmission-details" id="transmissionDetails">
+            <summary><strong>What the AI will receive</strong><span class="count" id="count">0 items detected</span></summary>
+            <div class="token-view" id="tokenView">Start typing to preview the protected request.</div>
+          </details>
+          <details class="review" id="reviewDetails">
+            <summary><span>Review replacements <span class="review-peek" id="reviewPeek"></span></span><span class="review-action" id="reviewAction">Show all</span></summary>
+            <div class="review-policy"><label><input id="requireReview" type="checkbox" checked> Require a decision for every possible detail</label><span id="decisionCount">0 pending</span></div>
+            <div class="manual-tools" id="manualTools" aria-live="polite">
+              <div class="manual-heading">
+                <span class="manual-selection" id="manualSelection"></span>
+                <button class="manual-close" id="manualClose" type="button" aria-label="Cancel manual replacement">&times;</button>
+              </div>
+              <div class="manual-options">
+                <label><input id="allMatches" type="checkbox" checked> Protect every occurrence in this request</label>
+                <label><input id="rememberRule" type="checkbox"> Also protect this phrase in future requests on this device</label>
+              </div>
+              <div class="manual-actions">
+                <span class="selection-hint">The selected text never leaves this browser.</span>
+                <button class="protect-button" id="protectSelection" type="button">Protect selection</button>
+              </div>
+            </div>
+             <div class="detections" id="detections"><div class="empty">Detected details will appear here for your approval.</div></div>
+             <div class="rule-launch-row"><span>For a single phrase, highlight it in your request first.</span><button class="text-button" id="openRuleDialog" type="button">Create or manage rules</button></div>
+           </details>
+         </div>
         <div class="send-row">
-          <small>Only the preview shown at right will be sent.</small>
-          <div class="send-controls">
+          <small>Only the protected preview above will be sent. This demo currently uses OpenAI.</small>
+          <div class="send-action-column">
+            <div class="quick-review" id="quickReview" hidden aria-live="polite">
+              <div class="quick-review-copy">
+                <div class="quick-review-top"><span class="quick-review-progress" id="quickReviewProgress"></span></div>
+                <strong class="quick-review-value" id="quickReviewValue"></strong>
+                <span class="quick-review-meta" id="quickReviewMeta"></span>
+              </div>
+              <div class="quick-review-actions">
+                <button class="decision-button protect" id="quickProtect" type="button">Protect</button>
+                <button class="decision-button" id="quickAllow" type="button">Allow</button>
+              </div>
+            </div>
+            <div class="send-controls">
             <select class="model-select" aria-label="AI model used for this demo">
               <option>ChatGPT · GPT-5 Nano</option>
               <option disabled>Claude · planned</option>
               <option disabled>Gemini · planned</option>
             </select>
-            <button class="primary" id="send" type="button">Send redacted request</button>
+            <button class="primary" id="send" type="button">Send protected request</button>
+            </div>
           </div>
         </div>
       </section>
-
-      <section class="panel" aria-labelledby="preview-title">
-        <div class="panel-head">
-          <span class="panel-title" id="preview-title">What the AI receives</span>
-          <span class="status"><span class="dot" id="dot"></span><span id="status">Ready</span></span>
-        </div>
-        <div class="token-view" id="tokenView">Start typing to preview the protected request.</div>
-        <div class="panel-head">
-          <span class="panel-title">Answer restored locally</span>
-          <span class="step">02 / RESTORE</span>
-        </div>
-        <div class="answer placeholder" id="answer" aria-live="polite">The AI response will appear here. Approved details are restored only in your browser.</div>
       </section>
-    </div>
-    <p class="disclaimer">Early demonstration only. Pattern matching can miss sensitive information or flag ordinary text. Review every replacement before sending. Do not enter real client, patient, filer, or financial information.</p>
-    <section class="workspace-invite" aria-labelledby="workspace-invite-title">
-      <div>
-        <div class="eyebrow">After the request</div>
-        <h2 id="workspace-invite-title">See the secure client and firm record.</h2>
-        <p>Explore fictional matter activity, protected threads, document history, model records, and an administrator’s firmwide view.</p>
-      </div>
-      <a class="workspace-link" href="workspace.html">Explore secure workspace →</a>
     </section>
+    <p class="disclaimer">Early demonstration only. Pattern matching can miss sensitive information or flag ordinary text. Review every replacement before sending. Do not enter real client, patient, filer, or financial information.</p>
   </main>
+
+  <dialog class="rule-dialog" id="ruleDialog" aria-labelledby="ruleDialogTitle">
+    <div class="rule-dialog-head">
+      <div><h2 id="ruleDialogTitle">Create a protection rule</h2><p>Describe the format and teach PrivacyAI with fictional examples.</p></div>
+      <button class="rule-dialog-close" id="closeRuleDialog" type="button" aria-label="Close">&times;</button>
+    </div>
+    <form class="rule-form" id="ruleForm">
+      <div class="saved-rules-panel"><strong>Saved rules on this device</strong><div class="saved-rules-list" id="savedRulesList"></div></div>
+      <label class="rule-field"><span>What should PrivacyAI protect?</span><input id="ruleDescription" maxlength="120" placeholder="Example: Our matter numbers" required></label>
+      <label class="rule-field"><span>Examples that should match (at least 2)</span><textarea id="rulePositiveExamples" placeholder="SD-2026-1042&#10;LA-2025-882" required></textarea><small>Enter fictional examples one per line.</small></label>
+      <label class="rule-field"><span>Examples that should not match</span><textarea id="ruleNegativeExamples" placeholder="CA-92111"></textarea><small>Optional, but useful for preventing an overly broad rule.</small></label>
+      <label class="rule-field"><span>Apply to</span><select id="ruleScope"><option value="device">My future requests on this device</option><option disabled>This client or case (full product)</option><option disabled>Entire firm — admin approval (full product)</option></select></label>
+      <div class="rule-preview" id="rulePreview" aria-live="polite"></div>
+    </form>
+    <div class="rule-dialog-actions">
+      <button class="rule-secondary" id="previewRule" type="button">Preview rule</button>
+      <button class="protect-button rule-save" id="savePatternRule" type="button" disabled>Approve and activate rule</button>
+    </div>
+  </dialog>
 
   <script>
     const input = document.querySelector("#input");
+    const inputHighlights = document.querySelector("#inputHighlights");
+    const inputTooltip = document.createElement("div");
+    inputTooltip.className = "input-token-tooltip";
+    inputTooltip.setAttribute("role","tooltip");
+    document.body.append(inputTooltip);
+    const inlineChoice = document.createElement("div");
+    inlineChoice.className = "inline-choice";
+    inlineChoice.innerHTML = '<strong id="inlineChoiceValue"></strong><span>Change protection for this match</span><div class="inline-choice-actions"><button class="inline-keep" type="button" data-inline-action="keep">Keep protected</button><button type="button" data-inline-action="allow">Allow</button></div>';
+    document.body.append(inlineChoice);
     const count = document.querySelector("#count");
     const detections = document.querySelector("#detections");
     const tokenView = document.querySelector("#tokenView");
-    const answer = document.querySelector("#answer");
+    const conversation = document.querySelector("#conversation");
+    const showPrivacyDetails = document.querySelector("#showPrivacyDetails");
+    const protectionStack = document.querySelector("#protectionStack");
     const send = document.querySelector("#send");
     const sample = document.querySelector("#sample");
     const status = document.querySelector("#status");
@@ -220,27 +342,78 @@
     const manualTools = document.querySelector("#manualTools");
     const manualSelection = document.querySelector("#manualSelection");
     const manualClose = document.querySelector("#manualClose");
+    const reviewDetails = document.querySelector("#reviewDetails");
+    const reviewPeek = document.querySelector("#reviewPeek");
+    const reviewAction = document.querySelector("#reviewAction");
+    const requireReview = document.querySelector("#requireReview");
+    const decisionCount = document.querySelector("#decisionCount");
+    const quickReview = document.querySelector("#quickReview");
+    const quickReviewProgress = document.querySelector("#quickReviewProgress");
+    const quickReviewValue = document.querySelector("#quickReviewValue");
+    const quickReviewMeta = document.querySelector("#quickReviewMeta");
+    const quickProtect = document.querySelector("#quickProtect");
+    const quickAllow = document.querySelector("#quickAllow");
     const allMatches = document.querySelector("#allMatches");
     const rememberRule = document.querySelector("#rememberRule");
     const protectSelection = document.querySelector("#protectSelection");
+    const enhancedButton = document.querySelector("#enhancedButton");
+    const enhancedStatus = document.querySelector("#enhancedStatus");
+    const enhancedDot = document.querySelector("#enhancedDot");
+    const modelDiagnostics = document.querySelector("#modelDiagnostics");
+    const openRuleDialog = document.querySelector("#openRuleDialog");
+    const ruleDialog = document.querySelector("#ruleDialog");
+    const closeRuleDialog = document.querySelector("#closeRuleDialog");
+    const ruleForm = document.querySelector("#ruleForm");
+    const ruleDescription = document.querySelector("#ruleDescription");
+    const rulePositiveExamples = document.querySelector("#rulePositiveExamples");
+    const ruleNegativeExamples = document.querySelector("#ruleNegativeExamples");
+    const rulePreview = document.querySelector("#rulePreview");
+    const previewRule = document.querySelector("#previewRule");
+    const savePatternRule = document.querySelector("#savePatternRule");
+    const savedRulesList = document.querySelector("#savedRulesList");
+    const ruleDialogTitle = document.querySelector("#ruleDialogTitle");
 
     const typePriority = {
-      EMAIL: 100, SSN: 98, EIN: 96, CARD: 94, PHONE: 92, IP: 90,
-      ROUTING: 88, DOB: 86, ADDRESS: 84, PERSON: 80, ID: 70, ENTITY: 40, MANUAL: 110
+      PRIVATE_KEY: 109, API_KEY: 108, ACCESS_TOKEN: 107, PASSWORD: 106,
+      CONNECTION_STRING: 105, EMAIL: 100, SSN: 98, EIN: 96, CARD: 94, PHONE: 92, IP: 90,
+      ADDRESS: 97, ROUTING: 88, DOB: 86, USERNAME: 83, AMOUNT: 82, DATE: 81, PERSON: 80,
+      LOCATION: 79, ORGANIZATION: 78, ID: 90, ENTITY: 40, MANUAL: 110
     };
     let candidates = [];
     let enabled = new Set();
+    let suggestionDecisions = new Map();
     let manualRules = [];
     let pendingSelection = null;
+    let entityDetector = null;
+    let localEntitySuggestions = [];
+    let localEntityText = "";
+    let entityTimer = null;
+    let entityRun = 0;
+    let userDisabled = new Set();
+    let proposedPatternRule = null;
+    let editingRuleId = null;
     const localRuleKey = "privacyai.demo.manualRules";
+    const enhancedOptInKey = "privacyai.demo.enhancedProtection";
+    const entityModelId = "onnx-community/distilbert-NER-ONNX";
 
     function loadLocalRules() {
       try {
         const values = JSON.parse(localStorage.getItem(localRuleKey) || "[]");
         if (Array.isArray(values)) {
-          manualRules = values.filter(value=>typeof value === "string" && value.trim()).map((value,index)=>({
-            id:`saved-${index}-${value.length}`,value,scope:"all",saved:true
-          }));
+          manualRules = values.flatMap((entry,index)=>{
+            if (typeof entry === "string" && entry.trim()) {
+              return [{id:`saved-${index}-${entry.length}`,value:entry,scope:"all",saved:true}];
+            }
+            if (entry && typeof entry === "object" && typeof entry.patternSource === "string") {
+              try {
+                new RegExp(entry.patternSource,entry.flags || "gi");
+                return [{id:entry.id || `pattern-${index}`,description:entry.description || "Custom pattern",patternSource:entry.patternSource,flags:entry.flags || "gi",examples:Array.isArray(entry.examples) ? entry.examples : [],negativeExamples:Array.isArray(entry.negativeExamples) ? entry.negativeExamples : [],scope:"all",saved:true}];
+              } catch {
+                return [];
+              }
+            }
+            return [];
+          });
         }
       } catch {
         manualRules = [];
@@ -249,7 +422,14 @@
 
     function saveLocalRules() {
       try {
-        const values = [...new Set(manualRules.filter(rule=>rule.saved).map(rule=>rule.value))];
+        const values = manualRules.filter(rule=>rule.saved).map(rule=>rule.patternSource ? {
+          id:rule.id,
+          description:rule.description,
+          patternSource:rule.patternSource,
+          flags:rule.flags || "gi",
+          examples:rule.examples || [],
+          negativeExamples:rule.negativeExamples || []
+        } : rule.value);
         localStorage.setItem(localRuleKey,JSON.stringify(values));
       } catch {
         // Browser storage can be unavailable in strict privacy modes.
@@ -260,8 +440,141 @@
       return value.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
     }
 
+    function patternSegments(value) {
+      const segments = [];
+      for (const character of value) {
+        const kind = /\d/.test(character) ? "digit" : /[A-Za-z]/.test(character) ? "letter" : "literal";
+        const previous = segments.at(-1);
+        if (previous && previous.kind === kind && (kind !== "literal" || previous.text.at(-1) === character)) {
+          previous.text += character;
+        } else {
+          segments.push({kind,text:character});
+        }
+      }
+      return segments;
+    }
+
+    function inferPatternRule(examples) {
+      const segmented = examples.map(patternSegments);
+      const shape = segmented[0].map(segment=>segment.kind === "literal" ? `literal:${segment.text}` : segment.kind);
+      if (segmented.some(parts=>parts.length !== shape.length || parts.some((part,index)=>{
+        const expected = shape[index];
+        return expected.startsWith("literal:") ? expected !== `literal:${part.text}` : expected !== part.kind;
+      }))) return null;
+
+      const core = segmented[0].map((_,index)=>{
+        const parts = segmented.map(example=>example[index]);
+        if (parts[0].kind === "literal") return escapeRegex(parts[0].text);
+        const lengths = parts.map(part=>part.text.length);
+        const min = Math.min(...lengths);
+        const max = Math.max(...lengths);
+        const quantifier = min === max ? `{${min}}` : `{${min},${max}}`;
+        if (parts[0].kind === "digit") return `\\d${quantifier}`;
+        const texts = parts.map(part=>part.text);
+        const characterClass = texts.every(text=>text === text.toUpperCase())
+          ? "[A-Z]"
+          : texts.every(text=>text === text.toLowerCase())
+            ? "[a-z]"
+            : "[A-Za-z]";
+        return `${characterClass}${quantifier}`;
+      }).join("");
+      return `\\b${core}\\b`;
+    }
+
+    function ruleLines(field) {
+      return [...new Set(field.value.split(/\r?\n/).map(value=>value.trim()).filter(Boolean))];
+    }
+
+    function buildPatternRulePreview() {
+      const positives = ruleLines(rulePositiveExamples);
+      const negatives = ruleLines(ruleNegativeExamples);
+      proposedPatternRule = null;
+      savePatternRule.disabled = true;
+      rulePreview.className = "rule-preview visible";
+
+      if (!ruleDescription.value.trim() || positives.length < 2) {
+        rulePreview.classList.add("error");
+        rulePreview.innerHTML = "<strong>More examples needed</strong>Add a description and at least two examples that share the same format.";
+        return;
+      }
+
+      const patternSource = inferPatternRule(positives);
+      if (!patternSource) {
+        rulePreview.classList.add("error");
+        rulePreview.innerHTML = "<strong>The examples do not share one clear format</strong>Use examples with the same sequence of letters, numbers, and separators.";
+        return;
+      }
+
+      const exactTest = new RegExp(`^(?:${patternSource.replace(/^\\b|\\b$/g,"")})$`);
+      const negativeMatches = negatives.filter(value=>exactTest.test(value));
+      if (negativeMatches.length) {
+        rulePreview.classList.add("error");
+        rulePreview.innerHTML = `<strong>This rule is too broad</strong>It would also match: ${negativeMatches.map(escapeHtml).join(", ")}. Add more specific positive examples.`;
+        return;
+      }
+
+      const liveRegex = new RegExp(patternSource,"g");
+      const liveMatches = [...input.value.matchAll(liveRegex)].map(match=>match[0]);
+      proposedPatternRule = {
+        id:editingRuleId || `pattern-${Date.now()}`,
+        description:ruleDescription.value.trim(),
+        patternSource,
+        flags:"g",
+        examples:positives,
+        negativeExamples:negatives,
+        scope:"all",
+        saved:true
+      };
+      savePatternRule.disabled = false;
+      savePatternRule.textContent = editingRuleId ? "Update rule" : "Approve and activate rule";
+      rulePreview.innerHTML = `<strong>Proposed rule</strong>
+        Protect values shaped like the examples: ${positives.map(value=>`<span class="rule-test-match">${escapeHtml(value)}</span>`).join("")}
+        <br>${liveMatches.length
+          ? `Matches in the current request: ${liveMatches.map(value=>`<span class="rule-test-match">${escapeHtml(value)}</span>`).join("")}`
+          : "No matches are currently present in the request. The rule will apply to future requests on this device."}`;
+    }
+
+    function renderSavedRules() {
+      const saved = manualRules.filter(rule=>rule.saved);
+      if (!saved.length) {
+        savedRulesList.innerHTML = '<span class="saved-rules-empty">No saved rules yet. Exact highlighted phrases and approved patterns will appear here.</span>';
+        return;
+      }
+      savedRulesList.innerHTML = saved.map(rule=>`
+        <div class="saved-rule-item">
+          <span title="${escapeHtml(rule.description || rule.value)}">${escapeHtml(rule.patternSource ? rule.description : `Exact phrase: ${rule.value}`)}</span>
+          <span class="saved-rule-actions">
+            ${rule.patternSource ? `<button type="button" data-edit-saved-rule="${rule.id}">Edit</button>` : ""}
+            <button type="button" data-delete-saved-rule="${rule.id}">Delete</button>
+          </span>
+        </div>`).join("");
+    }
+
+    function resetRuleEditor() {
+      editingRuleId = null;
+      proposedPatternRule = null;
+      ruleDialogTitle.textContent = "Create a protection rule";
+      savePatternRule.textContent = "Approve and activate rule";
+      savePatternRule.disabled = true;
+      ruleForm.reset();
+      rulePreview.className = "rule-preview";
+      rulePreview.innerHTML = "";
+      renderSavedRules();
+    }
+
     function addManualMatches(found,text) {
       manualRules.forEach((rule,ruleIndex)=>{
+        if (rule.patternSource) {
+          try {
+            const regex = new RegExp(rule.patternSource,rule.flags || "gi");
+            for (const match of text.matchAll(regex)) {
+              found.push({type:"MANUAL",value:match[0],start:match.index,end:match.index+match[0].length,priority:typePriority.MANUAL,ruleIndex,saved:true,source:"pattern-rule",description:rule.description});
+            }
+          } catch {
+            // Invalid saved patterns are ignored rather than weakening other protection.
+          }
+          return;
+        }
         if (rule.scope === "instance") {
           if (text.slice(rule.start,rule.end) === rule.value) {
             found.push({type:"MANUAL",value:rule.value,start:rule.start,end:rule.end,priority:typePriority.MANUAL,ruleIndex,saved:false});
@@ -301,12 +614,22 @@
         if (!value || (options.validate && !options.validate(value))) continue;
         const relative = match[0].indexOf(value);
         const start = match.index + Math.max(0, relative);
-        list.push({ type, value, start, end: start + value.length, priority: typePriority[type], suggested:!!options.suggested });
+        list.push({ type, value, start, end: start + value.length, priority: options.priority ?? typePriority[type], suggested:!!options.suggested, source:options.source });
       }
     }
 
     function detect(text) {
       const found = [];
+      addMatches(found,text,"PRIVATE_KEY",/-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----[\s\S]*?-----END (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----/g);
+      addMatches(found,text,"API_KEY",/\b(?:sk-(?:proj-|ant-api\d{2}-)?[A-Za-z0-9_-]{16,}|AIza[A-Za-z0-9_-]{20,}|(?:gh[opusr]|github_pat)_[A-Za-z0-9_]{16,}|(?:sk|rk)_(?:live|test)_[A-Za-z0-9]{16,}|xox[baprs]-[A-Za-z0-9-]{16,}|AKIA[A-Z0-9]{16})\b/g);
+      addMatches(found,text,"ACCESS_TOKEN",/\beyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}\b/g);
+      addMatches(found,text,"ACCESS_TOKEN",/\b(?:Authorization\s*:\s*)?(?:Bearer|Basic)\s+([A-Za-z0-9._~+\/=-]{12,})/gi,{value:m=>m[1]});
+      addMatches(found,text,"CONNECTION_STRING",/\b(?:postgres(?:ql)?|mysql|mongodb(?:\+srv)?|redis|amqp):\/\/[^\s:@/]+:[^\s@/]+@[^\s"'<>]+/gi,{value:m=>m[0].replace(/[.,]$/,"")});
+      addMatches(found,text,"PASSWORD",/\b(?:password|passwd|pwd|client_secret|secret|api[_-]?key|access[_-]?token)\s*(?:=|:|is)\s*["']?([^\s"',;]{8,})/gi,{value:m=>m[1].replace(/[.,]$/,"")});
+      addMatches(found,text,"PASSWORD",/\b(?:password|passwd|pwd)\s+["']?((?=[^\s"',;]*\d)[^\s"',;]{8,})/gi,{value:m=>m[1].replace(/[.,]$/,"")});
+      addMatches(found,text,"USERNAME",/\b(?:username|login)\s*(?:=|:|is)?\s*["']?((?=[A-Za-z0-9._-]{3,64}\b)(?=[A-Za-z0-9._-]*[._\d-])[A-Za-z][A-Za-z0-9._-]{2,63})/gi,{value:m=>m[1],suggested:true,source:"context"});
+      addMatches(found,text,"USERNAME",/\b(?:username|user|login)\s*(?:=|:|is)\s*["']?([A-Za-z][A-Za-z0-9._-]{2,63})/gi,{value:m=>m[1],suggested:true,source:"context"});
+      addMatches(found,text,"ENTITY",/\b(?=[A-Za-z0-9_-]{24,}\b)(?=[A-Za-z0-9_-]*[A-Z])(?=[A-Za-z0-9_-]*[a-z])(?=[A-Za-z0-9_-]*\d)[A-Za-z0-9_-]{24,}\b/g,{suggested:true});
       addMatches(found,text,"EMAIL",/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi);
       addMatches(found,text,"SSN",/\b(?!000|666|9\d\d)\d{3}[- ]?(?!00)\d{2}[- ]?(?!0000)\d{4}\b/g);
       addMatches(found,text,"EIN",/\b\d{2}-\d{7}\b/g);
@@ -315,23 +638,54 @@
       addMatches(found,text,"IP",/\b(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)\b/g);
       addMatches(found,text,"ROUTING",/\b(?:routing(?: number)?|ABA)\s*(?:is|:|#)?\s*(\d{9})\b/gi,{value:m=>m[1],validate:routingChecksum});
       addMatches(found,text,"DOB",/\b(?:DOB|date of birth|born)\s*(?:is|:)?\s*((?:0?[1-9]|1[0-2])[\/.-](?:0?[1-9]|[12]\d|3[01])[\/.-](?:19|20)\d{2})\b/gi,{value:m=>m[1]});
+      addMatches(found,text,"AMOUNT",/\b(?:price|pricing|fee|budget|revenue|salary|contract value|deal value|quote)\s*(?:is|:|=|of)?\s*(\$[\d,]+(?:\.\d{2})?)/gi,{value:m=>m[1]});
+      addMatches(found,text,"DATE",/\b(?:renewal|launch|closing|deadline|effective|expiration|expiry|contract)\s*(?:date)?\s*(?:is|:|=|of|on)?\s*((?:0?[1-9]|1[0-2])[\/.-](?:0?[1-9]|[12]\d|3[01])[\/.-]20\d{2})\b/gi,{value:m=>m[1]});
       addMatches(found,text,"ADDRESS",/\b\d{1,6}\s+(?:[NSEW]\.?\s+)?(?:[A-Z0-9][A-Z0-9.'-]*\s+){1,5}(?:Street|St\.?|Avenue|Ave\.?|Road|Rd\.?|Boulevard|Blvd\.?|Drive|Dr\.?|Lane|Ln\.?|Court|Ct\.?|Way|Parkway|Pkwy\.?|Highway|Hwy\.?)(?:\s+(?:Apt|Suite|Ste|Unit|#)\s*[A-Z0-9-]+)?(?:,?\s+[A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+)*,\s*[A-Z]{2}\s+\d{5}(?:-\d{4})?)?/gi);
+      addMatches(found,text,"ORGANIZATION",/\b(?:[A-Z][A-Za-z&.'-]*\s+){1,4}(?:Hospital|Analytics|Consulting|Group|Partners|Advisors|Associates|Capital|Bank|Clinic|Health|Technologies|Systems|Solutions|Holdings|Corporation|Corp\.?|Inc\.?|LLC|LLP|P\.?C\.?)\b/g,{suggested:true,priority:86,source:"heuristic"});
+      const validContextName = value=>value.length>1&&!/^(?:the|a|an|and|or|he|she|they|his|her|their|it|we|you|had|has|is|was|would|could|did|client|patient|taxpayer|plaintiff|defendant|claimant|employee|customer|business|firm|company|agreement|complaint|whether|that)$/i.test(value);
+      addMatches(found,text,"PERSON",/\b(?:spoke|talked|met|worked|communicated|consulted)\s+with\s+([a-z][a-z'-]+)\b/gi,{value:m=>m[1],validate:validContextName,priority:88});
+      addMatches(found,text,"PERSON",/\b([a-z][a-z'-]+)\s+(?:contacted|called|emailed|asked|reported|signed|filed|testified|agreed)\b/gi,{value:m=>m[1],validate:validContextName,priority:87});
+      addMatches(found,text,"PERSON",/\b(?:contacted|called|emailed|asked|met|consulted)\s+([a-z][a-z'-]+)\b/gi,{value:m=>m[1],validate:validContextName,priority:87});
+      addMatches(found,text,"PERSON",/\b(?:whether|that)\s+([a-z][a-z'-]+)\s+(?:had|has|was|is|would|could|did)\b/gi,{value:m=>m[1],validate:validContextName,priority:87});
       addMatches(
         found,
         text,
-        "ENTITY",
-        /\b(?:client|patient|plaintiff|defendant|claimant|employee|customer|spouse|wife|husband|partner|child|son|daughter|mother|father|parent|guardian|beneficiary|witness|attorney|counsel|doctor|physician|name(?:\s+is)?|on behalf of)\s*[:,-]?\s+([a-z][a-z'-]+(?:\s+(?:[a-z]\.|[a-z][a-z'-]+)){1,3}?)(?=\s+(?:lives?|resides?|works?|has|had|is|was|with|whose|email|phone|ssn|ein|dob|at|needs?|wants?|requests?|requested|reports?|reported|says?|said|saw|witnessed|called|contacted|signed|filed|owns?|received)\b|[,.;:\n]|$)/gi,
+        "PERSON",
+        /\b(?:client|patient|taxpayer|plaintiff|defendant|claimant|employee|customer|spouse|wife|husband|partner|child|son|daughter|mother|father|parent|guardian|beneficiary|witness|attorney|counsel|doctor|physician)\s*[:,-]?\s+([a-z][a-z'-]+)(?=\s+(?:as|regarding|concerning|who|whose|he|she|they|his|her|their|lives?|resides?|works?|has|had|is|was|with|email|phone|ssn|ein|dob|at|needs?|wants?|requests?|requested|reports?|reported|says?|said|saw|witnessed|called|contacted|signed|filed|owns?|received)\b|[,.;:\n]|$)/gi,
+        {
+          value:m=>m[1],
+          validate:value=>value.length>1&&!/\b(?:the|a|an|and|or|requested|reported|said|signed|filed|called|contacted|received)\b/i.test(value),
+          priority:88
+        }
+      );
+      addMatches(
+        found,
+        text,
+        "PERSON",
+        /\b(?:client|patient|taxpayer|plaintiff|defendant|claimant|employee|customer|spouse|wife|husband|partner|child|son|daughter|mother|father|parent|guardian|beneficiary|witness|attorney|counsel|doctor|physician|name(?:\s+is)?|on behalf of)\s*[:,-]?\s+([a-z][a-z'-]+(?:\s+(?:[a-z]\.|[a-z][a-z'-]+)){1,3}?)(?=\s+(?:he|she|they|his|her|their|lives?|resides?|works?|has|had|is|was|with|whose|email|phone|ssn|ein|dob|at|needs?|wants?|requests?|requested|reports?|reported|says?|said|saw|witnessed|called|contacted|signed|filed|owns?|received)\b|[,.;:\n]|$)/gi,
         {
           value:m=>{
             const words=m[1].split(/\s+/);
             const stop=words.findIndex(word=>/^(?:lives?|resides?|works?|has|had|is|was|with|whose|email|phone|ssn|ein|dob|at)$/i.test(word));
             return (stop>=0?words.slice(0,stop):words).join(" ");
           },
-          validate:value=>value.split(/\s+/).length>=2&&!/\b(?:and|or|the|a|an|plaintiff|defendant|client|patient|claimant|employee|customer|spouse|wife|husband|partner|child|son|daughter|mother|father|parent|guardian|beneficiary|witness|attorney|counsel|doctor|physician)\b/i.test(value)
+          validate:value=>value.split(/\s+/).length>=2&&!/\b(?:and|or|the|a|an|plaintiff|defendant|client|patient|claimant|employee|customer|spouse|wife|husband|partner|child|son|daughter|mother|father|parent|guardian|beneficiary|witness|attorney|counsel|doctor|physician)\b/i.test(value),
+          priority:89
         }
       );
       addMatches(found,text,"ID",/\b(?:account|patient|claim|policy|case|matter|file)\s*(?:number|no\.?|ID|#)\s*(?:is|:)?\s*([A-Z0-9][A-Z0-9-]{4,})\b/gi,{value:m=>m[1]});
       addManualMatches(found,text);
+      if (text === localEntityText) {
+        localEntitySuggestions.forEach(item=>{
+          if (text.slice(item.start,item.end) !== item.value) return;
+          found.push({
+            ...item,
+            priority:85,
+            suggested:item.score < .90,
+            source:"local-ai"
+          });
+        });
+      }
       addMatches(
         found,
         text,
@@ -382,14 +736,18 @@
       const result = buildRedaction(input.value);
       if (!input.value.trim()) {
         tokenView.textContent = "Start typing to preview the protected request.";
+        inputHighlights.textContent = "";
         return result;
       }
       const counters = {};
       const valueTokens = new Map();
       let cursor = 0;
-      let html = "";
+      let tokenHtml = "";
+      let editorHtml = "";
       for (const item of candidates) {
-        html += escapeHtml(input.value.slice(cursor,item.start));
+        const plain = escapeHtml(input.value.slice(cursor,item.start));
+        tokenHtml += plain;
+        editorHtml += plain;
         if (enabled.has(item.id)) {
           const key = `${item.type}:${item.value.toLowerCase()}`;
           let token = valueTokens.get(key);
@@ -398,32 +756,93 @@
             token = `[[${item.type}_${counters[item.type]}]]`;
             valueTokens.set(key,token);
           }
-          html += `<mark tabindex="0" data-original="${escapeHtml(item.value)}">${token}</mark>`;
-        } else if (item.suggested) {
-          html += `<span class="suggestion" role="button" tabindex="0" data-suggestion-id="${item.id}" title="Possible sensitive detail — click to protect">${escapeHtml(item.value)}</span>`;
+          tokenHtml += `<mark tabindex="0" data-original="${escapeHtml(item.value)}">${token}</mark>`;
+          editorHtml += `<span class="input-protected" data-placeholder="${token}" data-candidate-id="${item.id}">${escapeHtml(item.value)}</span>`;
+        } else if (item.suggested && suggestionDecisions.get(suggestionKey(item)) !== "allow") {
+          const sourceDetail = item.source === "local-ai"
+            ? `Local AI suggestion · ${Math.round(item.score * 100)}% confidence`
+            : "Rule-based possible detail";
+          tokenHtml += `<span class="suggestion" role="button" tabindex="0" data-suggestion-id="${item.id}" title="${sourceDetail} · click to protect">${escapeHtml(item.value)}</span>`;
+          editorHtml += `<span class="input-possible">${escapeHtml(item.value)}</span>`;
         } else {
-          html += escapeHtml(item.value);
+          tokenHtml += escapeHtml(item.value);
+          editorHtml += escapeHtml(item.value);
         }
         cursor = item.end;
       }
-      html += escapeHtml(input.value.slice(cursor));
-      tokenView.innerHTML = html;
+      const remainder = escapeHtml(input.value.slice(cursor));
+      tokenHtml += remainder;
+      editorHtml += remainder;
+      tokenView.innerHTML = tokenHtml;
+      inputHighlights.innerHTML = `${editorHtml}\n`;
+      inputHighlights.scrollTop = input.scrollTop;
+      inputHighlights.scrollLeft = input.scrollLeft;
       return result;
+    }
+
+    function suggestionKey(item) {
+      return `${item.type}:${item.value.toLowerCase()}`;
+    }
+
+    function unresolvedSuggestions() {
+      return candidates.filter(item=>item.suggested && !suggestionDecisions.has(suggestionKey(item)));
+    }
+
+    function updateReviewGate() {
+      const unresolved = unresolvedSuggestions();
+      const allSuggested = candidates.filter(item=>item.suggested);
+      decisionCount.textContent = `${unresolved.length} pending`;
+      const blocked = requireReview.checked && unresolved.length > 0;
+      send.dataset.reviewBlocked = blocked ? "true" : "false";
+      send.textContent = blocked ? `Review ${unresolved.length} possible detail${unresolved.length === 1 ? "" : "s"}` : "Send protected request";
+      if (unresolved.length) {
+        reviewPeek.textContent = `· ${unresolved.length} decision${unresolved.length === 1 ? "" : "s"} required`;
+        const item = unresolved[0];
+        const completed = allSuggested.length - unresolved.length;
+        quickReview.hidden = false;
+        quickReview.dataset.id = item.id;
+        quickReviewProgress.textContent = `${completed + 1} of ${allSuggested.length} · review possible detail`;
+        quickReviewValue.textContent = item.value;
+        quickReviewMeta.textContent = item.source === "local-ai"
+          ? `Possible ${item.type.toLowerCase()} · Local AI ${Math.round(item.score * 100)}%`
+          : `Possible ${item.type.toLowerCase()} · ${item.source === "heuristic" ? "Name pattern" : "Context rule"}`;
+      } else {
+        quickReview.hidden = true;
+        quickReview.removeAttribute("data-id");
+      }
     }
 
     function renderDetections() {
       count.textContent = `${candidates.length} item${candidates.length === 1 ? "" : "s"} detected`;
+      reviewPeek.textContent = candidates.length ? `· ${candidates[0].type}: ${candidates[0].value}${candidates.length > 1 ? "…" : ""}` : "";
       if (!candidates.length) {
         detections.innerHTML = '<div class="empty">No supported patterns detected. Names and addresses require clear context; review your text carefully.</div>';
       } else {
-        detections.innerHTML = candidates.map(item=>`
-          <label class="detection ${item.suggested ? "suggested" : ""}">
+        detections.innerHTML = candidates.map(item=>{
+          if (item.suggested) {
+            const decision = suggestionDecisions.get(suggestionKey(item));
+            const sourceBadge = item.source === "local-ai"
+              ? `<span class="source-badge">local AI · ${Math.round(item.score * 100)}%</span>`
+              : `<span class="source-badge">${item.source === "heuristic" ? "name pattern" : "rule"}</span>`;
+            return `<div class="detection decision-required ${decision ? "resolved" : ""}" data-decision-item="${item.id}">
+              <span class="decision-copy"><span class="detected-value">${escapeHtml(item.value)}${sourceBadge}</span><span class="type">${decision ? decision.toUpperCase() : "DECISION REQUIRED"} · ${item.type}</span></span>
+              <span class="decision-actions">
+                <button class="decision-button protect ${decision === "protect" ? "selected" : ""}" type="button" data-decision="protect" data-id="${item.id}">Protect</button>
+                <button class="decision-button ${decision === "allow" ? "selected" : ""}" type="button" data-decision="allow" data-id="${item.id}">Allow</button>
+              </span>
+            </div>`;
+          }
+          const confirmedSource = item.source === "pattern-rule" ? "pattern rule" : (item.type === "MANUAL" ? "manual" : (item.source === "local-ai" ? `local AI · ${Math.round(item.score * 100)}%` : "rule"));
+          const typeLabel = item.source === "pattern-rule" ? "CUSTOM RULE" : item.type;
+          return `<label class="detection">
             <input type="checkbox" data-id="${item.id}" ${enabled.has(item.id) ? "checked" : ""}>
-            <span class="detected-value">${escapeHtml(item.value)}</span>
-            <span class="type">${item.suggested ? "POSSIBLE DETAIL" : item.type}</span>
+            <span class="detected-value">${escapeHtml(item.value)}<span class="source-badge">${confirmedSource}</span></span>
+            <span class="type">${typeLabel}</span>
             ${item.type === "MANUAL" ? `<button class="rule-remove" type="button" data-remove-rule="${item.ruleIndex}" title="${item.saved ? "Remove saved local rule" : "Remove manual replacement"}">Remove</button>` : ""}
-          </label>`).join("");
+          </label>`;
+        }).join("");
       }
+      updateReviewGate();
       renderPreview();
     }
 
@@ -432,15 +851,219 @@
       candidates = detect(input.value);
       enabled = new Set(candidates.filter(item=>{
         const prior = previous.get(`${item.type}:${item.value}:${item.start}`);
+        const stateKey = `${item.type}:${item.value.toLowerCase()}:${item.start}`;
+        const decision = item.suggested ? suggestionDecisions.get(suggestionKey(item)) : null;
+        if (decision === "protect") return true;
+        if (decision === "allow") return false;
+        if (userDisabled.has(stateKey)) return false;
+        if (item.source === "local-ai" && item.score >= .90) return true;
         return prior === true || (!item.suggested && prior !== false);
       }).map(item=>item.id));
+      const hasDraft = Boolean(input.value.trim());
+      protectionStack.hidden = !hasDraft;
+      conversation.classList.toggle("has-draft",hasDraft);
       renderDetections();
-      answer.className = "answer placeholder";
-      answer.textContent = "The AI response will appear here. Approved details are restored only in your browser.";
+    }
+
+    function setEnhancedState(state,message) {
+      enhancedStatus.textContent = message;
+      enhancedDot.className = `enhanced-dot ${state === "analyzing" ? "loading" : state}`.trim();
+      enhancedButton.disabled = state === "loading";
+      if (state === "ready" || state === "analyzing") enhancedButton.textContent = "Enhanced protection on";
+      if (state === "error") enhancedButton.textContent = "Try download again";
+    }
+
+    function entityChunks(text,maxLength=850) {
+      const chunks = [];
+      let start = 0;
+      while (start < text.length) {
+        let end = Math.min(text.length,start+maxLength);
+        if (end < text.length) {
+          const boundary = Math.max(text.lastIndexOf("\n",end),text.lastIndexOf(". ",end),text.lastIndexOf(" ",end));
+          if (boundary > start+Math.floor(maxLength*.55)) end = boundary+1;
+        }
+        chunks.push({text:text.slice(start,end),offset:start});
+        start = end;
+      }
+      return chunks;
+    }
+
+    function normalizeEntityLabel(result) {
+      const raw = String(result.entity_group || result.entity || "").replace(/^[BI]-/,"").toUpperCase();
+      if (raw === "PER" || raw === "PERSON") return "PERSON";
+      if (raw === "LOC" || raw === "LOCATION") return "LOCATION";
+      if (raw === "ORG" || raw === "ORGANIZATION") return "ORGANIZATION";
+      return "ENTITY";
+    }
+
+    function locateEntityText(source,rawWord,fromIndex=0) {
+      const cleaned = String(rawWord || "").replace(/\s*##/g,"").trim();
+      if (!cleaned) return null;
+      const pattern = cleaned.split(/\s+/).map(escapeRegex).join("\\s+");
+      const matcher = new RegExp(pattern,"gi");
+      matcher.lastIndex = Math.max(0,fromIndex);
+      let match = matcher.exec(source);
+      if (!match) {
+        matcher.lastIndex = 0;
+        const first = matcher.exec(source);
+        if (!first) return null;
+        const second = matcher.exec(source);
+        if (second) return null;
+        match = first;
+      }
+      return {start:match.index,end:match.index+match[0].length,value:match[0]};
+    }
+
+    async function analyzeEntities(text,runId) {
+      if (!entityDetector || !text.trim()) {
+        localEntitySuggestions = [];
+        localEntityText = text;
+        refresh();
+        return;
+      }
+      setEnhancedState("analyzing","Reviewing names and places locally");
+      try {
+        const found = [];
+        const diagnosticResults = [];
+        let rawResultCount = 0;
+        for (const chunk of entityChunks(text)) {
+          const rawResults = await entityDetector(chunk.text,{aggregation_strategy:"simple"});
+          if (runId !== entityRun) return;
+          rawResultCount += rawResults.length;
+          const results = [];
+          rawResults.forEach(result=>{
+            const rawWord = String(result.word || "");
+            const previous = results[results.length-1];
+            if (previous && /^\s*##/.test(rawWord)) {
+              previous.word = `${String(previous.word || "")}${rawWord.replace(/^\s*##/,"")}`;
+              previous.score = Math.min(Number(previous.score || 0),Number(result.score || 0));
+            } else {
+              results.push({...result});
+            }
+          });
+          let entityCursor = 0;
+          results.forEach(result=>{
+            const rawWord = String(result.word || "");
+            const detachedSubword = /^\s*##\S+\s*$/.test(rawWord);
+            const hasOffsets = result.start != null && result.end != null && Number.isFinite(Number(result.start)) && Number.isFinite(Number(result.end));
+            const located = hasOffsets || detachedSubword ? null : locateEntityText(chunk.text,rawWord,entityCursor);
+            const localStart = hasOffsets ? Number(result.start) : located?.start;
+            const localEnd = hasOffsets ? Number(result.end) : located?.end;
+            if (located) entityCursor = located.end;
+            const start = Number.isFinite(localStart) ? chunk.offset + localStart : NaN;
+            const end = Number.isFinite(localEnd) ? chunk.offset + localEnd : NaN;
+            const value = Number.isFinite(start) && Number.isFinite(end) ? text.slice(start,end).trim() : "";
+            const leading = value ? text.slice(start,end).indexOf(value) : 0;
+            const score = Number(result.score || 0);
+            const substantiveLength = value.replace(/[^\p{L}\p{N}]/gu,"").length;
+            const accepted = Boolean(!detachedSubword && value && substantiveLength >= 2 && score >= .55);
+            diagnosticResults.push({
+              label:String(result.entity_group || result.entity || "unknown"),
+              word:rawWord,
+              score:Number.isFinite(score) ? `${Math.round(score * 1000) / 10}%` : "missing",
+              start:Number.isFinite(start) ? start : "missing",
+              end:Number.isFinite(end) ? end : "missing",
+              offsetSource:hasOffsets ? "model" : (located ? "matched" : "unresolved"),
+              accepted
+            });
+            if (!accepted) return;
+            const adjustedStart = start + Math.max(0,leading);
+            found.push({
+              type:normalizeEntityLabel(result),
+              value,
+              start:adjustedStart,
+              end:adjustedStart+value.length,
+              score
+            });
+          });
+        }
+        if (runId !== entityRun) return;
+        found.sort((a,b)=>a.start-b.start || a.end-b.end);
+        const consolidated = [];
+        found.forEach(item=>{
+          const previous = consolidated[consolidated.length-1];
+          if (previous && previous.type === item.type && item.start <= previous.end+1) {
+            previous.end = Math.max(previous.end,item.end);
+            previous.value = text.slice(previous.start,previous.end);
+            previous.score = Math.min(previous.score,item.score);
+          } else {
+            consolidated.push({...item});
+          }
+        });
+        modelDiagnostics.textContent = diagnosticResults.length
+          ? `Model: ${entityModelId}\nInput: ${text.length} characters\nRaw model outputs: ${rawResultCount}\nNormalized candidates: ${diagnosticResults.length}\nAccepted at 55%: ${diagnosticResults.filter(item=>item.accepted).length}\nPolicy: 90%+ auto-protect · 55–89.9% review\n\n${diagnosticResults.map(item=>`${item.accepted ? "ACCEPT" : "DROP"}  ${item.label}  ${item.score}  ${item.start}-${item.end}  ${item.offsetSource}  ${item.word}`).join("\n")}`
+          : `Model: ${entityModelId}\nInput: ${text.length} characters\nRaw model outputs: ${rawResultCount}\nNormalized candidates: 0\n\nInference completed, but the model returned no usable entities.`;
+        localEntitySuggestions = consolidated;
+        localEntityText = text;
+        setEnhancedState("ready",`Active · ${consolidated.length} local suggestion${consolidated.length === 1 ? "" : "s"}`);
+        refresh();
+      } catch (error) {
+        console.error("Local entity analysis failed",error);
+        modelDiagnostics.textContent = `Inference error:\n${error?.stack || error?.message || String(error)}`;
+        localEntitySuggestions = [];
+        localEntityText = "";
+        setEnhancedState("error","Local analysis unavailable; essential protection remains active");
+        refresh();
+      }
+    }
+
+    function scheduleEntityAnalysis() {
+      clearTimeout(entityTimer);
+      entityRun += 1;
+      if (!entityDetector || !input.value.trim()) {
+        if (!input.value.trim()) {
+          localEntitySuggestions = [];
+          localEntityText = input.value;
+        }
+        return;
+      }
+      const runId = entityRun;
+      const text = input.value;
+      entityTimer = setTimeout(()=>analyzeEntities(text,runId),450);
+    }
+
+    async function enableEnhancedProtection() {
+      if (entityDetector) return;
+      setEnhancedState("loading","Downloading compact detector securely");
+      modelDiagnostics.textContent = `Loading model:\n${entityModelId}`;
+      try {
+        const {pipeline} = await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.2.0");
+        entityDetector = await pipeline("token-classification",entityModelId,{
+          dtype:"q8",
+          progress_callback:progress=>{
+            if (progress?.status === "progress" && Number.isFinite(progress.progress)) {
+              setEnhancedState("loading",`Downloading local detector · ${Math.round(progress.progress)}%`);
+            }
+          }
+        });
+        modelDiagnostics.textContent = `Model loaded successfully:\n${entityModelId}\n\nWaiting for text to analyze.`;
+        try {
+          localStorage.setItem(enhancedOptInKey,"enabled");
+        } catch {
+          // Preference persistence can be unavailable in strict privacy modes.
+        }
+        setEnhancedState("ready","Active · original text stays on this device");
+        scheduleEntityAnalysis();
+      } catch (error) {
+        console.error("Local entity model failed to load",error);
+        modelDiagnostics.textContent = `Model-load error:\n${error?.stack || error?.message || String(error)}`;
+        entityDetector = null;
+        setEnhancedState("error","Download failed; essential protection remains active");
+      }
     }
 
     function rehydrate(text,map) {
       return Object.entries(map).reduce((result,[token,value])=>result.split(token).join(value),text);
+    }
+
+    function validateResponseTokens(text,map) {
+      const allowed = new Set(Object.keys(map));
+      const tokenLikeValues =
+        text.match(/\[{1,2}[A-Z][A-Z0-9_]{1,60}\]{1,2}/g) || [];
+      const invalid = [...new Set(
+        tokenLikeValues.filter(token=>!allowed.has(token))
+      )];
+      return {valid:invalid.length === 0,invalid};
     }
 
     function renderRehydrated(text,map) {
@@ -457,12 +1080,173 @@
       return html + escapeHtml(text.slice(cursor));
     }
 
+    function renderProtectedHistory(text,map) {
+      const values = [...new Set(Object.values(map))]
+        .filter(Boolean)
+        .sort((a,b)=>b.length-a.length);
+      if (!values.length) return escapeHtml(text);
+      const tokenForValue = new Map(
+        Object.entries(map).map(([token,value])=>[value,token])
+      );
+      const pattern = new RegExp(values.map(escapeRegex).join("|"),"g");
+      let cursor = 0;
+      let html = "";
+      for (const match of text.matchAll(pattern)) {
+        html += escapeHtml(text.slice(cursor,match.index));
+        const token = tokenForValue.get(match[0]) || "Protected locally";
+        html += `<span class="history-protected" title="${escapeHtml(token)}">${escapeHtml(match[0])}</span>`;
+        cursor = match.index + match[0].length;
+      }
+      return html + escapeHtml(text.slice(cursor));
+    }
+
+    function restoredTokensIn(text,map) {
+      return Object.keys(map).filter(token=>text.includes(token));
+    }
+
+    const privacyDetailsKey = "privacyai.demo.showPrivacyDetails";
+    function applyPrivacyDetailsPreference(enabled) {
+      showPrivacyDetails.checked = enabled;
+      conversation.classList.toggle("privacy-details-visible",enabled);
+      try {
+        localStorage.setItem(privacyDetailsKey,enabled ? "enabled" : "disabled");
+      } catch {
+        // The toggle still works when preference storage is unavailable.
+      }
+    }
+
+    showPrivacyDetails.addEventListener("change",()=>{
+      applyPrivacyDetailsPreference(showPrivacyDetails.checked);
+    });
+
     function setStatus(text,state="") {
       status.textContent = text;
       dot.className = `dot ${state}`.trim();
     }
 
-    input.addEventListener("input",refresh);
+    input.addEventListener("input",()=>{
+      inlineChoice.classList.remove("visible");
+      refresh();
+      scheduleEntityAnalysis();
+    });
+    input.addEventListener("scroll",()=>{
+      inputHighlights.scrollTop = input.scrollTop;
+      inputHighlights.scrollLeft = input.scrollLeft;
+      inputTooltip.style.display = "none";
+      inlineChoice.classList.remove("visible");
+    });
+    inputHighlights.addEventListener("mouseover",event=>{
+      const token = event.target.closest(".input-protected");
+      if (!token) return;
+      inputTooltip.textContent = token.dataset.placeholder || "";
+      inputTooltip.style.display = "block";
+      const tokenRect = token.getBoundingClientRect();
+      const tipRect = inputTooltip.getBoundingClientRect();
+      const left = Math.min(
+        window.innerWidth - tipRect.width - 10,
+        Math.max(10,tokenRect.left + tokenRect.width / 2 - tipRect.width / 2)
+      );
+      const above = tokenRect.top - tipRect.height - 7;
+      const top = above >= 8 ? above : Math.min(window.innerHeight - tipRect.height - 8,tokenRect.bottom + 7);
+      inputTooltip.style.left = `${left}px`;
+      inputTooltip.style.top = `${top}px`;
+    });
+    inputHighlights.addEventListener("mouseout",event=>{
+      if (!event.target.closest(".input-protected")) return;
+      inputTooltip.style.display = "none";
+    });
+    inputHighlights.addEventListener("mousedown",event=>{
+      const token = event.target.closest(".input-protected");
+      if (!token) return;
+      event.preventDefault();
+      const item = candidates.find(candidate=>candidate.id === token.dataset.candidateId);
+      if (!item) return;
+      inputTooltip.style.display = "none";
+      inlineChoice.dataset.candidateId = item.id;
+      inlineChoice.querySelector("#inlineChoiceValue").textContent = item.value;
+      inlineChoice.classList.add("visible");
+      const tokenRect = token.getBoundingClientRect();
+      const choiceRect = inlineChoice.getBoundingClientRect();
+      const left = Math.min(window.innerWidth - choiceRect.width - 10,Math.max(10,tokenRect.left));
+      const below = tokenRect.bottom + 7;
+      const top = below + choiceRect.height <= window.innerHeight - 8 ? below : Math.max(8,tokenRect.top - choiceRect.height - 7);
+      inlineChoice.style.left = `${left}px`;
+      inlineChoice.style.top = `${top}px`;
+    });
+    inlineChoice.addEventListener("click",event=>{
+      const action = event.target.closest("[data-inline-action]")?.dataset.inlineAction;
+      if (!action) return;
+      const item = candidates.find(candidate=>candidate.id === inlineChoice.dataset.candidateId);
+      if (item && action === "allow") {
+        userDisabled.add(`${item.type}:${item.value.toLowerCase()}:${item.start}`);
+        if (item.suggested) suggestionDecisions.set(suggestionKey(item),"allow");
+        refresh();
+      } else if (item && item.suggested) {
+        suggestionDecisions.set(suggestionKey(item),"protect");
+        refresh();
+      }
+      inlineChoice.classList.remove("visible");
+      input.focus();
+    });
+    document.addEventListener("mousedown",event=>{
+      if (!inlineChoice.contains(event.target) && !event.target.closest(".input-protected")) inlineChoice.classList.remove("visible");
+    });
+    enhancedButton.addEventListener("click",enableEnhancedProtection);
+    openRuleDialog.addEventListener("click",()=>{
+      resetRuleEditor();
+      ruleDialog.showModal();
+      ruleDescription.focus();
+    });
+    closeRuleDialog.addEventListener("click",()=>ruleDialog.close());
+    ruleDialog.addEventListener("click",event=>{
+      if (event.target === ruleDialog) ruleDialog.close();
+    });
+    ruleForm.addEventListener("submit",event=>event.preventDefault());
+    previewRule.addEventListener("click",buildPatternRulePreview);
+    savedRulesList.addEventListener("click",event=>{
+      const deleteButton = event.target.closest("[data-delete-saved-rule]");
+      if (deleteButton) {
+        manualRules = manualRules.filter(rule=>rule.id !== deleteButton.dataset.deleteSavedRule);
+        saveLocalRules();
+        renderSavedRules();
+        refresh();
+        return;
+      }
+      const editButton = event.target.closest("[data-edit-saved-rule]");
+      if (!editButton) return;
+      const rule = manualRules.find(item=>item.id === editButton.dataset.editSavedRule && item.patternSource);
+      if (!rule) return;
+      editingRuleId = rule.id;
+      proposedPatternRule = null;
+      ruleDialogTitle.textContent = "Edit protection rule";
+      savePatternRule.textContent = "Preview changes first";
+      savePatternRule.disabled = true;
+      ruleDescription.value = rule.description || "";
+      rulePositiveExamples.value = (rule.examples || []).join("\n");
+      ruleNegativeExamples.value = (rule.negativeExamples || []).join("\n");
+      rulePreview.className = "rule-preview";
+      ruleDescription.focus();
+    });
+    [ruleDescription,rulePositiveExamples,ruleNegativeExamples].forEach(field=>{
+      field.addEventListener("input",()=>{
+        proposedPatternRule = null;
+        savePatternRule.disabled = true;
+        rulePreview.className = "rule-preview";
+      });
+    });
+    savePatternRule.addEventListener("click",()=>{
+      if (!proposedPatternRule) return;
+      if (editingRuleId) {
+        manualRules = manualRules.map(rule=>rule.id === editingRuleId ? proposedPatternRule : rule);
+      } else {
+        manualRules.push(proposedPatternRule);
+      }
+      saveLocalRules();
+      ruleDialog.close();
+      resetRuleEditor();
+      refresh();
+      reviewDetails.open = true;
+    });
     function showSelectedText() {
       const start = input.selectionStart;
       const end = input.selectionEnd;
@@ -475,6 +1259,7 @@
       allMatches.checked = true;
       rememberRule.checked = false;
       manualTools.classList.add("visible");
+      reviewDetails.open = true;
     }
     input.addEventListener("mouseup",showSelectedText);
     input.addEventListener("keyup",event=>{
@@ -485,6 +1270,10 @@
       manualTools.classList.remove("visible");
       input.focus();
     });
+    reviewDetails.addEventListener("toggle",()=>{
+      reviewAction.textContent = reviewDetails.open ? "Hide" : "Show all";
+    });
+    requireReview.addEventListener("change",updateReviewGate);
     protectSelection.addEventListener("click",()=>{
       if (!pendingSelection) return;
       const useAll = allMatches.checked || rememberRule.checked;
@@ -503,13 +1292,30 @@
     });
     detections.addEventListener("change",event=>{
       if (!event.target.matches("input[data-id]")) return;
-      event.target.checked ? enabled.add(event.target.dataset.id) : enabled.delete(event.target.dataset.id);
+      const item = candidates.find(candidate=>candidate.id === event.target.dataset.id);
+      if (!item) return;
+      const stateKey = `${item.type}:${item.value.toLowerCase()}:${item.start}`;
+      if (event.target.checked) {
+        enabled.add(item.id);
+        userDisabled.delete(stateKey);
+      } else {
+        enabled.delete(item.id);
+        userDisabled.add(stateKey);
+      }
       renderPreview();
     });
     function protectSuggestion(target) {
       const id = target.dataset.suggestionId;
       if (!id) return;
+      const item = candidates.find(candidate=>candidate.id === id);
+      if (item?.suggested) suggestionDecisions.set(suggestionKey(item),"protect");
       enabled.add(id);
+      renderDetections();
+    }
+    function applySuggestionDecision(item,decision) {
+      if (!item?.suggested) return;
+      suggestionDecisions.set(suggestionKey(item),decision);
+      decision === "protect" ? enabled.add(item.id) : enabled.delete(item.id);
       renderDetections();
     }
     tokenView.addEventListener("click",event=>{
@@ -524,6 +1330,15 @@
       }
     });
     detections.addEventListener("click",event=>{
+      const decisionButton = event.target.closest("[data-decision]");
+      if (decisionButton) {
+        const item = candidates.find(candidate=>candidate.id === decisionButton.dataset.id);
+        if (!item) return;
+        applySuggestionDecision(item,decisionButton.dataset.decision);
+        const next = detections.querySelector(".decision-required:not(.resolved) .decision-button");
+        next?.focus();
+        return;
+      }
       const button = event.target.closest("[data-remove-rule]");
       if (!button) return;
       event.preventDefault();
@@ -533,9 +1348,30 @@
       saveLocalRules();
       refresh();
     });
-    sample.addEventListener("click",()=>{
-      input.value = "Please draft a concise follow-up for plaintiff Jordan Ellis at 1824 Harbor View Road, San Diego, CA 92101. The client’s email is jordan.ellis@example.com, phone is (619) 555-0147, SSN is 123-45-6789, and the firm EIN is 12-3456789. Reference case number CV-2026-10482.";
+    quickProtect.addEventListener("click",()=>{
+      const item = candidates.find(candidate=>candidate.id === quickReview.dataset.id);
+      applySuggestionDecision(item,"protect");
+      if (!quickReview.hidden) quickProtect.focus();
+    });
+    quickAllow.addEventListener("click",()=>{
+      const item = candidates.find(candidate=>candidate.id === quickReview.dataset.id);
+      applySuggestionDecision(item,"allow");
+      if (!quickReview.hidden) quickAllow.focus();
+    });
+    const fictionalExamples = {
+      legal: "Please draft a concise follow-up for plaintiff Jordan Ellis at 1824 Harbor View Road, San Diego, CA 92101. The client’s email is jordan.ellis@example.com, phone is (619) 555-0147, and case number is CV-2026-10482.",
+      tax: "Summarize the filing issues for taxpayer Morgan Reyes at 440 Cedar Lane, Sacramento, CA 95814. Their SSN is 123-45-6789, the business EIN is 12-3456789, and the contact email is morgan.reyes@example.com.",
+      healthcare: "Draft follow-up instructions for patient Avery Patel, DOB 04/18/1982, phone (858) 555-0138, living at 790 Coast Boulevard, La Jolla, CA 92037. Reference patient ID MRN-884219.",
+      financial: "Prepare a client-review summary for Cameron Brooks at 88 Market Street, San Francisco, CA 94105. Their email is cameron.brooks@example.com, account ID is ACCT-728401, and phone is (415) 555-0184.",
+      technology: "Help troubleshoot this fictional automation configuration. Authorization: Bearer DEMOonlyToken_1234567890ABCDE. The database URL is postgres://demo_user:NotARealPassword99@db.example.invalid/app and api_key = ghp_DEMOONLY000000000000000000000000. These values are deliberately nonfunctional.",
+      general: "Draft a renewal email to customer Taylor Morgan at taylor.morgan@example.com. The contract value is $48,500, renewal date is 09/30/2026, and internal account ID is ACCT-2026-184. Call (212) 555-0175 if clarification is needed."
+    };
+    sample.addEventListener("change",()=>{
+      if (!sample.value) return;
+      suggestionDecisions = new Map();
+      input.value = fictionalExamples[sample.value];
       refresh();
+      scheduleEntityAnalysis();
       input.focus();
     });
     loadLocalRules();
@@ -550,30 +1386,88 @@
       // Browser storage can be unavailable in strict privacy modes.
     }
     refresh();
+    try {
+      applyPrivacyDetailsPreference(localStorage.getItem(privacyDetailsKey) === "enabled");
+    } catch {
+      applyPrivacyDetailsPreference(false);
+    }
+    enableEnhancedProtection();
     send.addEventListener("click",async()=>{
       const {redacted,map} = renderPreview();
       if (!input.value.trim()) { input.focus(); return; }
+      if (send.dataset.reviewBlocked === "true") {
+        reviewDetails.open = true;
+        detections.querySelector(".decision-required:not(.resolved) .decision-button")?.focus();
+        return;
+      }
+      const original = input.value;
+      const protectedCount = Object.keys(map).length;
+      conversation.hidden = false;
+      conversation.classList.add("has-messages");
+      conversation.querySelector("#emptyThread")?.remove();
+      const userMessage = document.createElement("article");
+      userMessage.className = "message message-user";
+      userMessage.innerHTML = `
+        <div class="message-head">You · protected before sending</div>
+        <div class="message-body">${renderProtectedHistory(original,map)}</div>
+        <details class="sent-preview">
+          <summary>${protectedCount} detail${protectedCount === 1 ? "" : "s"} protected · View what the AI received</summary>
+          <pre>${escapeHtml(redacted)}</pre>
+        </details>`;
+      const aiMessage = document.createElement("article");
+      aiMessage.className = "message message-ai";
+      aiMessage.innerHTML = '<div class="message-head">PrivacyAI / ChatGPT · waiting</div><div class="message-body message-waiting">Generating a response from the protected request…</div>';
+      conversation.append(userMessage,aiMessage);
+      conversation.scrollTop = conversation.scrollHeight;
+      input.value = "";
+      suggestionDecisions = new Map();
+      refresh();
       send.disabled = true;
       setStatus("Sending protected request…","active");
-      answer.className = "answer placeholder";
-      answer.textContent = "Waiting for the AI response…";
       try {
-        const response = await fetch("/api/chat",{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify({message:redacted})
-        });
-        const payload = await response.json().catch(()=>({}));
-        if (!response.ok) throw new Error(payload.error || "The request could not be completed.");
-        answer.className = "answer";
-        answer.innerHTML = renderRehydrated(payload.answer,map);
-        setStatus("Restored locally","active");
+        const localPreview = location.protocol === "file:";
+        let responseText;
+        if (localPreview) {
+          await new Promise(resolve=>setTimeout(resolve,450));
+          const firstPerson = Object.keys(map).find(token=>token.startsWith("[[PERSON_"));
+          const firstMatter = Object.keys(map).find(token=>token.startsWith("[[ID_"));
+          responseText = `Of course—here is a concise follow-up${firstPerson ? ` for ${firstPerson}` : ""}${firstMatter ? ` regarding matter ${firstMatter}` : ""}. The substantive draft can proceed using the protected facts provided, while the identifying details remain outside the transmitted request.`;
+        } else {
+          const response = await fetch("/api/chat",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({message:redacted})
+          });
+          const payload = await response.json().catch(()=>({}));
+          if (!response.ok) throw new Error(payload.error || "The request could not be completed.");
+          responseText = payload.answer;
+        }
+        const responseIntegrity = validateResponseTokens(responseText,map);
+        if (!responseIntegrity.valid) {
+          throw new Error("The AI changed a privacy placeholder, so PrivacyAI withheld the response. Please try again.");
+        }
+        aiMessage.querySelector(".message-head").textContent = localPreview ? "PrivacyAI · local interface preview" : "PrivacyAI / ChatGPT · restored locally";
+        const body = aiMessage.querySelector(".message-body");
+        body.classList.remove("message-waiting");
+        body.innerHTML = renderRehydrated(responseText,map);
+        const restoredTokens = restoredTokensIn(responseText,map);
+        const restoredDetails = document.createElement("details");
+        restoredDetails.className = "sent-preview restored-preview";
+        restoredDetails.innerHTML = `
+          <summary>${restoredTokens.length} detail${restoredTokens.length === 1 ? "" : "s"} restored locally</summary>
+          <pre>${restoredTokens.length
+            ? restoredTokens.map(token=>`${escapeHtml(token)} → ${escapeHtml(map[token])}`).join("\n")
+            : "No protected values were used in this response."}</pre>`;
+        aiMessage.append(restoredDetails);
+        setStatus(localPreview ? "Local preview" : "Restored locally","active");
       } catch (error) {
-        answer.className = "answer";
-        answer.textContent = error.message;
+        aiMessage.querySelector(".message-head").textContent = "PrivacyAI / ChatGPT · request failed";
+        aiMessage.querySelector(".message-body").textContent = error.message;
         setStatus("Request failed","error");
       } finally {
         send.disabled = false;
+        conversation.scrollTop = conversation.scrollHeight;
+        input.focus();
       }
     });
   </script>
