@@ -112,7 +112,7 @@
     .history-protected{background:transparent;color:inherit}
     .conversation.privacy-details-visible .restored-value{background:#d8eadf;color:#173d2c;border-bottom-color:#4e8469;padding:1px 3px;font-weight:600}
     .conversation.privacy-details-visible .history-protected{background:rgba(20,20,20,.88);color:#fff;padding:1px 3px;font-weight:600}
-    .demo-workbench{display:grid;grid-template-columns:230px minmax(0,1fr);max-width:1180px;min-height:0;margin:0 auto;border:1px solid var(--rule);border-radius:14px;background:var(--panel);box-shadow:0 18px 48px rgba(36,31,22,.1);overflow:hidden}
+    .demo-workbench{display:grid;grid-template-columns:230px minmax(0,1fr);align-items:start;max-width:1180px;min-height:0;margin:0 auto;border:1px solid var(--rule);border-radius:14px;background:#eeece5;box-shadow:0 18px 48px rgba(36,31,22,.1);overflow:hidden}
     .thread-sidebar{display:flex;flex-direction:column;min-width:0;padding:18px 14px;background:#eeece5;border-right:1px solid var(--rule)}
     .new-chat{display:flex;align-items:center;justify-content:center;gap:8px;min-height:43px;padding:0 12px;border:1px solid #b8b3a7;border-radius:6px;background:#fff;color:var(--ink);font-weight:700;text-decoration:none}
     .new-chat:hover{border-color:var(--green);color:var(--green)}
@@ -129,7 +129,7 @@
     .workspace-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;background:var(--green);color:#fff;border-radius:3px;text-decoration:none;font-weight:700;white-space:nowrap}
     .workspace-link:hover{background:var(--black)}
     .thread-sidebar .workspace-link{width:100%;min-height:39px;padding:0 10px;font-size:11px}
-    .chat-shell{display:flex;flex-direction:column;min-width:0;min-height:0;background:var(--panel);overflow:hidden}
+    .chat-shell{align-self:start;display:flex;flex-direction:column;width:100%;min-width:0;min-height:0;background:var(--panel);overflow:hidden}
     .chat-topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:17px 20px;border-bottom:1px solid var(--rule);background:linear-gradient(90deg,#fbfaf7,#edf3ef)}
     .chat-title{font:600 12px/1.4 "IBM Plex Mono",monospace;letter-spacing:.06em}.chat-subtitle{display:block;margin-top:3px;color:var(--soft);font-size:10px;letter-spacing:0}
     .topbar-actions{display:flex;align-items:center;gap:12px}.privacy-toggle{display:flex;align-items:center;gap:6px;color:#5d594f;font-size:9px;white-space:nowrap;cursor:pointer}.privacy-toggle input{width:14px;height:14px;margin:0;accent-color:var(--green)}.mobile-workspace-link{display:inline;color:var(--green);font-size:10px;font-weight:700;text-decoration:none;border-bottom:1px solid var(--green)}
@@ -137,7 +137,7 @@
     .conversation{flex:0 0 82px;min-height:82px;max-height:none;overflow:auto;padding:12px clamp(20px,4vw,48px);background:#f1f0ec;scroll-behavior:smooth;transition:min-height .18s ease,flex-basis .18s ease}.conversation.has-messages{flex:1 1 auto;min-height:240px;padding-top:24px;padding-bottom:24px;background:#fbfaf7}
     .empty-thread{display:grid;place-items:center;min-height:58px;text-align:center;color:#8b867d;font-size:9px;line-height:1.45}.empty-thread strong{display:block;margin-bottom:2px;color:#68645c;font:600 10px/1.3 Inter,system-ui,sans-serif}.empty-thread-inner{max-width:360px}.empty-response-dot{display:inline-block;width:5px;height:5px;margin-right:6px;border-radius:50%;background:#b7b1a4;vertical-align:1px}
     .message{max-width:82%;margin-bottom:20px}.message-user{margin-left:auto}.message-ai{margin-right:auto}.message-head{display:flex;align-items:center;gap:8px;margin-bottom:7px;font:600 9px/1.3 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--green)}.message-user .message-head{justify-content:flex-end}
-    .message-body{padding:14px 16px;border:1px solid var(--rule);border-radius:10px;background:#fff;font-size:14px;line-height:1.65;white-space:pre-wrap}.message-user .message-body{background:var(--green-soft);border-color:#bfd0c4}.message-waiting{color:#8c867b}
+    .message-body{min-width:0;padding:14px 16px;border:1px solid var(--rule);border-radius:10px;background:#fff;font-size:14px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}.message-body .restored-value,.message-body .history-protected{max-width:100%;overflow-wrap:anywhere;word-break:break-all;box-decoration-break:clone;-webkit-box-decoration-break:clone}.message-user .message-body{background:var(--green-soft);border-color:#bfd0c4}.message-waiting{color:#8c867b}
     .sent-preview{margin-top:8px;font-size:11px;color:var(--soft)}.sent-preview summary{cursor:pointer;font-weight:650;color:var(--green)}.sent-preview pre{margin:8px 0 0;padding:11px;border-radius:5px;background:#171715;color:#fff;white-space:pre-wrap;overflow-wrap:anywhere;font:400 10px/1.55 "IBM Plex Mono",monospace}
     .composer{border-top:1px solid var(--rule);padding:16px 18px 0;background:#f3f1eb}.editor-shell{position:relative;min-height:116px;border:1px solid #c8c3b8;border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(36,31,22,.06);overflow:visible}.composer textarea,.input-highlights{width:100%;min-height:116px;max-height:240px;padding:17px 18px;font:400 14px/1.65 "IBM Plex Mono",monospace;letter-spacing:normal;white-space:pre-wrap;overflow-wrap:break-word}.composer textarea{position:relative;z-index:2;display:block;resize:vertical;border-radius:12px;background:transparent;color:transparent;-webkit-text-fill-color:transparent;caret-color:var(--green)}.composer textarea::placeholder{color:#777;-webkit-text-fill-color:#777}.composer textarea::selection{background:rgba(32,69,53,.22)}.input-highlights{position:absolute;z-index:3;inset:0;height:100%;overflow:hidden;color:var(--ink);pointer-events:none}.input-protected{position:relative;border-radius:3px;background:rgba(20,20,20,.88);color:#fff;padding:1px 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone;pointer-events:auto}.input-protected::after{content:attr(data-placeholder);position:absolute;left:50%;bottom:calc(100% + 7px);z-index:20;opacity:0;transform:translateX(-50%) translateY(2px);padding:6px 8px;border-radius:4px;background:#111;color:#fff;white-space:nowrap;font:500 9px/1.3 "IBM Plex Mono",monospace;box-shadow:0 7px 18px rgba(0,0,0,.22);transition:opacity .06s,transform .06s}.input-protected:hover::after{opacity:1;transform:translateX(-50%) translateY(0)}.input-possible{border-radius:2px;background:var(--amber-soft);color:var(--amber);border-bottom:2px dotted var(--amber);padding:1px 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}.composer .sample-row{padding:10px 4px}
     .input-protected::after{display:none}.input-token-tooltip{position:fixed;z-index:1000;display:none;max-width:min(280px,calc(100vw - 20px));padding:6px 8px;border-radius:4px;background:#111;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none;font:500 9px/1.3 "IBM Plex Mono",monospace;box-shadow:0 7px 18px rgba(0,0,0,.24)}
@@ -155,20 +155,26 @@
       .wrap{width:min(100% - 28px,680px)}
       .nav{min-height:86px}.logo{height:58px}
       main{padding:42px 0 60px}
+      main{padding-top:22px}
       .intro,.demo-grid{grid-template-columns:1fr}
-      .intro{gap:24px;margin-bottom:28px}
+      .intro{gap:0;margin-bottom:16px}
+      .intro-right{display:none}
+      .intro h1{max-width:none;font-size:clamp(25px,7vw,32px);line-height:1.02}
       h1{font-size:clamp(31px,9vw,43px)}
-      .demo-workbench{grid-template-columns:1fr;min-height:0}.thread-sidebar{display:none}.chat-shell{min-height:690px}.mobile-workspace-link{display:inline}
+      .demo-workbench{grid-template-columns:1fr;min-height:0}.thread-sidebar{display:none}.chat-shell{min-height:0}.mobile-workspace-link{display:inline}
       .conversation{padding:17px}.message{max-width:92%}
     }
     @media(max-width:480px){
-      .back{font-size:13px}.logo{height:50px}
+      .nav{min-height:66px}.back{font-size:11px;max-width:74px;line-height:1.15}.logo{height:42px}
+      main{padding:16px 10px 30px}
+      .kicker{margin-bottom:6px;font-size:8px}
+      .intro h1{font-size:24px;line-height:1.02}
       .panel-head,.review-summary,.send-row{padding-left:15px;padding-right:15px}
       textarea,.token-view,.answer{padding:18px 15px}
       .manual-tools{margin-left:15px;margin-right:15px}
       .detections{padding-left:15px;padding-right:15px}
       .send-row{align-items:flex-start;flex-direction:column}.send-action-column,.send-controls{width:100%}.send-action-column{justify-items:stretch}.send-controls{flex-direction:column}.model-select,.primary{width:100%}
-      .chat-topbar{align-items:flex-start;flex-direction:column}.chat-shell{min-height:640px}.conversation{min-height:112px;flex-basis:112px;padding:10px 14px}.conversation.has-messages{min-height:240px;padding:16px 14px}.empty-thread{min-height:92px}.message{max-width:100%}.composer{padding-left:12px;padding-right:12px}.enhanced-protection{grid-template-columns:minmax(0,1fr) auto}.enhanced-copy .enhanced-meta{display:flex;margin:4px 0 0}.composer .detections{grid-template-columns:1fr}.composer .send-row{margin-left:-12px;margin-right:-12px;padding-left:12px;padding-right:12px}.sample-row{align-items:flex-start;flex-direction:column}.sample-select{width:100%;max-width:none}
+      .chat-topbar{padding:11px 12px;gap:8px}.chat-title{font-size:10px}.chat-subtitle{font-size:8px}.topbar-actions{width:100%;gap:8px;flex-wrap:wrap}.privacy-toggle{font-size:8px}.chat-shell{min-height:0}.conversation{min-height:64px;flex-basis:64px;padding:8px 12px}.conversation.has-messages{min-height:210px;padding:14px 10px}.empty-thread{min-height:48px}.message{max-width:100%;margin-bottom:14px}.message-body{padding:11px 12px;font-size:13px;line-height:1.55}.composer{padding-left:10px;padding-right:10px}.enhanced-protection{grid-template-columns:minmax(0,1fr) auto}.enhanced-copy .enhanced-meta{display:flex;margin:4px 0 0}.composer .detections{grid-template-columns:1fr}.composer .send-row{margin-left:-10px;margin-right:-10px;padding-left:10px;padding-right:10px}.sample-row{align-items:flex-start;flex-direction:column}.sample-select{width:100%;max-width:none}
       .quick-review{position:static;width:100%;max-width:none;grid-template-columns:1fr}.quick-review-actions{grid-template-columns:1fr 1fr}.quick-review-actions .decision-button{width:100%}
     }
   </style>
