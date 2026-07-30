@@ -92,7 +92,8 @@ export default async function handler(request, response) {
       body: JSON.stringify({
         model: "gpt-5-nano",
         store: false,
-        max_output_tokens: 700,
+        reasoning: { effort: "minimal" },
+        max_output_tokens: 1_200,
         instructions:
           "You are a concise professional writing assistant. The user's message contains privacy placeholders such as [[PERSON_1]], [[SSN_1]], or [[ADDRESS_1]]. Preserve every placeholder exactly, including brackets, spelling, capitalization, and numbering. Never infer or invent the hidden values. Answer the request normally while retaining placeholders wherever the hidden information belongs.",
         input: message,
