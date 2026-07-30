@@ -11,14 +11,30 @@ The public demo proves the core flow without exposing original identifying conte
 
 The homepage hero provides a compact, no-send demonstration in one fixed-size workspace:
 
-- **Protected** is the default live view and updates as the visitor types.
-- Hovering a protected token reveals its original fictional value.
+- **Protected** is the default live view, is directly editable, and re-runs protection shortly after the visitor types.
+- Hovering or focusing a protected token immediately reveals its fictional value, without an extra label, in a high-contrast custom tooltip.
 - **Type your own** exposes the editable request and replaces the need for a separate Original tab.
 - **Replacements** provides optional checkboxes without adding a separate visible section.
 - A persistent example selector loads Legal, Tax & Accounting, Healthcare, Financial Advisory, or a blank request.
-- **Continue** transfers the current draft to `/demo` through browser-only session storage; it is not placed in a URL or sent to the backend.
+- On desktop, the card uses connected comparison tabs, a taller product-workspace treatment, and a clearly labeled fictional AI-response example.
+- **See full interactive demo** transfers the draft to `/demo` through browser-only session storage; it is not placed in a URL, and the homepage card itself does not call the model.
 
 The full `/demo` page provides the AI response workflow and expanded review experience.
+
+## Secure workspace preview
+
+`/workspace` is a fictional, interactive product preview that demonstrates the intended
+post-request experience without storing real records. It includes:
+
+- a client/matter activity view with user/seat, provider/model, timestamp, and protection status;
+- expandable metadata-first activity records;
+- thread and document views;
+- a firmwide administrator view; and
+- clear labeling that only OpenAI is connected in the live public demo while additional providers
+  are planned product options.
+
+Returned values restored in the browser are visually highlighted, but the highlighting is
+presentation-only and does not alter copied response text.
 
 If automatic detection misses something, the visitor can highlight up to 200 characters in the request and protect it manually:
 
@@ -27,6 +43,8 @@ If automatic detection misses something, the visitor can highlight up to 200 cha
 - **Remember locally for future requests** stores the exact phrase in browser storage and applies it case-insensitively to later requests.
 - Manually added and remembered rules appear in **Review replacements** and can be removed there.
 - The demo does not generate or accept arbitrary regular expressions. Broader user-authored patterns require validation and a match preview before they can be added safely.
+
+“Every occurrence” applies only to the current request. Remembering a phrase creates a browser-local exact-match rule that is also applied to later requests on that device.
 
 ## Usage controls
 
@@ -59,7 +77,12 @@ When the allowance is exhausted, show:
 ## Detection layers
 
 - Structured regex detection runs instantly as the visitor types.
+- Contextual name detection includes customers and case roles as well as common family, professional, witness, guardian, and beneficiary relationships.
+- Street-address detection includes an optional city, state, and ZIP portion with or without a comma between the street and city.
 - A future on-device entity model may add names, organizations, locations, and contextual identifiers after a short debounce.
 - High-confidence detections are protected by default.
-- Lower-confidence model suggestions remain visible and protected by default but are labeled for review.
+- Lower-confidence capitalized-phrase suggestions appear with an amber dotted highlight and a neutral **Possible detail** label.
+- Clicking an amber suggestion immediately protects it and turns it into the standard black token.
+- Possible-detail suggestions are not treated as confirmed identifiers until the visitor clicks them or checks them in **Review replacements**. Once protected, they use a neutral `ENTITY` token rather than claiming the phrase is a person.
+- Role words such as client, patient, witness, spouse, and attorney cannot begin a possible-detail suggestion; contextual high-confidence name matches take precedence.
 - Routine sending should not require a separate blocking approval screen.

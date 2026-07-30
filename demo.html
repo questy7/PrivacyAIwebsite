@@ -16,7 +16,7 @@
     *{box-sizing:border-box}
     html{color-scheme:light}
     body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif}
-    button,textarea{font:inherit}
+    button,textarea,select{font:inherit}
     a{color:inherit}
     .wrap{width:min(1180px,calc(100% - 40px));margin:auto}
     header{border-bottom:1px solid var(--rule);background:rgba(247,245,240,.94)}
@@ -65,6 +65,8 @@
     .empty{color:var(--soft);font-size:13px;padding:2px 0 6px}
     .send-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 20px;border-top:1px solid var(--rule);background:#f2f0e9}
     .send-row small{color:var(--soft);line-height:1.4}
+    .send-controls{display:flex;align-items:center;gap:10px}
+    .model-select{min-height:44px;border:1px solid var(--rule);border-radius:3px;background:#fff;padding:0 34px 0 12px;color:var(--ink);font:600 11px/1 "IBM Plex Mono",monospace}
     .primary{border:0;border-radius:3px;background:var(--black);color:white;font-weight:700;padding:14px 19px;cursor:pointer;white-space:nowrap}
     .primary:hover{background:var(--green)}
     .primary:disabled{opacity:.5;cursor:wait}
@@ -93,6 +95,12 @@
     .dot.active{background:var(--green);box-shadow:0 0 0 4px var(--green-soft)}
     .dot.error{background:var(--red);box-shadow:0 0 0 4px var(--red-soft)}
     .disclaimer{margin:24px 0 0;color:var(--soft);font-size:12px;line-height:1.6}
+    .restored-value{background:#d8eadf;color:#173d2c;border-bottom:2px solid #4e8469;border-radius:3px;padding:1px 3px;font-weight:600}
+    .workspace-invite{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px;margin-top:34px;padding:26px 28px;border:1px solid #b9cbbf;border-radius:10px;background:linear-gradient(120deg,#fffefa,#e8f0eb);box-shadow:var(--shadow)}
+    .workspace-invite h2{margin:0 0 7px;font:600 27px/1.1 "Source Serif 4",serif}
+    .workspace-invite p{margin:0;color:var(--soft);font-size:14px;line-height:1.55}
+    .workspace-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;background:var(--green);color:#fff;border-radius:3px;text-decoration:none;font-weight:700;white-space:nowrap}
+    .workspace-link:hover{background:var(--black)}
     @media(max-width:800px){
       .wrap{width:min(100% - 28px,680px)}
       .nav{min-height:86px}.logo{height:58px}
@@ -100,6 +108,7 @@
       .intro,.demo-grid{grid-template-columns:1fr}
       .intro{gap:24px;margin-bottom:28px}
       h1{font-size:clamp(39px,12vw,56px)}
+      .workspace-invite{grid-template-columns:1fr}
     }
     @media(max-width:480px){
       .back{font-size:13px}.logo{height:50px}
@@ -107,7 +116,8 @@
       textarea,.token-view,.answer{padding:18px 15px}
       .manual-tools{margin-left:15px;margin-right:15px}
       .detections{padding-left:15px;padding-right:15px}
-      .send-row{align-items:flex-start;flex-direction:column}.primary{width:100%}
+      .send-row{align-items:flex-start;flex-direction:column}.send-controls{width:100%;flex-direction:column}.model-select,.primary{width:100%}
+      .workspace-invite{padding:22px 18px}
     }
   </style>
 </head>
@@ -162,7 +172,14 @@
         </div>
         <div class="send-row">
           <small>Only the preview shown at right will be sent.</small>
-          <button class="primary" id="send" type="button">Send redacted request</button>
+          <div class="send-controls">
+            <select class="model-select" aria-label="AI model used for this demo">
+              <option>ChatGPT · GPT-5 Nano</option>
+              <option disabled>Claude · planned</option>
+              <option disabled>Gemini · planned</option>
+            </select>
+            <button class="primary" id="send" type="button">Send redacted request</button>
+          </div>
         </div>
       </section>
 
@@ -180,6 +197,14 @@
       </section>
     </div>
     <p class="disclaimer">Early demonstration only. Pattern matching can miss sensitive information or flag ordinary text. Review every replacement before sending. Do not enter real client, patient, filer, or financial information.</p>
+    <section class="workspace-invite" aria-labelledby="workspace-invite-title">
+      <div>
+        <div class="eyebrow">After the request</div>
+        <h2 id="workspace-invite-title">See the secure client and firm record.</h2>
+        <p>Explore fictional matter activity, protected threads, document history, model records, and an administrator’s firmwide view.</p>
+      </div>
+      <a class="workspace-link" href="workspace.html">Explore secure workspace →</a>
+    </section>
   </main>
 
   <script>
@@ -418,6 +443,20 @@
       return Object.entries(map).reduce((result,[token,value])=>result.split(token).join(value),text);
     }
 
+    function renderRehydrated(text,map) {
+      const tokens = Object.keys(map).sort((a,b)=>b.length-a.length);
+      if (!tokens.length) return escapeHtml(text);
+      const pattern = new RegExp(tokens.map(escapeRegex).join("|"),"g");
+      let cursor = 0;
+      let html = "";
+      for (const match of text.matchAll(pattern)) {
+        html += escapeHtml(text.slice(cursor,match.index));
+        html += `<span class="restored-value" title="Restored locally">${escapeHtml(map[match[0]])}</span>`;
+        cursor = match.index + match[0].length;
+      }
+      return html + escapeHtml(text.slice(cursor));
+    }
+
     function setStatus(text,state="") {
       status.textContent = text;
       dot.className = `dot ${state}`.trim();
@@ -527,7 +566,7 @@
         const payload = await response.json().catch(()=>({}));
         if (!response.ok) throw new Error(payload.error || "The request could not be completed.");
         answer.className = "answer";
-        answer.textContent = rehydrate(payload.answer,map);
+        answer.innerHTML = renderRehydrated(payload.answer,map);
         setStatus("Restored locally","active");
       } catch (error) {
         answer.className = "answer";
