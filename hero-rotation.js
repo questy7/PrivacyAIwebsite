@@ -2,7 +2,7 @@
   const word = document.querySelector('[data-rotating-niche]');
   if (!word || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const phrases = ['law firm', 'tax practice', 'accounting firm', 'healthcare practice'];
+  const phrases = ['law firm', 'tax practice', 'accounting firm', 'healthcare practice', 'advisory firm'];
   let index = 0;
 
   window.setInterval(() => {

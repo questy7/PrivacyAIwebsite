@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Private AI Redaction Demo | PrivacyAI</title>
+  <meta name="description" content="See how PrivacyAI detects and replaces sensitive information before an AI request is sent.">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,600;1,600&display=swap");
+    :root{
+      --paper:#f7f5f0;--panel:#fffefa;--ink:#191916;--soft:#5d594f;--rule:#d9d5c9;
+      --green:#204535;--green-soft:#e3ece6;--black:#141414;--amber:#8b501f;--amber-soft:#f5e8d7;
+      --red:#8d2e2e;--red-soft:#f8e1df;--shadow:0 18px 50px rgba(36,31,22,.08)
+    }
+    *{box-sizing:border-box}
+    html{color-scheme:light}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif}
+    button,textarea{font:inherit}
+    a{color:inherit}
+    .wrap{width:min(1180px,calc(100% - 40px));margin:auto}
+    header{border-bottom:1px solid var(--rule);background:rgba(247,245,240,.94)}
+    .nav{min-height:104px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .logo{height:68px;width:auto;display:block}
+    .back{font-weight:600;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:3px}
+    main{padding:64px 0 80px}
+    .intro{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:56px;align-items:end;margin-bottom:36px}
+    .eyebrow{font:600 11px/1.4 "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+    h1{font:600 clamp(38px,5.4vw,72px)/.98 "Source Serif 4",serif;letter-spacing:-.035em;margin:0;max-width:13ch}
+    h1 em{color:var(--green)}
+    .intro-copy{color:var(--soft);font-size:16px;line-height:1.65;margin:0}
+    .privacy-note{display:flex;gap:12px;margin-top:18px;padding:14px 16px;background:var(--green-soft);border-radius:4px;font:500 12px/1.5 "IBM Plex Mono",monospace;color:var(--green)}
+    .privacy-note::before{content:"";width:11px;height:11px;background:var(--green);margin-top:3px;flex:0 0 auto}
+    .demo-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+    .panel{background:var(--panel);border:1px solid var(--rule);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+    .panel-head{min-height:62px;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 20px;border-bottom:1px solid var(--rule)}
+    .panel-title{font:600 11px/1.4 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+    .step{font:500 10px/1 "IBM Plex Mono",monospace;background:var(--ink);color:white;padding:7px 8px;border-radius:2px}
+    textarea{display:block;width:100%;min-height:270px;padding:22px;border:0;resize:vertical;background:transparent;color:var(--ink);font:400 15px/1.7 "IBM Plex Mono",monospace;outline:none}
+    textarea:focus{box-shadow:inset 0 0 0 2px var(--green)}
+    .sample-row{padding:0 20px 18px}
+    .text-button{border:0;background:transparent;color:var(--green);font-weight:700;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+    .manual-tools{display:none;margin:0 20px 18px;padding:14px;border:1px solid #b9cbbf;border-radius:6px;background:var(--green-soft)}
+    .manual-tools.visible{display:block}
+    .manual-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+    .manual-selection{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:600 12px/1.4 "IBM Plex Mono",monospace}
+    .manual-close{border:0;background:transparent;color:var(--soft);font-size:20px;line-height:1;cursor:pointer}
+    .manual-options{display:flex;flex-wrap:wrap;gap:12px 18px;margin-bottom:12px;color:var(--soft);font-size:12px}
+    .manual-options label{display:flex;align-items:center;gap:7px;cursor:pointer}
+    .manual-options input{accent-color:var(--green)}
+    .manual-actions{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .protect-button{border:0;border-radius:3px;background:var(--green);color:white;font-weight:700;padding:10px 13px;cursor:pointer}
+    .selection-hint{color:var(--soft);font-size:11px;line-height:1.4}
+    .rule-remove{border:0;background:transparent;color:var(--red);font:600 10px/1 "IBM Plex Mono",monospace;cursor:pointer;padding:3px}
+    .review{border-top:1px solid var(--rule)}
+    .review-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 20px}
+    .count{font:500 12px/1.4 "IBM Plex Mono",monospace;color:var(--soft)}
+    .detections{display:grid;gap:8px;padding:0 20px 18px;max-height:196px;overflow:auto}
+    .detection{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:10px 11px;border:1px solid var(--rule);border-radius:5px;background:#fff}
+    .detection input{accent-color:var(--green);width:17px;height:17px}
+    .detected-value{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:500 12px/1.4 "IBM Plex Mono",monospace}
+    .type{font:600 9px/1 "IBM Plex Mono",monospace;letter-spacing:.05em;background:var(--green-soft);color:var(--green);padding:6px;border-radius:2px}
+    .detection.suggested{border-color:#d8ad75;background:var(--amber-soft)}
+    .detection.suggested .type{background:#f0d5b2;color:var(--amber)}
+    .empty{color:var(--soft);font-size:13px;padding:2px 0 6px}
+    .send-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 20px;border-top:1px solid var(--rule);background:#f2f0e9}
+    .send-row small{color:var(--soft);line-height:1.4}
+    .primary{border:0;border-radius:3px;background:var(--black);color:white;font-weight:700;padding:14px 19px;cursor:pointer;white-space:nowrap}
+    .primary:hover{background:var(--green)}
+    .primary:disabled{opacity:.5;cursor:wait}
+    .token-view{min-height:210px;padding:22px;white-space:pre-wrap;overflow-wrap:anywhere;font:400 14px/1.75 "IBM Plex Mono",monospace;color:var(--soft)}
+    mark{background:var(--black);color:white;border-radius:2px;padding:2px 4px}
+    mark[data-original]{position:relative;cursor:default}
+    mark[data-original]::after{
+      content:attr(data-original);position:absolute;left:50%;bottom:calc(100% + 8px);
+      transform:translateX(-50%) translateY(2px);z-index:30;opacity:0;pointer-events:none;
+      max-width:280px;padding:7px 9px;border-radius:4px;background:#111;color:#fff;
+      box-shadow:0 8px 22px rgba(0,0,0,.24);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+      font:500 10px/1.3 "IBM Plex Mono",monospace;transition:opacity .06s ease,transform .06s ease
+    }
+    mark[data-original]::before{
+      content:"";position:absolute;left:50%;bottom:calc(100% + 3px);z-index:31;opacity:0;
+      transform:translateX(-50%);border:5px solid transparent;border-top-color:#111;pointer-events:none
+    }
+    mark[data-original]:hover::after,mark[data-original]:focus::after{opacity:1;transform:translateX(-50%) translateY(0)}
+    mark[data-original]:hover::before,mark[data-original]:focus::before{opacity:1}
+    .suggestion{background:var(--amber-soft);color:var(--amber);border-bottom:2px dotted var(--amber);border-radius:2px;padding:1px 2px;cursor:pointer}
+    .suggestion:hover,.suggestion:focus{background:#f0d5b2;outline:2px solid rgba(139,80,31,.25);outline-offset:1px}
+    .answer{min-height:190px;padding:22px;border-top:1px solid var(--rule);white-space:pre-wrap;font-size:15px;line-height:1.7}
+    .answer.placeholder{color:#928d81}
+    .status{display:flex;align-items:center;gap:8px;font:500 10px/1.3 "IBM Plex Mono",monospace;color:var(--soft)}
+    .dot{width:8px;height:8px;border-radius:50%;background:#b7b1a4}
+    .dot.active{background:var(--green);box-shadow:0 0 0 4px var(--green-soft)}
+    .dot.error{background:var(--red);box-shadow:0 0 0 4px var(--red-soft)}
+    .disclaimer{margin:24px 0 0;color:var(--soft);font-size:12px;line-height:1.6}
+    @media(max-width:800px){
+      .wrap{width:min(100% - 28px,680px)}
+      .nav{min-height:86px}.logo{height:58px}
+      main{padding:42px 0 60px}
+      .intro,.demo-grid{grid-template-columns:1fr}
+      .intro{gap:24px;margin-bottom:28px}
+      h1{font-size:clamp(39px,12vw,56px)}
+    }
+    @media(max-width:480px){
+      .back{font-size:13px}.logo{height:50px}
+      .panel-head,.review-summary,.send-row{padding-left:15px;padding-right:15px}
+      textarea,.token-view,.answer{padding:18px 15px}
+      .manual-tools{margin-left:15px;margin-right:15px}
+      .detections{padding-left:15px;padding-right:15px}
+      .send-row{align-items:flex-start;flex-direction:column}.primary{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a href="index.html" aria-label="PrivacyAI home"><img class="logo" src="logo.svg" alt="PrivacyAI — AI Anonymized. Provably Accountable."></a>
+      <a class="back" href="index.html">Back to PrivacyAI</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <div>
+        <div class="eyebrow">Interactive privacy demo</div>
+        <h1>Your details stay local. <em>The AI still helps.</em></h1>
+      </div>
+      <div>
+        <p class="intro-copy">Type or paste a sample request. PrivacyAI identifies sensitive details, lets you review every replacement, and sends only the tokenized version to the AI.</p>
+        <div class="privacy-note">Your original text and the replacement key remain in this browser. The server receives only the redacted prompt.</div>
+      </div>
+    </section>
+
+    <div class="demo-grid">
+      <section class="panel" aria-labelledby="compose-title">
+        <div class="panel-head">
+          <span class="panel-title" id="compose-title">Your request</span>
+          <span class="step">01 / REDACT</span>
+        </div>
+        <textarea id="input" maxlength="6000" aria-label="Request containing sample sensitive details" placeholder="Paste a sample request here. Please do not use real sensitive information in this early demo."></textarea>
+        <div class="sample-row"><button class="text-button" id="sample" type="button">Load a fictional example</button> <span class="selection-hint">or highlight missed text to protect it</span></div>
+        <div class="manual-tools" id="manualTools" aria-live="polite">
+          <div class="manual-heading">
+            <span class="manual-selection" id="manualSelection"></span>
+            <button class="manual-close" id="manualClose" type="button" aria-label="Cancel manual replacement">&times;</button>
+          </div>
+          <div class="manual-options">
+            <label><input id="allMatches" type="checkbox" checked> Protect every occurrence in this request</label>
+            <label><input id="rememberRule" type="checkbox"> Also protect this phrase in future requests on this device</label>
+          </div>
+          <div class="manual-actions">
+            <span class="selection-hint">The selected text never leaves this browser.</span>
+            <button class="protect-button" id="protectSelection" type="button">Protect selection</button>
+          </div>
+        </div>
+        <div class="review">
+          <div class="review-summary">
+            <span class="panel-title">Review replacements</span>
+            <span class="count" id="count">0 items detected</span>
+          </div>
+          <div class="detections" id="detections"><div class="empty">Detected details will appear here for your approval.</div></div>
+        </div>
+        <div class="send-row">
+          <small>Only the preview shown at right will be sent.</small>
+          <button class="primary" id="send" type="button">Send redacted request</button>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="preview-title">
+        <div class="panel-head">
+          <span class="panel-title" id="preview-title">What the AI receives</span>
+          <span class="status"><span class="dot" id="dot"></span><span id="status">Ready</span></span>
+        </div>
+        <div class="token-view" id="tokenView">Start typing to preview the protected request.</div>
+        <div class="panel-head">
+          <span class="panel-title">Answer restored locally</span>
+          <span class="step">02 / RESTORE</span>
+        </div>
+        <div class="answer placeholder" id="answer" aria-live="polite">The AI response will appear here. Approved details are restored only in your browser.</div>
+      </section>
+    </div>
+    <p class="disclaimer">Early demonstration only. Pattern matching can miss sensitive information or flag ordinary text. Review every replacement before sending. Do not enter real client, patient, filer, or financial information.</p>
+  </main>
+
+  <script>
+    const input = document.querySelector("#input");
+    const count = document.querySelector("#count");
+    const detections = document.querySelector("#detections");
+    const tokenView = document.querySelector("#tokenView");
+    const answer = document.querySelector("#answer");
+    const send = document.querySelector("#send");
+    const sample = document.querySelector("#sample");
+    const status = document.querySelector("#status");
+    const dot = document.querySelector("#dot");
+    const manualTools = document.querySelector("#manualTools");
+    const manualSelection = document.querySelector("#manualSelection");
+    const manualClose = document.querySelector("#manualClose");
+    const allMatches = document.querySelector("#allMatches");
+    const rememberRule = document.querySelector("#rememberRule");
+    const protectSelection = document.querySelector("#protectSelection");
+
+    const typePriority = {
+      EMAIL: 100, SSN: 98, EIN: 96, CARD: 94, PHONE: 92, IP: 90,
+      ROUTING: 88, DOB: 86, ADDRESS: 84, PERSON: 80, ID: 70, ENTITY: 40, MANUAL: 110
+    };
+    let candidates = [];
+    let enabled = new Set();
+    let manualRules = [];
+    let pendingSelection = null;
+    const localRuleKey = "privacyai.demo.manualRules";
+
+    function loadLocalRules() {
+      try {
+        const values = JSON.parse(localStorage.getItem(localRuleKey) || "[]");
+        if (Array.isArray(values)) {
+          manualRules = values.filter(value=>typeof value === "string" && value.trim()).map((value,index)=>({
+            id:`saved-${index}-${value.length}`,value,scope:"all",saved:true
+          }));
+        }
+      } catch {
+        manualRules = [];
+      }
+    }
+
+    function saveLocalRules() {
+      try {
+        const values = [...new Set(manualRules.filter(rule=>rule.saved).map(rule=>rule.value))];
+        localStorage.setItem(localRuleKey,JSON.stringify(values));
+      } catch {
+        // Browser storage can be unavailable in strict privacy modes.
+      }
+    }
+
+    function escapeRegex(value) {
+      return value.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+    }
+
+    function addManualMatches(found,text) {
+      manualRules.forEach((rule,ruleIndex)=>{
+        if (rule.scope === "instance") {
+          if (text.slice(rule.start,rule.end) === rule.value) {
+            found.push({type:"MANUAL",value:rule.value,start:rule.start,end:rule.end,priority:typePriority.MANUAL,ruleIndex,saved:false});
+          }
+          return;
+        }
+        const regex = new RegExp(escapeRegex(rule.value),"gi");
+        for (const match of text.matchAll(regex)) {
+          found.push({type:"MANUAL",value:match[0],start:match.index,end:match.index+match[0].length,priority:typePriority.MANUAL,ruleIndex,saved:rule.saved});
+        }
+      });
+    }
+
+    function luhn(value) {
+      const digits = value.replace(/\D/g, "");
+      if (digits.length < 13 || digits.length > 19) return false;
+      let sum = 0, alternate = false;
+      for (let i = digits.length - 1; i >= 0; i -= 1) {
+        let digit = Number(digits[i]);
+        if (alternate) { digit *= 2; if (digit > 9) digit -= 9; }
+        sum += digit;
+        alternate = !alternate;
+      }
+      return sum % 10 === 0;
+    }
+
+    function routingChecksum(value) {
+      const digits = value.replace(/\D/g, "");
+      if (digits.length !== 9) return false;
+      const weights = [3,7,1,3,7,1,3,7,1];
+      return digits.split("").reduce((sum, digit, i) => sum + Number(digit) * weights[i], 0) % 10 === 0;
+    }
+
+    function addMatches(list, text, type, regex, options = {}) {
+      for (const match of text.matchAll(regex)) {
+        const value = options.value ? options.value(match) : match[0];
+        if (!value || (options.validate && !options.validate(value))) continue;
+        const relative = match[0].indexOf(value);
+        const start = match.index + Math.max(0, relative);
+        list.push({ type, value, start, end: start + value.length, priority: typePriority[type], suggested:!!options.suggested });
+      }
+    }
+
+    function detect(text) {
+      const found = [];
+      addMatches(found,text,"EMAIL",/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi);
+      addMatches(found,text,"SSN",/\b(?!000|666|9\d\d)\d{3}[- ]?(?!00)\d{2}[- ]?(?!0000)\d{4}\b/g);
+      addMatches(found,text,"EIN",/\b\d{2}-\d{7}\b/g);
+      addMatches(found,text,"PHONE",/(?<!\d)(?:\+?1[\s.-]?)?(?:\(\d{3}\)|\d{3})[\s.-]\d{3}[\s.-]\d{4}(?!\d)/g);
+      addMatches(found,text,"CARD",/(?<!\d)(?:\d[ -]?){13,19}(?!\d)/g,{validate:luhn});
+      addMatches(found,text,"IP",/\b(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)\b/g);
+      addMatches(found,text,"ROUTING",/\b(?:routing(?: number)?|ABA)\s*(?:is|:|#)?\s*(\d{9})\b/gi,{value:m=>m[1],validate:routingChecksum});
+      addMatches(found,text,"DOB",/\b(?:DOB|date of birth|born)\s*(?:is|:)?\s*((?:0?[1-9]|1[0-2])[\/.-](?:0?[1-9]|[12]\d|3[01])[\/.-](?:19|20)\d{2})\b/gi,{value:m=>m[1]});
+      addMatches(found,text,"ADDRESS",/\b\d{1,6}\s+(?:[NSEW]\.?\s+)?(?:[A-Z0-9][A-Z0-9.'-]*\s+){1,5}(?:Street|St\.?|Avenue|Ave\.?|Road|Rd\.?|Boulevard|Blvd\.?|Drive|Dr\.?|Lane|Ln\.?|Court|Ct\.?|Way|Parkway|Pkwy\.?|Highway|Hwy\.?)(?:\s+(?:Apt|Suite|Ste|Unit|#)\s*[A-Z0-9-]+)?(?:,?\s+[A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+)*,\s*[A-Z]{2}\s+\d{5}(?:-\d{4})?)?/gi);
+      addMatches(
+        found,
+        text,
+        "ENTITY",
+        /\b(?:client|patient|plaintiff|defendant|claimant|employee|customer|spouse|wife|husband|partner|child|son|daughter|mother|father|parent|guardian|beneficiary|witness|attorney|counsel|doctor|physician|name(?:\s+is)?|on behalf of)\s*[:,-]?\s+([a-z][a-z'-]+(?:\s+(?:[a-z]\.|[a-z][a-z'-]+)){1,3}?)(?=\s+(?:lives?|resides?|works?|has|had|is|was|with|whose|email|phone|ssn|ein|dob|at|needs?|wants?|requests?|requested|reports?|reported|says?|said|saw|witnessed|called|contacted|signed|filed|owns?|received)\b|[,.;:\n]|$)/gi,
+        {
+          value:m=>{
+            const words=m[1].split(/\s+/);
+            const stop=words.findIndex(word=>/^(?:lives?|resides?|works?|has|had|is|was|with|whose|email|phone|ssn|ein|dob|at)$/i.test(word));
+            return (stop>=0?words.slice(0,stop):words).join(" ");
+          },
+          validate:value=>value.split(/\s+/).length>=2&&!/\b(?:and|or|the|a|an|plaintiff|defendant|client|patient|claimant|employee|customer|spouse|wife|husband|partner|child|son|daughter|mother|father|parent|guardian|beneficiary|witness|attorney|counsel|doctor|physician)\b/i.test(value)
+        }
+      );
+      addMatches(found,text,"ID",/\b(?:account|patient|claim|policy|case|matter|file)\s*(?:number|no\.?|ID|#)\s*(?:is|:)?\s*([A-Z0-9][A-Z0-9-]{4,})\b/gi,{value:m=>m[1]});
+      addManualMatches(found,text);
+      addMatches(
+        found,
+        text,
+        "PERSON",
+        /\b(?!(?:Client|Patient|Plaintiff|Defendant|Claimant|Employee|Customer|Spouse|Wife|Husband|Partner|Child|Son|Daughter|Mother|Father|Parent|Guardian|Beneficiary|Witness|Attorney|Counsel|Doctor|Physician)\b)[A-Z][a-z]+(?:['-][A-Z]?[a-z]+)?(?:\s+(?:[A-Z]\.|[A-Z][a-z]+(?:['-][A-Z]?[a-z]+)?)){1,2}\b/g,
+        {
+          validate:value=>!/\b(?:PrivacyAI|ChatGPT|Claude|OpenAI)\b/.test(value),
+          suggested:true
+        }
+      );
+
+      found.sort((a,b) => a.start-b.start || b.priority-a.priority || (b.end-b.start)-(a.end-a.start));
+      const selected = [];
+      for (const item of found) {
+        if (!selected.some(existing => item.start < existing.end && item.end > existing.start)) selected.push(item);
+      }
+      return selected.map((item,index) => ({...item,id:`d${index}-${item.start}-${item.end}`}));
+    }
+
+    function buildRedaction(text) {
+      const active = candidates.filter(item => enabled.has(item.id));
+      const counters = {};
+      const valueTokens = new Map();
+      const map = {};
+      let cursor = 0, redacted = "";
+      for (const item of active) {
+        redacted += text.slice(cursor,item.start);
+        const key = `${item.type}:${item.value.toLowerCase()}`;
+        let token = valueTokens.get(key);
+        if (!token) {
+          counters[item.type] = (counters[item.type] || 0) + 1;
+          token = `[[${item.type}_${counters[item.type]}]]`;
+          valueTokens.set(key,token);
+          map[token] = item.value;
+        }
+        redacted += token;
+        cursor = item.end;
+      }
+      redacted += text.slice(cursor);
+      return {redacted,map};
+    }
+
+    function escapeHtml(value) {
+      return value.replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]));
+    }
+
+    function renderPreview() {
+      const result = buildRedaction(input.value);
+      if (!input.value.trim()) {
+        tokenView.textContent = "Start typing to preview the protected request.";
+        return result;
+      }
+      const counters = {};
+      const valueTokens = new Map();
+      let cursor = 0;
+      let html = "";
+      for (const item of candidates) {
+        html += escapeHtml(input.value.slice(cursor,item.start));
+        if (enabled.has(item.id)) {
+          const key = `${item.type}:${item.value.toLowerCase()}`;
+          let token = valueTokens.get(key);
+          if (!token) {
+            counters[item.type] = (counters[item.type] || 0) + 1;
+            token = `[[${item.type}_${counters[item.type]}]]`;
+            valueTokens.set(key,token);
+          }
+          html += `<mark tabindex="0" data-original="${escapeHtml(item.value)}">${token}</mark>`;
+        } else if (item.suggested) {
+          html += `<span class="suggestion" role="button" tabindex="0" data-suggestion-id="${item.id}" title="Possible sensitive detail — click to protect">${escapeHtml(item.value)}</span>`;
+        } else {
+          html += escapeHtml(item.value);
+        }
+        cursor = item.end;
+      }
+      html += escapeHtml(input.value.slice(cursor));
+      tokenView.innerHTML = html;
+      return result;
+    }
+
+    function renderDetections() {
+      count.textContent = `${candidates.length} item${candidates.length === 1 ? "" : "s"} detected`;
+      if (!candidates.length) {
+        detections.innerHTML = '<div class="empty">No supported patterns detected. Names and addresses require clear context; review your text carefully.</div>';
+      } else {
+        detections.innerHTML = candidates.map(item=>`
+          <label class="detection ${item.suggested ? "suggested" : ""}">
+            <input type="checkbox" data-id="${item.id}" ${enabled.has(item.id) ? "checked" : ""}>
+            <span class="detected-value">${escapeHtml(item.value)}</span>
+            <span class="type">${item.suggested ? "POSSIBLE DETAIL" : item.type}</span>
+            ${item.type === "MANUAL" ? `<button class="rule-remove" type="button" data-remove-rule="${item.ruleIndex}" title="${item.saved ? "Remove saved local rule" : "Remove manual replacement"}">Remove</button>` : ""}
+          </label>`).join("");
+      }
+      renderPreview();
+    }
+
+    function refresh() {
+      const previous = new Map(candidates.map(item=>[`${item.type}:${item.value}:${item.start}`,enabled.has(item.id)]));
+      candidates = detect(input.value);
+      enabled = new Set(candidates.filter(item=>{
+        const prior = previous.get(`${item.type}:${item.value}:${item.start}`);
+        return prior === true || (!item.suggested && prior !== false);
+      }).map(item=>item.id));
+      renderDetections();
+      answer.className = "answer placeholder";
+      answer.textContent = "The AI response will appear here. Approved details are restored only in your browser.";
+    }
+
+    function rehydrate(text,map) {
+      return Object.entries(map).reduce((result,[token,value])=>result.split(token).join(value),text);
+    }
+
+    function setStatus(text,state="") {
+      status.textContent = text;
+      dot.className = `dot ${state}`.trim();
+    }
+
+    input.addEventListener("input",refresh);
+    function showSelectedText() {
+      const start = input.selectionStart;
+      const end = input.selectionEnd;
+      const value = input.value.slice(start,end).trim();
+      if (!value || value.length > 200) return;
+      const leading = input.value.slice(start,end).indexOf(value);
+      pendingSelection = {value,start:start+leading,end:start+leading+value.length};
+      manualSelection.textContent = `Protect “${value}”`;
+      manualSelection.title = value;
+      allMatches.checked = true;
+      rememberRule.checked = false;
+      manualTools.classList.add("visible");
+    }
+    input.addEventListener("mouseup",showSelectedText);
+    input.addEventListener("keyup",event=>{
+      if (event.shiftKey || ["Shift","ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(event.key)) showSelectedText();
+    });
+    manualClose.addEventListener("click",()=>{
+      pendingSelection = null;
+      manualTools.classList.remove("visible");
+      input.focus();
+    });
+    protectSelection.addEventListener("click",()=>{
+      if (!pendingSelection) return;
+      const useAll = allMatches.checked || rememberRule.checked;
+      manualRules.push({
+        id:`manual-${Date.now()}`,
+        value:pendingSelection.value,
+        scope:useAll ? "all" : "instance",
+        start:pendingSelection.start,
+        end:pendingSelection.end,
+        saved:rememberRule.checked
+      });
+      if (rememberRule.checked) saveLocalRules();
+      pendingSelection = null;
+      manualTools.classList.remove("visible");
+      refresh();
+    });
+    detections.addEventListener("change",event=>{
+      if (!event.target.matches("input[data-id]")) return;
+      event.target.checked ? enabled.add(event.target.dataset.id) : enabled.delete(event.target.dataset.id);
+      renderPreview();
+    });
+    function protectSuggestion(target) {
+      const id = target.dataset.suggestionId;
+      if (!id) return;
+      enabled.add(id);
+      renderDetections();
+    }
+    tokenView.addEventListener("click",event=>{
+      const target = event.target.closest("[data-suggestion-id]");
+      if (target) protectSuggestion(target);
+    });
+    tokenView.addEventListener("keydown",event=>{
+      const target = event.target.closest("[data-suggestion-id]");
+      if (target && (event.key === "Enter" || event.key === " ")) {
+        event.preventDefault();
+        protectSuggestion(target);
+      }
+    });
+    detections.addEventListener("click",event=>{
+      const button = event.target.closest("[data-remove-rule]");
+      if (!button) return;
+      event.preventDefault();
+      event.stopPropagation();
+      const ruleIndex = Number(button.dataset.removeRule);
+      manualRules = manualRules.filter((rule,index)=>index !== ruleIndex);
+      saveLocalRules();
+      refresh();
+    });
+    sample.addEventListener("click",()=>{
+      input.value = "Please draft a concise follow-up for plaintiff Jordan Ellis at 1824 Harbor View Road, San Diego, CA 92101. The client’s email is jordan.ellis@example.com, phone is (619) 555-0147, SSN is 123-45-6789, and the firm EIN is 12-3456789. Reference case number CV-2026-10482.";
+      refresh();
+      input.focus();
+    });
+    loadLocalRules();
+    try {
+      const transferredDraft = sessionStorage.getItem("privacyai.demo.draft");
+      if (transferredDraft !== null) {
+        sessionStorage.removeItem("privacyai.demo.draft");
+        input.value = transferredDraft;
+        refresh();
+      }
+    } catch {
+      // Browser storage can be unavailable in strict privacy modes.
+    }
+    refresh();
+    send.addEventListener("click",async()=>{
+      const {redacted,map} = renderPreview();
+      if (!input.value.trim()) { input.focus(); return; }
+      send.disabled = true;
+      setStatus("Sending protected request…","active");
+      answer.className = "answer placeholder";
+      answer.textContent = "Waiting for the AI response…";
+      try {
+        const response = await fetch("/api/chat",{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({message:redacted})
+        });
+        const payload = await response.json().catch(()=>({}));
+        if (!response.ok) throw new Error(payload.error || "The request could not be completed.");
+        answer.className = "answer";
+        answer.textContent = rehydrate(payload.answer,map);
+        setStatus("Restored locally","active");
+      } catch (error) {
+        answer.className = "answer";
+        answer.textContent = error.message;
+        setStatus("Request failed","error");
+      } finally {
+        send.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

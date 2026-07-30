@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="booking-modal.css">
 <script src="booking-modal.js" defer></script>
 <script src="hero-rotation.js" defer></script>
+<script src="hero-demo.js" defer></script>
 <title>Secure AI for Professional Firms | PrivacyAI</title>
 <meta name="description" content="PrivacyAI removes identifying details before requests reach ChatGPT or Claude, secures transmission, and maintains a defensible local audit log.">
 <link rel="canonical" href="https://privacyai.pro/">
@@ -61,9 +62,9 @@
   nav .wrap{display:flex;justify-content:space-between;align-items:center;}
   .logo{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;letter-spacing:0.02em;display:flex;align-items:center;gap:9px;}
   .logo .bar{width:16px;height:8px;background:var(--redact);display:inline-block;}
-  .navlinks{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--ink-soft);}
+  .navlinks{display:flex;gap:18px;font-size:13px;font-weight:500;color:var(--ink-soft);white-space:nowrap;}
   .navlinks a:hover{color:var(--ink);}
-  .nav-cta{background:var(--redact);color:var(--paper);padding:11px 20px;border-radius:2px;font-weight:600;font-size:13.5px;}
+  .nav-cta{background:var(--redact);color:var(--paper);padding:11px 20px;border-radius:2px;font-weight:600;font-size:13.5px;white-space:nowrap;flex-shrink:0;}
   .nav-cta:hover{background:#000;}
 
   .hero{padding:80px 0 66px;}
@@ -146,13 +147,119 @@
   .input-bar .ph{color:#a29e90;font-size:12.5px;}
   .send{width:27px;height:27px;border-radius:7px;background:var(--redact);display:flex;align-items:center;justify-content:center;color:var(--paper);font-size:12px;flex-shrink:0;}
 
+  /* Interactive hero redaction demo */
+  .frame.hero-demo{
+    overflow:hidden;border-color:#b8c4bc;
+    box-shadow:0 26px 70px rgba(24,54,42,.16),0 4px 12px rgba(19,19,17,.08);
+  }
+  .hero-demo .titlebar{background:linear-gradient(90deg,#fbfaf7 0%,#eef4f0 100%);}
+  .hero-demo-body{min-height:430px;padding:20px;display:flex;flex-direction:column;}
+  .hero-demo-label{
+    display:flex;flex-direction:column;align-items:stretch;gap:11px;margin-bottom:0;
+    font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);
+  }
+  .hero-demo-tabs{display:flex;gap:0;border-bottom:1px solid var(--rule);}
+  .hero-demo-tab{
+    position:relative;margin-bottom:-1px;border:1px solid transparent;border-bottom-color:var(--rule);
+    border-radius:6px 6px 0 0;background:transparent;color:var(--ink-soft);
+    padding:9px 12px;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;text-transform:uppercase;
+  }
+  .hero-demo-tab[aria-selected="true"]{
+    background:#fff;border-color:var(--rule);border-bottom-color:#fff;color:var(--protected);
+    box-shadow:inset 0 3px 0 var(--protected);
+  }
+  .hero-demo textarea{
+    width:100%;min-height:154px;resize:vertical;border:1px solid var(--rule);border-radius:0 0 7px 7px;
+    background:#fbfaf7;color:var(--ink);padding:13px 14px;outline:none;
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.65;
+  }
+  .hero-demo textarea:focus{border-color:var(--protected);box-shadow:0 0 0 2px var(--protected-soft);}
+  .hero-demo-preview{
+    width:100%;min-height:154px;border:1px solid var(--rule);border-top:0;border-radius:0 0 7px 7px;
+    background:var(--protected-soft);padding:13px 14px;white-space:pre-wrap;overflow-wrap:anywhere;
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.65;color:var(--ink-soft);
+  }
+  .hero-demo-preview[contenteditable="true"]{cursor:text;outline:none;}
+  .hero-demo-preview[contenteditable="true"]:focus{border-color:var(--protected);box-shadow:0 0 0 2px var(--protected-soft);}
+  .hero-demo-preview mark{background:var(--redact);color:var(--paper);padding:1px 4px;border-radius:2px;}
+  .hero-demo-preview mark[data-original]{position:relative;cursor:default;}
+  .hero-demo-preview mark[data-original]::after{
+    content:attr(data-original);position:absolute;left:50%;bottom:calc(100% + 8px);
+    transform:translateX(-50%) translateY(2px);z-index:30;opacity:0;pointer-events:none;
+    max-width:260px;padding:7px 9px;border-radius:4px;background:#111;color:#fff;
+    box-shadow:0 8px 22px rgba(0,0,0,.24);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;line-height:1.3;
+    transition:opacity .06s ease,transform .06s ease;
+  }
+  .hero-demo-preview mark[data-original]::before{
+    content:"";position:absolute;left:50%;bottom:calc(100% + 3px);z-index:31;opacity:0;
+    transform:translateX(-50%);border:5px solid transparent;border-top-color:#111;pointer-events:none;
+    transition:opacity .06s ease;
+  }
+  .hero-demo-preview mark[data-original]:hover::after,
+  .hero-demo-preview mark[data-original]:focus::after{opacity:1;transform:translateX(-50%) translateY(0);}
+  .hero-demo-preview mark[data-original]:hover::before,
+  .hero-demo-preview mark[data-original]:focus::before{opacity:1;}
+  .hero-demo-suggestion{
+    background:#f5e8d7;color:#8b501f;border-bottom:2px dotted #8b501f;border-radius:2px;
+    padding:1px 2px;cursor:pointer;
+  }
+  .hero-demo-suggestion:hover,.hero-demo-suggestion:focus{background:#f0d5b2;outline:2px solid rgba(139,80,31,.22);outline-offset:1px;}
+  .hero-demo-replacements{
+    min-height:154px;max-height:180px;overflow:auto;border:1px solid var(--rule);border-top:0;border-radius:0 0 7px 7px;
+    background:#fbfaf7;padding:10px;
+  }
+  .hero-demo-items{display:grid;gap:7px;}
+  .hero-demo-item{
+    display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:7px;
+    padding:7px 8px;border:1px solid var(--rule);border-radius:4px;background:#fff;
+    font-family:'IBM Plex Mono',monospace;font-size:9.5px;
+  }
+  .hero-demo-item.suggested{border-color:#d8ad75;background:#f5e8d7;}
+  .hero-demo-item.suggested .hero-demo-type{color:#8b501f;}
+  .hero-demo-item input{accent-color:var(--protected);margin:0;}
+  .hero-demo-value{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .hero-demo-type{color:var(--protected);font-weight:600;}
+  .hero-demo-empty{font-size:11px;color:var(--ink-faint);padding:5px;}
+  .hero-demo-response{
+    margin-top:14px;border:1px solid #c7d6cc;border-radius:7px;background:#fff;
+    box-shadow:0 7px 20px rgba(32,69,53,.07);overflow:hidden;
+  }
+  .hero-demo-response-head{
+    display:flex;justify-content:space-between;gap:12px;padding:9px 11px;border-bottom:1px solid #dbe5de;
+    background:#f2f7f3;font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--protected);
+  }
+  .hero-demo-response-copy{padding:11px 13px;font-size:11.5px;line-height:1.55;color:var(--ink-soft);}
+  .hero-demo-actions{display:flex;flex-direction:column;align-items:stretch;gap:9px;margin-top:auto;padding-top:14px;}
+  .hero-demo-status{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--protected);font-weight:600;}
+  .hero-demo-footer{width:100%;display:grid;grid-template-columns:minmax(130px,1fr) auto;align-items:center;gap:8px;min-width:0;}
+  .hero-demo-select{
+    max-width:155px;border:1px solid var(--rule);border-radius:3px;background:#fff;color:var(--ink);
+    padding:7px 25px 7px 8px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;
+  }
+  .hero-demo-link{
+    border:0;border-radius:3px;background:var(--redact);color:var(--paper);padding:8px 10px;cursor:pointer;
+    font-size:11px;font-weight:700;white-space:nowrap;
+  }
+  .hero-demo-link:hover{background:var(--protected);transform:translateY(-1px);}
+  @media(max-width:520px){
+    .hero-demo-tabs{width:100%;display:grid;grid-template-columns:repeat(3,1fr);}
+    .hero-demo-tab{padding:6px 4px;}
+    .hero-demo-actions{align-items:stretch;}
+    .hero-demo-footer{width:100%;grid-template-columns:1fr;}
+    .hero-demo-select,.hero-demo-link{width:100%;max-width:none;min-width:0;}
+    .hero-demo-body{min-height:0;padding:15px;}
+    .hero-demo-response-copy{font-size:10.5px;}
+  }
+
   section{padding:72px 0;}
   section.bordered{border-top:1px solid var(--rule);}
   .kicker{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px;}
   h2{font-family:'Source Serif 4',serif;font-weight:700;font-size:clamp(26px,3.4vw,36px);line-height:1.18;margin:0 0 14px;max-width:20ch;}
   .section-sub{color:var(--ink-soft);font-size:15.5px;max-width:58ch;margin-bottom:44px;}
 
-  .v-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+  .v-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
   @media(max-width:860px){.v-grid{grid-template-columns:1fr;}}
   .v-card{border-right:1px solid var(--rule);padding:24px 26px;display:flex;flex-direction:column;transition:background .15s,transform .15s;}
   .v-card:last-child{border-right:none;}
@@ -223,9 +330,10 @@
   <div class="wrap">
     <a href="index.html"><img src="logo.svg" alt="PrivacyAI" style="height:80px;display:block;"></a>
     <div class="navlinks">
-      <a href="legal.html">For Attorneys</a>
-      <a href="tax.html">For Tax &amp; Accounting</a>
-      <a href="healthcare.html">For Healthcare</a>
+      <a href="legal.html">Attorneys</a>
+      <a href="tax.html">Tax &amp; Accounting</a>
+      <a href="healthcare.html">Healthcare</a>
+      <a href="financial.html">Financial Advisors</a>
       <a href="pricing.html">Pricing</a>
       <a href="faq.html">FAQ</a>
     </div>
@@ -246,33 +354,45 @@
         </div>
       </div>
 
-      <div class="frame">
+      <div class="frame hero-demo">
         <div class="titlebar">
           <div class="tb-dot"></div><div class="tb-dot"></div><div class="tb-dot"></div>
-          <div class="tb-label">PrivacyAI — new conversation</div>
+          <div class="tb-label">Try live redaction</div>
         </div>
-        <div class="chat">
-          <div class="label-row"><span class="tag">You — redacted before sending</span></div>
-          <div class="row user">
-            <div class="bubble user">
-              Can you help me draft a demand letter for my client
-              <span class="tok">PERSON_1-C24</span> regarding
-              <span class="suggest-wrap">
-                <span class="suggest">the incident described in the intake notes</span>
-                <span class="popover"><span class="popover-label">Stylometric rephrase:</span><span class="popover-buttons"><span class="on">Accept</span><span>Keep Original</span><span>Redraft</span></span></span>
-              </span>?
-            </div>
+        <div class="hero-demo-body">
+          <div class="hero-demo-label">
+            <span data-hero-count>0 details protected</span>
+            <span class="hero-demo-tabs" role="tablist" aria-label="Compare original and protected request">
+              <button class="hero-demo-tab" type="button" role="tab" aria-selected="true" data-hero-tab="protected">Protected</button>
+              <button class="hero-demo-tab" type="button" role="tab" aria-selected="false" data-hero-tab="original">Type your own</button>
+              <button class="hero-demo-tab" type="button" role="tab" aria-selected="false" data-hero-tab="replacements">Replacements</button>
+            </span>
           </div>
-          <div class="label-row"><span class="tag">Claude — real, unaffected answer</span></div>
-          <div class="row ai">
-            <div class="bubble ai">
-              Of course — here's a draft demand letter. I've left space for the specific incident date, damages, and policy number once you have them handy...
-            </div>
+          <textarea data-hero-input aria-label="Try PrivacyAI redaction with fictional information" hidden>Draft a follow-up for plaintiff Jordan Ellis at 1824 Harbor View Road. Email jordan.ellis@example.com and reference case number CV-2026-10482.</textarea>
+          <div class="hero-demo-preview" data-hero-panel="protected" data-hero-preview contenteditable="true" role="textbox" aria-label="Protected request editor" aria-multiline="true" spellcheck="true"></div>
+          <div class="hero-demo-replacements" data-hero-panel="replacements" hidden>
+            <div class="hero-demo-items" data-hero-items></div>
           </div>
-        </div>
-        <div class="input-bar">
-          <span class="ph">Type a message…</span>
-          <div class="send">↑</div>
+          <div class="hero-demo-response">
+            <div class="hero-demo-response-head">
+              <span>Example AI response</span>
+              <span>Restored locally</span>
+            </div>
+            <div class="hero-demo-response-copy">Of course—here’s a concise draft based on the protected request. Approved details would be restored only in your browser.</div>
+          </div>
+          <div class="hero-demo-actions">
+            <span class="hero-demo-status">Protected locally as you type</span>
+            <span class="hero-demo-footer">
+              <select class="hero-demo-select" data-hero-example aria-label="Choose a fictional example">
+                <option value="legal">Legal example</option>
+                <option value="tax">Tax &amp; accounting</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="financial">Financial advisory</option>
+                <option value="blank">Start blank</option>
+              </select>
+              <button class="hero-demo-link" type="button" data-hero-continue>See full interactive demo →</button>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -299,6 +419,11 @@
         <div class="v-tag">Healthcare</div>
         <div class="v-title">Keep patient identifiers out of AI prompts and support responsible use.</div>
         <div class="v-arrow">For healthcare practices →</div>
+      </a>
+      <a class="v-card" href="financial.html">
+        <div class="v-tag">Financial Services</div>
+        <div class="v-title">Protect client financial data and document responsible AI vendor oversight.</div>
+        <div class="v-arrow">For financial advisors →</div>
       </a>
     </div>
   </div>
@@ -358,6 +483,7 @@
         <a href="legal.html">Legal</a>
         <a href="tax.html">Tax &amp; Accounting</a>
         <a href="healthcare.html">Healthcare</a>
+        <a href="financial.html">Financial Services</a>
       </div>
       <div class="f-col">
         <h4>Company</h4>

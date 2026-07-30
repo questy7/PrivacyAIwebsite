@@ -1,1 +1,9 @@
 .vercel
+.publish-backups/
+*.before-*
+*.before-*
+*.before-hero-showcase-*
+*.before-latest-hero-*
+*.before-tooltip-*
+demo.before-*.html
+index.before-*.html
