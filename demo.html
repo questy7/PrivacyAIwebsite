@@ -43,7 +43,7 @@
     .enhanced-protection{margin:0 0 10px;border:1px solid #bdd0c6;border-radius:8px;background:#f3f8f5;padding:8px 10px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center}
     .enhanced-copy{min-width:0}.enhanced-copy strong{display:inline;color:var(--green);font-size:11.5px}.enhanced-copy>span{display:none}.enhanced-copy .enhanced-meta{display:inline-flex;gap:7px;align-items:center;margin:0 0 0 10px;font:600 8px/1.3 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.05em;color:var(--green)}
     .enhanced-dot{width:8px;height:8px;border-radius:50%;background:#aaa}.enhanced-dot.loading{background:#c89242;box-shadow:0 0 0 4px rgba(200,146,66,.12)}.enhanced-dot.ready{background:var(--green);box-shadow:0 0 0 4px rgba(32,69,53,.12)}.enhanced-dot.error{background:#a64242}
-    .enhanced-button{border:1px solid var(--green);border-radius:999px;background:#fff;color:var(--green);padding:7px 10px;font-size:9.5px;font-weight:750;cursor:pointer;white-space:nowrap}.enhanced-button:hover,.enhanced-button:focus{background:var(--green);color:#fff}.enhanced-button:disabled{cursor:wait;opacity:.65}
+    .enhanced-button{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--green);border-radius:999px;background:#fff;color:var(--green);padding:6px 7px 6px 10px;font-size:9.5px;font-weight:750;cursor:pointer;white-space:nowrap}.enhanced-button:focus-visible{outline:2px solid #477ca6;outline-offset:2px}.enhanced-button:disabled{cursor:wait;opacity:.65}.enhanced-info-icon{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:50%;background:#477ca6;color:#fff;font:800 11px/1 Arial,sans-serif}
     .enhanced-info{display:none;position:absolute;z-index:20;top:calc(100% + 9px);right:0;width:min(330px,calc(100vw - 34px));padding:11px 12px;border:1px solid #b9cbbf;border-radius:7px;background:#fff;color:#4f514d;box-shadow:0 14px 34px rgba(20,29,24,.16);font-size:10px;line-height:1.5}.enhanced-info.visible{display:block}.chat-topbar .enhanced-protection{position:relative}
     .model-debug{grid-column:1/-1;border-top:1px solid #d3e0d8;padding-top:6px}.model-debug summary{cursor:pointer;color:var(--green);font:650 8.5px/1.4 "IBM Plex Mono",monospace}.model-debug pre{max-height:190px;margin:7px 0 0;padding:10px;border-radius:4px;background:#171715;color:#f4f1e8;overflow:auto;white-space:pre-wrap;font:400 9.5px/1.55 "IBM Plex Mono",monospace}
     .source-badge{display:inline-block;margin-left:6px;color:#547263;font:700 8px/1 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.05em}
@@ -176,7 +176,7 @@
       .manual-tools{margin-left:15px;margin-right:15px}
       .detections{padding-left:15px;padding-right:15px}
       .send-row{align-items:flex-start;flex-direction:column}.send-action-column,.send-controls{width:100%}.send-action-column{justify-items:stretch}.send-controls{flex-direction:column}.model-select,.primary{width:100%}
-      .chat-topbar{padding:11px 12px;gap:8px}.chat-title{font-size:10px}.chat-subtitle{display:none}.topbar-actions{width:100%;gap:8px;flex-wrap:wrap}.privacy-toggle{font-size:8px}.status{display:none}.chat-shell{min-height:0}.conversation:not(.has-messages){display:none}.conversation.has-messages{min-height:210px;padding:14px 10px}.message{max-width:100%;margin-bottom:14px}.message-body{padding:11px 12px;font-size:13px;line-height:1.55}.composer{padding:10px}.editor-shell,.composer textarea,.input-highlights{min-height:180px;max-height:none}.composer textarea{resize:none;overflow-y:hidden}.enhanced-protection{grid-template-columns:minmax(0,1fr) auto}.enhanced-copy .enhanced-meta{display:flex;margin:4px 0 0}.composer .detections{grid-template-columns:1fr}.composer .send-row{margin-left:-10px;margin-right:-10px;padding-left:10px;padding-right:10px}.sample-row{align-items:flex-start;flex-direction:column}.sample-select{width:100%;max-width:none}
+      .chat-topbar{padding:11px 12px;gap:8px}.chat-title{font-size:10px}.chat-subtitle{display:none}.topbar-actions{width:100%;gap:8px;flex-wrap:wrap}.privacy-toggle{font-size:8px}.status{display:none}.chat-shell{min-height:0}.conversation:not(.has-messages){display:none}.conversation.has-messages{min-height:210px;padding:14px 10px}.message{max-width:100%;margin-bottom:14px}.message-body{padding:11px 12px;font-size:13px;line-height:1.55}.composer{padding:10px}.editor-shell,.composer textarea,.input-highlights{min-height:180px;max-height:none}.composer textarea{resize:none;overflow-y:hidden}.enhanced-protection{grid-template-columns:minmax(0,1fr) auto}.enhanced-copy .enhanced-meta{display:flex;margin:4px 0 0}.enhanced-info{position:fixed;top:12px;right:12px;left:12px;width:auto;max-height:calc(100dvh - 24px);overflow:auto}.composer .detections{grid-template-columns:1fr}.composer .send-row{margin-left:-10px;margin-right:-10px;padding-left:10px;padding-right:10px}.sample-row{align-items:flex-start;flex-direction:column}.sample-select{width:100%;max-width:none}
       .quick-review{position:static;width:100%;max-width:none;grid-template-columns:1fr}.quick-review-actions{grid-template-columns:1fr 1fr}.quick-review-actions .decision-button{width:100%}
     }
   </style>
@@ -184,7 +184,7 @@
 <body>
   <header>
     <div class="wrap nav">
-      <a href="index.html" aria-label="PrivacyAI home"><img class="logo" src="logo.svg" alt="PrivacyAI â€” AI Anonymized. Provably Accountable."></a>
+      <a href="index.html" aria-label="PrivacyAI home"><img class="logo" src="logo.svg" alt="PrivacyAI — AI Anonymized. Provably Accountable."></a>
       <a class="back" href="index.html">Back to PrivacyAI</a>
     </div>
   </header>
@@ -204,7 +204,7 @@
     <section class="demo-workbench" aria-label="PrivacyAI protected AI interface">
       <aside class="thread-sidebar" aria-label="Demo conversations">
         <div class="sidebar-brand">PrivacyAI</div>
-        <a class="new-chat" href="demo.html"><span aria-hidden="true">ï¼‹</span> New protected chat</a>
+        <a class="new-chat" href="demo.html"><span aria-hidden="true">＋</span> New protected chat</a>
         <input class="sidebar-search" type="search" placeholder="Search clients, work, or threads" aria-label="Search workspace">
         <div class="sidebar-label">My work</div>
         <nav class="product-nav" aria-label="My work">
@@ -224,11 +224,11 @@
           <a class="product-link" href="workspace.html?view=audit">Audit records</a>
         </nav>
         <div class="sidebar-spacer"></div>
-        <div class="sidebar-profile"><strong>Sarah Chen</strong><span>Attorney Â· Firm administrator</span></div>
+        <div class="sidebar-profile"><strong>Sarah Chen</strong><span>Attorney · Firm administrator</span></div>
       </aside>
       <section class="chat-shell" aria-labelledby="compose-title">
       <div class="chat-topbar">
-        <div class="chat-title" id="compose-title">PrivacyAI protected conversation<span class="chat-subtitle">Fictional examples only Â· original values stay in this browser</span></div>
+        <div class="chat-title" id="compose-title">PrivacyAI protected conversation<span class="chat-subtitle">Fictional examples only · original values stay in this browser</span></div>
         <div class="topbar-actions">
           <div class="enhanced-protection" id="enhancedProtection">
             <div class="enhanced-copy"><span class="enhanced-meta"><span class="enhanced-dot" id="enhancedDot"></span><span id="enhancedStatus">Starting local protection</span></span></div>
@@ -251,7 +251,7 @@
           <div class="input-highlights" id="inputHighlights" aria-hidden="true"></div>
           <textarea id="input" maxlength="6000" aria-label="Request containing sample sensitive details" placeholder="Type or paste your request here."></textarea>
         </div>
-        <div class="sample-row"><label for="sample">Try a fictional example</label><select class="sample-select" id="sample"><option value="">Choose an industryâ€¦</option><option value="legal">Legal</option><option value="tax">Tax &amp; Accounting</option><option value="healthcare">Healthcare</option><option value="financial">Financial Advisory</option><option value="technology">Passwords, Keys &amp; Credentials</option><option value="general">General business</option></select><span class="selection-hint">or type your own and highlight anything missed</span></div>
+        <div class="sample-row"><label for="sample">Try a fictional example</label><select class="sample-select" id="sample"><option value="">Choose an industry...</option><option value="legal">Legal</option><option value="tax">Tax &amp; Accounting</option><option value="healthcare">Healthcare</option><option value="financial">Financial Advisory</option><option value="technology">Passwords, Keys &amp; Credentials</option><option value="general">General business</option></select><span class="selection-hint">or type your own and highlight anything missed</span></div>
         <div class="protection-stack" id="protectionStack" hidden>
           <details class="transmission-details" id="transmissionDetails">
             <summary><strong>What the AI will receive</strong><span class="count" id="count">0 items detected</span></summary>
@@ -294,9 +294,9 @@
             </div>
             <div class="send-controls">
             <select class="model-select" aria-label="AI model used for this demo">
-              <option>ChatGPT Â· GPT-5 Nano</option>
-              <option disabled>Claude Â· planned</option>
-              <option disabled>Gemini Â· planned</option>
+              <option>ChatGPT · GPT-5 Nano</option>
+              <option disabled>Claude · planned</option>
+              <option disabled>Gemini · planned</option>
             </select>
             <button class="primary" id="send" type="button">Send protected request</button>
             </div>
@@ -317,7 +317,7 @@
       <label class="rule-field"><span>What should PrivacyAI protect?</span><input id="ruleDescription" maxlength="120" placeholder="Example: Our matter numbers" required></label>
       <label class="rule-field"><span>Examples that should match (at least 2)</span><textarea id="rulePositiveExamples" placeholder="SD-2026-1042&#10;LA-2025-882" required></textarea><small>Enter fictional examples one per line.</small></label>
       <label class="rule-field"><span>Examples that should not match</span><textarea id="ruleNegativeExamples" placeholder="CA-92111"></textarea><small>Optional, but useful for preventing an overly broad rule.</small></label>
-      <label class="rule-field"><span>Apply to</span><select id="ruleScope"><option value="device">My future requests on this device</option><option disabled>This client or case (full product)</option><option disabled>Entire firm â€” admin approval (full product)</option></select></label>
+      <label class="rule-field"><span>Apply to</span><select id="ruleScope"><option value="device">My future requests on this device</option><option disabled>This client or case (full product)</option><option disabled>Entire firm — admin approval (full product)</option></select></label>
       <div class="rule-preview" id="rulePreview" aria-live="polite"></div>
     </form>
     <div class="rule-dialog-actions">
@@ -770,9 +770,9 @@
           editorHtml += `<span class="input-protected" data-placeholder="${token}" data-candidate-id="${item.id}">${escapeHtml(item.value)}</span>`;
         } else if (item.suggested && suggestionDecisions.get(suggestionKey(item)) !== "allow") {
           const sourceDetail = item.source === "local-ai"
-            ? `Local AI suggestion Â· ${Math.round(item.score * 100)}% confidence`
+            ? `Local AI suggestion · ${Math.round(item.score * 100)}% confidence`
             : "Rule-based possible detail";
-          tokenHtml += `<span class="suggestion" role="button" tabindex="0" data-suggestion-id="${item.id}" title="${sourceDetail} Â· click to protect">${escapeHtml(item.value)}</span>`;
+          tokenHtml += `<span class="suggestion" role="button" tabindex="0" data-suggestion-id="${item.id}" title="${sourceDetail} · click to protect">${escapeHtml(item.value)}</span>`;
           editorHtml += `<span class="input-possible">${escapeHtml(item.value)}</span>`;
         } else {
           tokenHtml += escapeHtml(item.value);
@@ -806,16 +806,16 @@
       send.dataset.reviewBlocked = blocked ? "true" : "false";
       send.textContent = blocked ? `Review ${unresolved.length} possible detail${unresolved.length === 1 ? "" : "s"}` : "Send protected request";
       if (unresolved.length) {
-        reviewPeek.textContent = `Â· ${unresolved.length} decision${unresolved.length === 1 ? "" : "s"} required`;
+        reviewPeek.textContent = `· ${unresolved.length} decision${unresolved.length === 1 ? "" : "s"} required`;
         const item = unresolved[0];
         const completed = allSuggested.length - unresolved.length;
         quickReview.hidden = false;
         quickReview.dataset.id = item.id;
-        quickReviewProgress.textContent = `${completed + 1} of ${allSuggested.length} Â· review possible detail`;
+        quickReviewProgress.textContent = `${completed + 1} of ${allSuggested.length} · review possible detail`;
         quickReviewValue.textContent = item.value;
         quickReviewMeta.textContent = item.source === "local-ai"
-          ? `Possible ${item.type.toLowerCase()} Â· Local AI ${Math.round(item.score * 100)}%`
-          : `Possible ${item.type.toLowerCase()} Â· ${item.source === "heuristic" ? "Name pattern" : "Context rule"}`;
+          ? `Possible ${item.type.toLowerCase()} · Local AI ${Math.round(item.score * 100)}%`
+          : `Possible ${item.type.toLowerCase()} · ${item.source === "heuristic" ? "Name pattern" : "Context rule"}`;
       } else {
         quickReview.hidden = true;
         quickReview.removeAttribute("data-id");
@@ -824,7 +824,7 @@
 
     function renderDetections() {
       count.textContent = `${candidates.length} item${candidates.length === 1 ? "" : "s"} detected`;
-      reviewPeek.textContent = candidates.length ? `Â· ${candidates[0].type}: ${candidates[0].value}${candidates.length > 1 ? "â€¦" : ""}` : "";
+      reviewPeek.textContent = candidates.length ? `· ${candidates[0].type}: ${candidates[0].value}${candidates.length > 1 ? "…" : ""}` : "";
       if (!candidates.length) {
         detections.innerHTML = '<div class="empty">No supported patterns detected. Names and addresses require clear context; review your text carefully.</div>';
       } else {
@@ -832,17 +832,17 @@
           if (item.suggested) {
             const decision = suggestionDecisions.get(suggestionKey(item));
             const sourceBadge = item.source === "local-ai"
-              ? `<span class="source-badge">local AI Â· ${Math.round(item.score * 100)}%</span>`
+              ? `<span class="source-badge">local AI · ${Math.round(item.score * 100)}%</span>`
               : `<span class="source-badge">${item.source === "heuristic" ? "name pattern" : "rule"}</span>`;
             return `<div class="detection decision-required ${decision ? "resolved" : ""}" data-decision-item="${item.id}">
-              <span class="decision-copy"><span class="detected-value">${escapeHtml(item.value)}${sourceBadge}</span><span class="type">${decision ? decision.toUpperCase() : "DECISION REQUIRED"} Â· ${item.type}</span></span>
+              <span class="decision-copy"><span class="detected-value">${escapeHtml(item.value)}${sourceBadge}</span><span class="type">${decision ? decision.toUpperCase() : "DECISION REQUIRED"} · ${item.type}</span></span>
               <span class="decision-actions">
                 <button class="decision-button protect ${decision === "protect" ? "selected" : ""}" type="button" data-decision="protect" data-id="${item.id}">Protect</button>
                 <button class="decision-button ${decision === "allow" ? "selected" : ""}" type="button" data-decision="allow" data-id="${item.id}">Allow</button>
               </span>
             </div>`;
           }
-          const confirmedSource = item.source === "pattern-rule" ? "pattern rule" : (item.type === "MANUAL" ? "manual" : (item.source === "local-ai" ? `local AI Â· ${Math.round(item.score * 100)}%` : "rule"));
+          const confirmedSource = item.source === "pattern-rule" ? "pattern rule" : (item.type === "MANUAL" ? "manual" : (item.source === "local-ai" ? `local AI · ${Math.round(item.score * 100)}%` : "rule"));
           const typeLabel = item.source === "pattern-rule" ? "CUSTOM RULE" : item.type;
           return `<label class="detection">
             <input type="checkbox" data-id="${item.id}" ${enabled.has(item.id) ? "checked" : ""}>
@@ -880,7 +880,7 @@
       enhancedDot.className = `enhanced-dot ${state === "analyzing" ? "loading" : state}`.trim();
       enhancedButton.disabled = state === "loading";
       if (state === "loading") enhancedButton.textContent = "Enhanced protection loading";
-      if (state === "ready" || state === "analyzing") enhancedButton.textContent = "Enhanced protection active (i)";
+      if (state === "ready" || state === "analyzing") enhancedButton.innerHTML = '<span class="enhanced-label">Enhanced protection active</span><span class="enhanced-info-icon" aria-hidden="true">i</span>';
       if (state === "error") enhancedButton.textContent = "Try download again";
     }
 
@@ -1002,11 +1002,11 @@
           }
         });
         modelDiagnostics.textContent = diagnosticResults.length
-          ? `Model: ${entityModelId}\nInput: ${text.length} characters\nRaw model outputs: ${rawResultCount}\nNormalized candidates: ${diagnosticResults.length}\nAccepted at 55%: ${diagnosticResults.filter(item=>item.accepted).length}\nPolicy: 90%+ auto-protect Â· 55â€“89.9% review\n\n${diagnosticResults.map(item=>`${item.accepted ? "ACCEPT" : "DROP"}  ${item.label}  ${item.score}  ${item.start}-${item.end}  ${item.offsetSource}  ${item.word}`).join("\n")}`
+          ? `Model: ${entityModelId}\nInput: ${text.length} characters\nRaw model outputs: ${rawResultCount}\nNormalized candidates: ${diagnosticResults.length}\nAccepted at 55%: ${diagnosticResults.filter(item=>item.accepted).length}\nPolicy: 90%+ auto-protect · 55–89.9% review\n\n${diagnosticResults.map(item=>`${item.accepted ? "ACCEPT" : "DROP"}  ${item.label}  ${item.score}  ${item.start}-${item.end}  ${item.offsetSource}  ${item.word}`).join("\n")}`
           : `Model: ${entityModelId}\nInput: ${text.length} characters\nRaw model outputs: ${rawResultCount}\nNormalized candidates: 0\n\nInference completed, but the model returned no usable entities.`;
         localEntitySuggestions = consolidated;
         localEntityText = text;
-        setEnhancedState("ready",`Active Â· ${consolidated.length} local suggestion${consolidated.length === 1 ? "" : "s"}`);
+        setEnhancedState("ready",`Active · ${consolidated.length} local suggestion${consolidated.length === 1 ? "" : "s"}`);
         refresh();
       } catch (error) {
         console.error("Local entity analysis failed",error);
@@ -1043,7 +1043,7 @@
           dtype:"q8",
           progress_callback:progress=>{
             if (progress?.status === "progress" && Number.isFinite(progress.progress)) {
-              setEnhancedState("loading",`Downloading local detector Â· ${Math.round(progress.progress)}%`);
+              setEnhancedState("loading",`Downloading local detector · ${Math.round(progress.progress)}%`);
             }
           }
         });
@@ -1053,7 +1053,7 @@
         } catch {
           // Preference persistence can be unavailable in strict privacy modes.
         }
-        setEnhancedState("ready","Active Â· original text stays on this device");
+        setEnhancedState("ready","Active · original text stays on this device");
         scheduleEntityAnalysis();
       } catch (error) {
         console.error("Local entity model failed to load",error);
@@ -1289,7 +1289,7 @@
       if (!value || value.length > 200) return;
       const leading = input.value.slice(start,end).indexOf(value);
       pendingSelection = {value,start:start+leading,end:start+leading+value.length};
-      manualSelection.textContent = `Protect â€œ${value}â€`;
+      manualSelection.textContent = `Protect “${value}”`;
       manualSelection.title = value;
       allMatches.checked = true;
       rememberRule.checked = false;
@@ -1394,7 +1394,7 @@
       if (!quickReview.hidden) quickAllow.focus();
     });
     const fictionalExamples = {
-      legal: "Please draft a concise follow-up for plaintiff Jordan Ellis at 1824 Harbor View Road, San Diego, CA 92101. The clientâ€™s email is jordan.ellis@example.com, phone is (619) 555-0147, and case number is CV-2026-10482.",
+      legal: "Please draft a concise follow-up for plaintiff Jordan Ellis at 1824 Harbor View Road, San Diego, CA 92101. The client’s email is jordan.ellis@example.com, phone is (619) 555-0147, and case number is CV-2026-10482.",
       tax: "Summarize the filing issues for taxpayer Morgan Reyes at 440 Cedar Lane, Sacramento, CA 95814. Their SSN is 123-45-6789, the business EIN is 12-3456789, and the contact email is morgan.reyes@example.com.",
       healthcare: "Draft follow-up instructions for patient Avery Patel, DOB 04/18/1982, phone (858) 555-0138, living at 790 Coast Boulevard, La Jolla, CA 92037. Reference patient ID MRN-884219.",
       financial: "Prepare a client-review summary for Cameron Brooks at 88 Market Street, San Francisco, CA 94105. Their email is cameron.brooks@example.com, account ID is ACCT-728401, and phone is (415) 555-0184.",
@@ -1443,22 +1443,22 @@
       const userMessage = document.createElement("article");
       userMessage.className = "message message-user";
       userMessage.innerHTML = `
-        <div class="message-head">You Â· protected before sending</div>
+        <div class="message-head">You · protected before sending</div>
         <div class="message-body">${renderProtectedHistory(original,map)}</div>
         <details class="sent-preview">
-          <summary>${protectedCount} detail${protectedCount === 1 ? "" : "s"} protected Â· View what the AI received</summary>
+          <summary>${protectedCount} detail${protectedCount === 1 ? "" : "s"} protected · View what the AI received</summary>
           <pre>${escapeHtml(redacted)}</pre>
         </details>`;
       const aiMessage = document.createElement("article");
       aiMessage.className = "message message-ai";
-      aiMessage.innerHTML = '<div class="message-head">PrivacyAI / ChatGPT Â· waiting</div><div class="message-body message-waiting">Generating a response from the protected requestâ€¦</div>';
+      aiMessage.innerHTML = '<div class="message-head">PrivacyAI / ChatGPT · waiting</div><div class="message-body message-waiting">Generating a response from the protected request…</div>';
       conversation.append(userMessage,aiMessage);
       conversation.scrollTop = conversation.scrollHeight;
       input.value = "";
       suggestionDecisions = new Map();
       refresh();
       send.disabled = true;
-      setStatus("Sending protected requestâ€¦","active");
+      setStatus("Sending protected request…","active");
       try {
         const localPreview = location.protocol === "file:";
         let responseText;
@@ -1466,7 +1466,7 @@
           await new Promise(resolve=>setTimeout(resolve,450));
           const firstPerson = Object.keys(map).find(token=>token.startsWith("[[PERSON_"));
           const firstMatter = Object.keys(map).find(token=>token.startsWith("[[ID_"));
-          responseText = `Of courseâ€”here is a concise follow-up${firstPerson ? ` for ${firstPerson}` : ""}${firstMatter ? ` regarding matter ${firstMatter}` : ""}. The substantive draft can proceed using the protected facts provided, while the identifying details remain outside the transmitted request.`;
+          responseText = `Of course—here is a concise follow-up${firstPerson ? ` for ${firstPerson}` : ""}${firstMatter ? ` regarding matter ${firstMatter}` : ""}. The substantive draft can proceed using the protected facts provided, while the identifying details remain outside the transmitted request.`;
         } else {
           const response = await fetch("/api/chat",{
             method:"POST",
@@ -1481,7 +1481,7 @@
         if (!responseIntegrity.valid) {
           throw new Error("The AI changed a privacy placeholder, so PrivacyAI withheld the response. Please try again.");
         }
-        aiMessage.querySelector(".message-head").textContent = localPreview ? "PrivacyAI Â· local interface preview" : "PrivacyAI / ChatGPT Â· restored locally";
+        aiMessage.querySelector(".message-head").textContent = localPreview ? "PrivacyAI · local interface preview" : "PrivacyAI / ChatGPT · restored locally";
         const body = aiMessage.querySelector(".message-body");
         body.classList.remove("message-waiting");
         body.innerHTML = renderRehydrated(responseText,map);
@@ -1491,12 +1491,12 @@
         restoredDetails.innerHTML = `
           <summary>${restoredTokens.length} detail${restoredTokens.length === 1 ? "" : "s"} restored locally</summary>
           <pre>${restoredTokens.length
-            ? restoredTokens.map(token=>`${escapeHtml(token)} â†’ ${escapeHtml(map[token])}`).join("\n")
+            ? restoredTokens.map(token=>`${escapeHtml(token)} → ${escapeHtml(map[token])}`).join("\n")
             : "No protected values were used in this response."}</pre>`;
         aiMessage.append(restoredDetails);
         setStatus(localPreview ? "Local preview" : "Restored locally","active");
       } catch (error) {
-        aiMessage.querySelector(".message-head").textContent = "PrivacyAI / ChatGPT Â· request failed";
+        aiMessage.querySelector(".message-head").textContent = "PrivacyAI / ChatGPT · request failed";
         aiMessage.querySelector(".message-body").textContent = error.message;
         setStatus("Request failed","error");
       } finally {
