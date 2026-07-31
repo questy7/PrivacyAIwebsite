@@ -880,7 +880,7 @@
       enhancedDot.className = `enhanced-dot ${state === "analyzing" ? "loading" : state}`.trim();
       enhancedButton.disabled = state === "loading";
       if (state === "loading") enhancedButton.textContent = "Enhanced protection loading";
-      if (state === "ready" || state === "analyzing") enhancedButton.textContent = "Enhanced protection active â“˜";
+      if (state === "ready" || state === "analyzing") enhancedButton.textContent = "Enhanced protection active (i)";
       if (state === "error") enhancedButton.textContent = "Try download again";
     }
 
