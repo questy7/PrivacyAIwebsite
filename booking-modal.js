@@ -94,16 +94,14 @@
     });
   }
 
-  // CTAs open the on-site /contact page in a modal (embed mode strips the page chrome).
-  if (location.pathname.replace(/\/$/, '') === '/contact') return;
-  const bookingUrl = new URL('/contact', location.origin).href;
-  const formUrl = new URL('/contact?topic=early-access', location.origin).href;
+  const bookingUrl = 'https://link.sellflows.com/widget/booking/PBpJVegRgUST8xPAbuOj';
+  const formUrl = 'https://link.sellflows.com/widget/form/1FQfrmu2PW0arcnSk0aJ';
   const experiences = {
     [bookingUrl]: {
       dialogLabel: 'Book a call with PrivacyAI',
-      frameTitle: 'PrivacyAI contact form',
-      closeLabel: 'Close contact form',
-      form: true
+      frameTitle: 'PrivacyAI booking calendar',
+      closeLabel: 'Close booking calendar',
+      form: false
     },
     [formUrl]: {
       dialogLabel: 'Get started with PrivacyAI',
@@ -112,7 +110,6 @@
       form: true
     }
   };
-  const embedSrc = (url) => url + (url.includes('?') ? '&' : '?') + 'embed=1';
   const modalLinks = [...document.querySelectorAll('a')].filter((link) => experiences[link.href]);
   if (!modalLinks.length) return;
 
@@ -122,8 +119,8 @@
   modal.innerHTML = `
     <div class="booking-modal__backdrop" data-modal-close></div>
     <div class="booking-modal__dialog" role="dialog" aria-modal="true" aria-label="Book a call with PrivacyAI">
-      <button class="booking-modal__close" type="button" aria-label="Close contact form" data-modal-close>&times;</button>
-      <iframe class="booking-modal__frame" title="PrivacyAI contact form" loading="lazy"></iframe>
+      <button class="booking-modal__close" type="button" aria-label="Close booking calendar" data-modal-close>&times;</button>
+      <iframe class="booking-modal__frame" title="PrivacyAI booking calendar" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>`;
   document.body.appendChild(modal);
 
@@ -143,8 +140,7 @@
     event.preventDefault();
     const experience = experiences[link.href];
     returnFocus = link;
-    const src = embedSrc(link.href);
-    if (frame.getAttribute('src') !== src) frame.src = src;
+    if (frame.src !== link.href) frame.src = link.href;
     dialog.setAttribute('aria-label', experience.dialogLabel);
     dialog.classList.toggle('booking-modal__dialog--form', experience.form);
     frame.title = experience.frameTitle;

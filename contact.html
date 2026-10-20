@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="booking-modal.css">
 <script src="booking-modal.js" defer></script>
 <title>Book a Call or Request Early Access | PrivacyAI</title>
 <meta name="description" content="Book a 15-minute call with PrivacyAI or request early access to secure AI with PII redaction for legal, tax, healthcare, and financial practices.">
@@ -54,9 +55,6 @@
   .alt{text-align:center;font-size:14px;color:var(--ink-soft);margin:24px 0 0;}
   .alt a{color:var(--protected);font-weight:600;text-decoration:underline;}
 
-  html.embed nav,html.embed footer,html.embed .alt{display:none;}
-  html.embed .head{padding:28px 0 0;}
-  html.embed .form-card{margin-top:20px;}
   footer{padding:40px 0;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--rule);text-align:center;margin-top:40px;}
 
   @media(max-width:640px){
@@ -84,7 +82,7 @@
       <a href="pricing.html">Pricing</a>
       <a href="faq.html">FAQ</a>
     </div>
-    <a class="nav-cta" href="/contact">Book a Call</a>
+    <a class="nav-cta" href="https://link.sellflows.com/widget/booking/PBpJVegRgUST8xPAbuOj">Book a Call</a>
   </div>
 </nav>
 
@@ -141,9 +139,7 @@
   const form = document.getElementById('contact-form');
   const status = document.getElementById('status');
   const button = form.querySelector('button');
-  const params = new URLSearchParams(location.search);
-  if (params.get('embed') === '1') document.documentElement.classList.add('embed');
-  const topic = params.get('topic');
+  const topic = new URLSearchParams(location.search).get('topic');
   if (topic && [...form.topic.options].some((o) => o.value === topic)) form.topic.value = topic;
 
   const show = (kind, text) => { status.className = 'status ' + kind; status.textContent = text; };
