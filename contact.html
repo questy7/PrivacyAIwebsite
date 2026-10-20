@@ -54,6 +54,9 @@
   .alt{text-align:center;font-size:14px;color:var(--ink-soft);margin:24px 0 0;}
   .alt a{color:var(--protected);font-weight:600;text-decoration:underline;}
 
+  html.embed nav,html.embed footer,html.embed .alt{display:none;}
+  html.embed .head{padding:28px 0 0;}
+  html.embed .form-card{margin-top:20px;}
   footer{padding:40px 0;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--rule);text-align:center;margin-top:40px;}
 
   @media(max-width:640px){
@@ -138,7 +141,9 @@
   const form = document.getElementById('contact-form');
   const status = document.getElementById('status');
   const button = form.querySelector('button');
-  const topic = new URLSearchParams(location.search).get('topic');
+  const params = new URLSearchParams(location.search);
+  if (params.get('embed') === '1') document.documentElement.classList.add('embed');
+  const topic = params.get('topic');
   if (topic && [...form.topic.options].some((o) => o.value === topic)) form.topic.value = topic;
 
   const show = (kind, text) => { status.className = 'status ' + kind; status.textContent = text; };
